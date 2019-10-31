@@ -1,0 +1,223 @@
+%CAPITULO III
+
+% LEtAl_2007  (habla sobre la debilidad de sistemas caoticos analogicos)
+
+\chapter{Criptografía}
+En este capítulo, se presenta una breve historia de la criptografía, así como su definición y clasificación; también se muestran los componentes de un sistema criptográfico mediante un esquema y además, se mencionan las tres formas de vulnerarlo. Los datos cifrados deben cumplir con cierto grado de aleatoriedad de acuerdo con el estándar FIPS 140-2, los cuales, se menciona en este capítulo. Recientemente, los sistemas caóticos han sido utilizados en la protección de datos ya que poseen propiedades criptográficas interesantes. Desde hace dos décadas, en la literatura se reportan sistemas criptográficos basados en caos analógico y digital. Los sistemas criptográficos basados en caos digital son mas prometedores y seguros desde el punto de vista criptográfico y en este capítulo se describe porque. Además, se describen los requerimientos y reglas básicas que un sistema criptográfico basado en caos digital debe cumplir. Finalmente, se presentan algunas conclusiones del capítulo.  \\
+
+\section{Introducción}
+A lo largo del tiempo, el hombre ha tenido la necesidad de transmitir información de manera secreta ya sea por motivos militares, diplomáticos, comerciales o personales, es por ello que nace la \textit{criptografía}.\\
+
+De manera histórica, desde el año 1500 a.C., métodos y artilugios para esconder información fueron creados por el hombre y clasificados ahora en criptografía clásica, algunos ejemplos son: las \textit{tablillas de arcilla} utilizadas por comerciantes asirios; el instrumento de los griegos llamado \textit{escítala} utilizada en el siglo V a.C. (ver figura~3.1), que consistía en una tela que se enrollaba en un cilindro de madera y que utilizaba la técnica de cambio de lugar; los escribanos hebreos utilizaban el alfabeto al revés conocido como \textit{código espejo}; el \textit{cifrado de Julio César} que consistía en sustitución de un símbolo por su tercer símbolo consecutivo, utilizado en el siglo I a.C.; \textit{disco de cobre de cifrado} que básicamente consistía en el cifrado de Julio César (1466); \textit{cifrado Vigen\`ere} (1595); \textit{cifrador de discos de Jefferson} (1790); \textit{cifrador de Wheatstone} (1867); \textit{cifrador de Bazeries} (1890) que combina el cambio de lugar y la sustitución de letras. \\ 
+
+La criptografía clásica termina aquí y nace la \textbf{criptografía moderna} con máquinas mecánicas y electromecánicas, como la \textit{Enigma} en 1918 construida por los alemanes para cifrar y descifrar mensajes mediante un método rotatorio electromecánico, utilizada generalmente en unidades de combate en la Segunda Guerra Mundial (ver figura~3.2); \textit{máquina Purple} en 1940 construida por los japoneses similar a la Enigma; \textit{máquina Sigaba} en 1940 desarrollada por los estadounidenses, similar a la Enigma; \textit{máquina de Lorenz} en 1940 construida por los alemanes en comunicaciones militares de alto nivel durante la Segunda Guerra Mundial (no tiene que ver con el sistema de Lorenz, ya que éste fue construido en 1963). En 1949, Claude Shannon considerado padre de la criptografía matemática, publicó una serie de trabajos relacionados con la teoría de la información y comunicaciones que establecieron una base sólida teórica para la criptografía y el criptoanálisis, por lo que la criptografía pasó de ser un arte a ser reconocida como una ciencia \cite{S_1948,S_1949}. \\
+
+A partir de entonces, la invención de la computadora y el desarrollo de las matemáticas, permitieron que los nuevos algoritmos de cifrado fueran cada día más complejos, como el \textit{DES} (del inglés, \textit{Data Encryption Algorithm}), importante por ser el primer algoritmo de cifrado estándar en los años 70's y con ello el nacimiento de la criptografía simétrica, \textit{AES} (del inglés, \textit{Advanced Encryption Standard}), \textit{RSA} (del inglés, \textit{Rivest, Shamir y Adleman}), \textit{IDEA} (del inglés, \textit{International Data Encryption Algorithm}), entre otros.\\
+
+Desde un punto de vista teórico, la \textit{criptología} es la ciencia que trata las escrituras ocultas comprendida por las siguientes ramas \cite{G_2006}: 
+\begin{itemize}
+\item \textbf{Criptografía}: ciencia que estudia las técnicas y métodos para transformar la información (texto claro) de manera que sea ilegible (texto cifrado) a personas no autorizadas, esta es uno de los servicios de la criptografía conocido como \textit{confidencialidad}. También, la criptografía soporta otros servicios de seguridad como:
+\begin{itemize}
+\item \textit{Integridad:} la información no se altera durante su transmisión o almacenamiento.
+\item \textit{Autentificación:} verifica la identidad de quien envió la información.
+\item \textit{Vinculación:} garantiza que el emisor envió la información.
+\end{itemize}
+\item \textbf{Criptoanálisis}: ciencia que se ocupa de analizar el algoritmo y texto cifrado, para encontrar el texto claro o la clave secreta; de manera que criptoanálisis y criptográfia son ciencias complementarias pero contrarias.
+\item \textbf{Esteganografía}: ciencia que estudia métodos y técnicas que permitan ocultar mensajes dentro de otros, conocidos como portadores, de tal manera que no se perciba su existencia y pase inadvertido.  
+\end{itemize}.
+
+La criptografía aplica en dos ámbitos de la seguridad informática: transmisión y almacenamiento de datos.  En este trabajo de tesis doctoral, el algoritmo criptográfico propuesto aplica para ambos casos, en la transmisión de información confidencial a través de canales inseguros como internet y el almacenamiento de datos personales previamente cifrados en base de datos. 
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.6]{FIG_CAP_03/ENCITALA.pdf}    
+	\caption{\textit{Escítala}, instrumento criptográfico utilizada por los griegos en el siglo V a.C.}
+\end{figure}
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.6]{FIG_CAP_03/ENIGMA.pdf}    
+	\caption{\textit{Enigma}, máquina criptográfica utilizada por los alemanes en 1940.}
+\end{figure}
+
+\section{Sistema criptográfico y su clasificación}
+Un \textit{sistema criptográfico} consiste de un algoritmo usualmente conocido y que depende de un parámetro llamado clave secreta para cifrar (codificar) y descifrar (decodificar, proceso inverso del cifrado) información entre dos entidades (emisor y receptor) que están ubicados remotamente. En la figura~3.3 se muestra el esquema a bloques de un sistema criptográfico donde el canal de comunicación se considera inseguro. Un sistema criptográfico se compone con los siguientes cinco elementos \cite{KyS_1997}:
+\begin{itemize}
+\item \textit{m}: representa el texto claro.
+\item \textit{c}: representa el texto cifrado.
+\item \textit{K}: representa la clave secreta.
+\item \textit{E}: representa la función de cifrado.
+\item \textit{D}: representa la función de descifrado. \\
+\end{itemize}
+
+En todo sistema criptográfico, se debe cumplir la siguiente condición
+\begin{equation}
+D_{K}(E_{K}(m))=m
+\end{equation}
+es decir, si un mensaje \textit{m} se cifra con una función \textit{E} y una clave \textit{K} y después se descifra con la misma clave \textit{K}, se obtiene el mensaje original \textit{m}. \\
+
+La clasificación de los sistemas criptográficos, según \cite{KyS_1997} es como sigue:
+\begin{enumerate}
+\item \textbf{Distribución de la clave secreta:} 
+\begin{itemize}
+\item \textit{Simétricos o de clave privada:} Utilizan una clave \textit{K} para cifrar y descifrar. La 		desventaja de estos sistemas de clave simétrica es que la transmisión de clave se debe gestionar de manera 		segura. 
+\item \textit{Asimétricos o de clave pública:} Para evitar el problema de intercambio de clave secreta en 		un sistema simétrico, en este caso se utilizan dos claves, una pública $K_{p}$ y otra privada $K_{q}$. La 		clave pública se utiliza para cifrar y la clave privada para descifrar. La ventaja es la seguridad en el manejo y tamaño de claves ya que no es necesario que dos personas se pongan de acuerdo en que clave utilizar, lo único que tiene que hacer el emisor es conseguir la clave pública del receptor. Sin embargo, se requiere 	mayor tiempo de cálculo, mayor espacio de memoria y claves mayores de 1,024 bits para considerarse seguro, 		por lo que se traduce en mayor costo y tiempo de cálculo, comparándola con criptografía simétrica. Algunos ejemplos de	algoritmos criptográficos de clave asimétrica son: Rivest, Shamir y Adleman (RSA), Algoritmo de Firma Digital (DSA), Diffie-Hellman, criptografía de curva elíptica, Merkle-Hellman y Goldwasser-Micali. 
+\item \textit{Criptografía híbrida:} método criptográfico que se basa en la combinación de la criptografía simétrica y de la criptografía asimétrica; se utiliza el cifrado de clave pública para compartir una clave para el cifrado simétrico. La clave usada es diferente para cada sesión. 
+\end{itemize}   
+\item \textbf{Operaciones realizadas en el algoritmo:} \vspace{0.3cm} \\
+Confusión y difusión son dos conceptos relacionados con la teoría de la información y las comunicaciones seguras, que aplican sólo para cifrado simétrico (el cifrado asimétrico se basa en operaciones matemáticas). Claude Shannon fue participe de ciertos postulados de los sistemas criptográficos para hacerlos más resistentes ante ataques estadísticos y uno de estos postulados, indica que un algoritmo criptográfico debe contar con procesos de confusión y difusión. Los algoritmos simétricos modernos como 3DES o AES implementan operaciones de confusión y difusión.
+\begin{itemize}
+\item \textit{Confusión:} Consiste en permutar o\textbf{ cambiar de posición} cada elemento del texto claro (bit o bytes) de manera desordenada con respecto a la clave secreta y generar elementos cifrados. Objetivo: dificultar el descubrimiento de la clave con análisis estadístico. 
+\item \textit{Difusión:} Consiste en \textbf{cambiar el valor} a cada elemento del texto claro de manera desordenada con respecto a la clave secreta, para transformarlo en otro elemento del mismo alfabeto y generar elementos cifrados. Objetivo: Ocultar cualquier relación estadística entre texto claro y texto cifrado. 
+\end{itemize} 
+\item \textbf{Estructura del algoritmo de cifrado:}
+\begin{itemize}
+\item \textit{Cifrado de flujo:} Cifran el mensaje bit a bit (o byte a byte) hasta terminarlo. 
+\item \textit{Cifrado de bloque:} Cifran el mensaje en bloques de \textit{k} bits simultáneamente hasta terminarlo. Algunos ejemplos son el DES, 3DES, RC5, AES, Blowfish e IDEA. 
+\end{itemize} 
+\item \textbf{Método para construir el algoritmo criptográfico:}
+\begin{itemize}
+\item \textit{Convencionales o tradicionales:} Las herramientas que se utiliza en la criptografía convencional para diseñar los algoritmos, son teoría de números, álgebra, curvas elípticas, etc. como ejemplo mencionamos los algoritmos criptográficos 3DES, AES e IDEA. 
+\item \textit{No convencionales:} En este caso, se utilizan herramientas matemáticas en estado de investigación como la criptografía cuántica, la criptografía caótica y criptografía con ADN.
+\end{itemize}
+\end{enumerate} 
+
+El algoritmo propuesto en este trabajo doctoral, recae en la clasificación no convencional y de criptografía simétrica, ya que utiliza caos y la misma clave para cifrar y descifrar. Además, una de las ventajas en la implementación digital es que requiere menos consumo de memoria, presenta mayor velocidad de cifrado y tiene un manejo práctico de clave secreta, en comparación con el método asimétrico. 
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	 \includegraphics[scale=0.4]{FIG_CAP_03/SISTEMA_CRIPTOGRAFICO.pdf}    
+	\caption{Esquema de un sistema criptográfico simétrico.}
+\end{figure}
+
+\section{Seguridad de un sistema criptográfico}
+La seguridad de un sistema criptográfico debe recaer en la clave secreta y no sobre el algoritmo de cifrado, esto se conoce como principio de Keckhoff \cite{P_2011}. Por tanto, el algoritmo de cifrado se considera de conocimiento público. \\
+
+Un sistema criptográfico se considera \textit{vulnerado} si un criptoanalista encuentra la forma de determinar la clave secreta y en consecuencia el texto claro. Básicamente, existen tres formas de vulnerar un sistema criptográfico \cite{AyL_2006}: 
+\begin{enumerate}
+\item \textbf{Ataques teóricos (lógicos):} Aplicar teoría de la información y criptoanálisis para quebrantar el algoritmo. La seguridad se evalúa mediante análisis basados en métodos matemáticos, donde se muestra que el mensaje cifrado y clave secreta no pueden ser revelados al implementar ataques conocidos (criptoanálisis actual).
+\item \textbf{Ataques físicos:} Vulnerabilidades del sistema criptográfico, que se pueden aprovechar para quebrantar el algoritmo mediante ataques físicos, por ejemplo la información de tiempo, el consumo de energía, fugas electromagnéticas o incluso sonido, pueden proporcionar fuentes adicionales de información, que puede aprovecharse para romper el sistema criptográfico.
+\item \textbf{Ataques humanos:} Presionar mediante sobornos u otros medios a personas que poseen información privilegiada. \\
+\end{enumerate}
+
+Algunos ataques de tipo físico considerados poderosos son: 
+\begin{itemize}
+\item \textit{Ataque de sincronización:} Ataques basados en medir la cantidad de tiempo que diversos cálculos llevan a cabo.
+\item \textit{Ataque de monitoreo de energía:} Ataques que hacen uso de diferentes consumo de energía en el hardware durante el cálculo.
+\item \textit{Ataques electromagnéticos:} Ataques basados en la radiación electromagnética filtrada que pueden proporcionar directamente textos claros y otra información. Con un análisis de potencia se puede determinar la clave. 
+\item \textit{Análisis de sonido:} Ataques que se aprovechan de sonido producida durante un cálculo.
+\item \textit{Remanencia de datos:} Los datos sensibles se leen después de haber sido supuestamente borrados.\\
+\end{itemize}
+
+Algunos ataques de tipo teórico considerados poderosos son: 
+\begin{itemize}
+\item \textit{Ataque exhaustivo o fuerza bruta:} Todas las posibles claves son utilizadas para descifrar un mensaje.
+\item \textit{Sólo texto cifrado:} En este ataque el criptoanalista conoce el algoritmo y texto
+cifrado. Prácticamente es un ataque exhaustivo, por lo que se requiere que el espacio de claves sea suficientemente grande para resistir un ataque exhaustivo.
+\item \textit{Texto claro conocido:} Es un ataque diferencial poderoso donde el criptoanalista conoce el texto claro de un texto cifrado y utiliza esta información para intentar determinar la clave secreta y así, descifrar otros criptogramas. Si el algoritmo cae ante este ataque, se considera no seguro.
+\item \textit{Texto claro elegido:} Es otro ataque diferencial poderoso en donde el criptoanalista elije su propio texto claro para cifrar, posteriormente hace una ligera modificación (un bit) al texto claro y se vuelve a cifrar para determinar una relación entre la entrada y salida para determinar la clave secreta y descifrar otros criptogramas. \\
+\end{itemize}
+
+La seguridad del algoritmo criptográfico propuesto en esta tesis doctoral, es evaluada mediante análisis teóricos para resistir distintos métodos de ataques criptoanalíticos conocidos reportados en la literatura, como análisis de frecuencias, entropía de la información, histogramas, criptoanálisis diferencial, criptoanálisis estadístico, ataque por fuerza bruta, entre otros.  
+
+\section{Pruebas estadísticas de aleatoriedad}
+La ref.~\cite{MEtAl_1996} reporta un conjunto de pruebas estadísticas, utilizadas para determinar si una secuencia binaria \textit{s} es puramente aleatoria, que en criptografía determina si el criptograma posee buenas propiedades estadísticas de aleatoriedad. Sin embargo, estas pruebas no garantizan un generador de bit aleatorio ya que son pruebas en base a probabilidades. Sea $s=s_{0},s_{1},s_{2},...,s_{n-1}$ una secuencia binaria de longitud $n$, las pruebas de Menezes \textit{et al.} reportados en \cite{MEtAl_1996}, se describen brevemente a continuación:
+\begin{enumerate}
+   \item \textbf{Prueba monobit (de frecuencia):} El propósito de esta prueba consiste en determinar los números de 0's y 1's en $s$, estos deben ser aproximadamente los mismos en una secuencia aleatoria. Sea $n_{0}$ y $n_{1}$ los números de 0's y 1's en la secuencia binaria $s$, respectivamente. La prueba estadística consiste en calcular $X_{1}$,
+\begin{equation}
+X_{1}=\dfrac{(n_{0}-n_{1})^{2}}{n}
+\end{equation}
+con distribución de probabilidad de Chi-cuadrada $\chi^{2}$ con grado de libertad 1 si $n\geq 10$. En la práctica, se recomienda que la longitud de $n$ sea mucho mayor, por ejemplo $n\geq 10,000$. 
+	\item \textbf{Prueba poker:} Sea $m$ un número positivo de manera que $(n/m)=5\times (2^{m})$. La secuencia binaria $s$ se divide en $k$ secciones no traslapadas de longitud $m$ y sea $n_{i}$ el número de concurrencias de la $i^{ma}$ posibilidad de longitud $m$, $1\leq i\leq 2^{m}$. La prueba \textit{poker} determina si el número de las secuencias de longitud $m$ aparece el mismo número de veces en $s$, como se esperaría en una secuencia aleatoria. La prueba estadística utilizada se expresa como
+\begin{equation}
+X_{2}=\frac{2^{m}}{k} \left(\sum^{s^{m}}_{i=1} n^{2}_{i} \right) -k 
+\end{equation}	
+la cual, sigue una distribución de probabilidad de Chi-cuadrada $\chi^{2}$ con $2^{m}-1$ grados de libertad. Cabe notar, que la prueba \textit{poker} es una generalización de la prueba \textit{monobit}, pero en este caso se utiliza $m\geq 1$. 	   
+	\item \textbf{Prueba runs:} El propósito de la prueba de \textit{runs} es determinar los números de \textit{runs} de ceros y unos, de varias longitudes en una secuencia $s$. El número esperado de \textit{gaps} o \textit{blocks} de longitud $i$ en una secuencia aleatoria de longitud $n$ es $e_{i}=(n-i+3)/2^{i+2}$. Sea $B_{i}$ y $G_{i}$ el número de \textit{blocks} y \textit{gaps}, respectivamente, de longitud $i$, para $1\leq i\leq k$. La prueba estadística se realiza mediante la expresión
+\begin{equation}
+X_{3}=\sum_{i=1}^{k} \dfrac{(B_{i}-e_{i})}{e_{i}} + \sum_{i=1}^{k} \dfrac{(G_{i}-e_{i})}{e_{i}} 
+\end{equation}
+con aproximadamente una distribución de probabilidad de Chi-cuadrada $\chi^{2}$ con $2k-2$ grados de libertad.
+	\item \textbf{Prueba serial:} El propósito de esta prueba de aleatoriedad es determinar los números de ocurrencias de 00, 01, 10 y 11 como subsecuencias de $s$, que en una secuencia aleatoria serian aproximadamente los mismos. Sea $n_{0}$, $n_{1}$ los números de 0's y 1's en $s$, respectivamente y sean $n_{00}$, $n_{01}$, $n_{10}$ y $n_{11}$ los números de ocurrencias de 00, 01, 10 y 11, respectivamente. Notar que $n_{00}+n_{01}+n_{10}+n_{11}=(n-1)$ ya que se permite que las secuencias se traslapen. La expresión para realizar esta prueba es mediante  
+\begin{equation}
+X_{4}=\dfrac{4}{n-1}\left(n^{2}_{00}+n^{2}_{01}+n^{2}_{10}+n^{2}_{11}\right) - \dfrac{2}{n}\left(n^{2}_{0}+n^{2}_{1}\right)+1 
+\end{equation}
+con aproximadamente una distribución de probabilidad de Chi-cuadrada $\chi^{2}$ con 2 grados de libertad si $n\geq 21$. \\
+\end{enumerate}   
+
+El estándar FIPS 140-2 del \textit{NIST} (del inglés, \textit{National Institute of Standards and Technology}) de Estados Unidos, especifica cuatro pruebas estadísticas de aleatoriedad para validar, mencionadas en su mayoría en los párrafos anteriores \cite{FIPS_1994, FIPS_2001}. Una cadena de bits de $n=20,000$ bits de longitud esta sujeta a cada una de las siguientes pruebas y si una falla, la secuencia no pasa la prueba:
+\begin{enumerate}
+\item \textit{Prueba monobit:} El número $n_{1}$ de 1's en $s$ debe satisfacer $9725\leq n_{1} \leq 10275$.
+\item \textit{Prueba poker:} la estadística $X_{2}$ definida por la expresión~(3.3) se calcula para $m=4$ y 5000 segmentos de 4 bits continuos. La prueba pasa si $2.16\leq X_{2}\leq 46.17$.
+\item \textit{Prueba runs:} Los números $B_{i}$ y $G_{i}$ de \textit{blocks} y \textit{gaps}, respectivamente, de longitud $i$ en $s$ se calculan para cada $i$, $1\leq i\leq 6$. Se pasa la prueba si el número de $B_{i}$ y $G_{i}$, entra en el rango de la tabla~3.1.
+\item \textit{Prueba long runs:} La longitud del mayor \textit{run} en la secuencia de 20,000 bits (para 0's y 1's) debe ser menor de 26. \\
+\end{enumerate}
+
+Las pruebas de aleatoriedad mencionadas arriba, son utilizadas para validar el alto ``desorden'' que genera el cifrado caótico propuesto en esta tesis doctoral. En la implementación en microcontrolador de cifrado de plantilla dactilar descrito en el capítulo 9, se muestra que mediante la prueba FIPS 140-2, el algoritmo de cifrado supera las pruebas de aleatoriedad de monobit, poker, runs y serial. Esto indica que el algoritmo de cifrado propuesto en esta tesis doctoral genera un criptograma con excelentes características de aleatoriedad y un criptoanálisis estadístico no tendría éxito. 
+
+\begin{table}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\begin{tabular}{c c} 
+	\hline
+	Longitud & Intervalo \\
+	\hline
+	1	&	$2315 \leq X_{3} \leq 2685$ \\
+	2	&	$1114 \leq X_{3} \leq 1386$ \\	
+	3	&	$527 \leq X_{3} \leq 723$ \\
+	4	&	$240 \leq X_{3} \leq 384$ \\
+	5	&	$103 \leq X_{3} \leq 209$ \\
+	6	&	$103 \leq X_{3} \leq 209$ \\
+	\hline
+\end{tabular}
+	\caption{Intervalos para \textit{prueba runs} de acuerdo con FIPS 140-2.}
+\end{table}
+
+\section{Cifrado caótico}
+El \textbf{cifrado} de información consiste en transformar un mensaje claro en un mensaje ilegible mediante un algoritmo y una clave secreta, de tal manera que sólo la persona autorizada pueda decodificar y entender. Como se mencionó, en la criptografía moderna se han construido algoritmos de cifrado convencionales como el 3DES, AES, IDEA, etc., que utilizan operaciones algebraicas y un canal de comunicación digital (común) bidireccional entre emisor y receptor (internet). Sin embargo, en la actualidad se están investigando algoritmos no convencionales como:
+\begin{itemize}
+\item \textbf{Criptografía cuántica}: Se basa en el principio de incertidumbre de Heisenberg, esto es, que al observar un sistema cuántico éste se perturba a si mismo, e impide que el observador conozca su estado exacto antes de la observación. Por tanto, si un sistema cuántico se utiliza para transferir información, alguien que quiera espiar la comunicación, o incluso el receptor previsto, podría verse impedido de obtener toda la información enviada por el emisor. La criptografía cuántica hace uso de dos canales de comunicación entre los dos participantes. Un canal cuántico, el cual, tiene una sola dirección y que generalmente consiste en una fibra óptica. El otro es un canal convencional, público y bidireccional. Para la transmisión de información, los datos binarios son codificados mediante fotones.
+\item \textbf{Criptografía ADN}: Las características del ADN como habilidad para almacenar mucha información,   paralelismo y poco consumo de potencia, hacen del ADN utilizable en la seguridad criptográfica. Operaciones de ADN basadas en suma, complemento, eliminación e inserción, son utilizadas actualmente para el cifrado de datos.   
+\item \textbf{Criptografía caótica}: Se basa en ecuaciones no lineales diferenciales o en diferencias, las cuales, generan secuencias desordenadas o caóticas, pero que son deterministas y que presentan sensibilidad a condiciones iniciales. No existe una fórmula simple que defina a un sistema caótico en cualquier punto dado, lo que se califica como un problema muy difícil de resolver, lo que es una ventaja para su aplicación en la criptografía, eliminando las desventajas fundamentales de la criptografía convencional. Las secuencias que produce un sistema caótico son utilizadas como referencia para transformar un texto claro a un texto cifrado mediante un algoritmo y una clave secreta que esta relacionada con las condiciones iniciales. \\
+\end{itemize}
+
+Los sistemas caóticos tiene ciertas propiedades interesantes que sirven para generar operaciones de confusión y difusión eficientes, que son requeridas por un sistema criptográfico, estas propiedades de los sistemas caóticos están relacionadas con propiedades criptográficas de la siguiente forma \cite{AyL_2006}:
+\begin{itemize}
+\item \textbf{Ergodicidad \textit{vs} confusión}: La densidad de los datos caóticos (distribución) ayudan a obtener una confusión optimizada, es decir, una secuencia caótica puede generar valores para cambiar de posición la mayoría del texto claro. 
+\item \textbf{Sensibilidad a condiciones iniciales y parámetros de control \textit{vs} difusión}: Un pequeño cambio en la entrada puede causar un gran cambio en la salida, ya que los datos caóticos divergen con pequeños cambios en las condiciones iniciales y parámetros de control, por lo que la difusión se ve ampliamente alterada.
+\item \textbf{Mezcla de datos \textit{vs} difusión}: Un pequeño rango de condiciones iniciales y de parámetros de control en un sistema caótico, pueden generar muchísimas posibilidades de cifrado. 
+\item \textbf{Dinámica determinista \textit{vs} pseudoaleatoriedad}: La dinámica caótica determinística genera un comportamiento tipo pseudoaleatorio.
+\item \textbf{Complejidad de la estructura \textit{vs} complejidad del algoritmo}: La no linealidad de los sistemas caóticos los hacen complicados de resolver, lo que ayuda ante ataques al algoritmo criptográfico. \\
+\end{itemize}
+
+Actualmente, en la literatura se reportan dos clases de implementaciones de criptográfia basada en caos \cite{LEtAl_2007, AyL_2006}:
+\begin{itemize}
+\item \textbf{Analógica}: A partir del trabajo de Pecora y Carroll en 1990 donde se reportó la sincronización de dos sistemas caóticos \cite{PyC_1990}, en los últimos veinte años, en la literatura se reportaron muchos métodos de cifrado caótico analógico que se basan en la técnica de sincronización de caos como enmascaramiento caótico, conmutación caótica, modulación caótica, entre otros, ver por ejemplo \cite{CEtAl_1992, CyO_1992, CyO_1993, CEtAl_1993, MyZ_1996, GEtAl_2000, C_2004, PEtAl_2004, LyC_2004, LyC_2005, CEtAl_2005, LEtAl_2005, CyR_2006, PEtAl_2007, AEtAl_2008a, LEtAl_2009a, LEtAl_2009b, GEtAl_2009, SEtAl_2010a, CEtAl_2012, AEtAl_2012b}, donde se considera como clave secreta el valor de los parámetros representados por magnitudes fijas mediante resistencias electrónicas. Sin embargo, la mayor parte de los reportes no incluyen un análisis de seguridad para verificar el nivel de confidencialidad de la información cifrada. En general, consideró al sistema criptográfico ``seguro'' por utilizar un sistema caótico para cifrar. Sin embargo, el uso de caos en un sistema criptográfico no es garantía de seguridad \cite{K_2001}. Para evaluar la seguridad de un sistema criptográfico, todos los ataques criptoanalíticos conocidos deben ser probados sobre el esquema de cifrado \cite{LEtAl_2007}. Un gran número de resultados criptoanalíticos a sistemas criptográficos basados en caos analógico se reportaron en la literatura y se mostró que no son suficientemente seguros desde el punto de vista criptográfico, ya que presentan problemas como baja sensibilidad a la clave secreta (tal vez el problema más serio) \cite{WEtAl_2004a}, espacio de claves secretas reducido, fácil estimación de parámetros, fácil estimación de la señal portadora del sistema caótico maestro en enmascaramiento caótico, extracción del texto claro de forma directa mediante filtrado, análisis de potencia, análisis de periodo corto, entre otros. Aunque se ha presentado ciertas contramedidas en la literatura, los sistemas criptográficos basados en caos analógico se consideran poco seguros criptográficamente \cite{LEtAl_2007}, por lo que se se requiere de mayor atención en la seguridad del cifrado en este tipo de sistemas de comunicación.   
+\item \textbf{Digital}: En este caso, no se requiere el proceso de sincronización implementada en los sistemas criptográficos basados en caos analógico, por lo que se evitan los problemas de seguridad que estos presentan. Por otra parte, los sistemas caóticos son implementados en su forma digital mediante soluciones numéricas (para el caso de sistemas caóticos en tiempo continuo, por ejemplo Lorenz, Chua, Chen, etc.) o directamente (si estos son de naturaleza discreta, por ejemplo, logístico, Hénon, etc.) en sistemas digitales, como en una computadora, microcontrolador, FPGA, ASIC, etc. En este caso, los valores de condiciones iniciales y parámetros de control de los sistemas caóticos constituyen la clave secreta (magnitudes digitales), de tal forma que \textit{la dinámica caótica generada en el transmisor y en el receptor son idénticas}. En este sentido, los sistemas criptográficos basados en caos \textit{digital} son más seguros y prometedores que los sistemas criptográficos basados en caos \textit{analógico}. En los últimos años, la aplicación de cifrado caótico \textit{digital} se ha convertido en un campo emergente con altas expectativas en seguridad, flexibilidad y eficiencia criptográfica. En la literatura se reportaron distintos métodos de cifrado digital como cifrado de flujo basado en PRNG caóticos (generación de números pseudoaleatorios) \cite{YyH_2010, AEtAl_2012, FEtAl_2013}, cifrado caótico basado en la ergodicidad (seccionar en \textit{n} partes la dinámica caótica) \cite{B_1998, WyT_2012}, cifrado en bloque con cajas-S dinámicas caóticas (referente a la S-box del algoritmo AES) \cite{AyJ_2007, HEtAl_2014, ZEtAl_2014a}, entre otras. Algunos algoritmos de cifrado caótico con base a programación en MatLab se reportan en la literatura, para texto en \cite{MyM_2012}, imágenes en \cite{PEtAl_2006, PEtAl_2009, HyX_2010, C_2010, CyC_2011, WEtAl_2012, L_2012, IyC_2013, NEtAl_2014} y datos biométricos en \cite{KEtAl_2007, XEtAl_2011}. Sin embargo, en su mayoría presentan serios problemas de seguridad y han sido vulnerados, ver por ejemplo \cite{WEtAl_2005, WEtAl_2007, ByN_2008, CyS_2009, AyL_2009, LEtAl_2009, REtAl_2010, SEtAl_2010, LEtAl_2011, ZEtAl_2011, LEtAl_2012}.
+\end{itemize}
+
+\section{Requerimientos básicos de un cifrado caótico digital}
+Alvarez y Li en \cite{AyL_2006}, presentaron una seria de reglas que un sistema criptografico basado en caos digital debe incluir. Los puntos que deben describirse cuidadosamente son los siguientes:
+\begin{enumerate}
+\item Se debe describir que sistema caótico utiliza el cifrado.
+\item La degradación digital sebe ser evaluada, en caso de que se discretize un sistema continuo.
+\item El sistema criptográfico debe ser fácil de implementar con base a costos aceptables y buena velocidad de cifrado.
+\item La clave secreta debe ser claramente definida.
+\item El espacio de claves debe ser especificada sólo para generar secuencias caóticas.
+\item El efecto avalancha debe producirse para cualquier clave secreta: alta sensibilidad a la clave secreta.
+\item Información parcial de la clave secreta, no debe revelar información parcial del texto claro, tampoco de la parte de la clave desconocida.
+\item El proceso para generar secuencias caóticas a partir de la clave secreta debe estar claramente definido.
+\item El cifrado debe tener alta sensibilidad al texto claro.
+\item EL cifrado debe generar un texto cifrado con distribución de probabilidad uniforme. \\
+\end{enumerate}
+
+Por otra parte, el sistema criptográfico debe resistir los siguientes ataques criptoanalíticos (de tipo lógico), con base al principio de Kerckhoffs; es decir, se conoce todo sobre el sistema criptográfico, excepto la clave secreta:
+\begin{enumerate}
+\item \textit{Ataques diferenciales}. Son ataques del tipo solo texto claro elegido y conocido, donde se debe mostrar alta sensibilidad del sistema criptográfico a la clave secreta y al texto claro, para que el sistema criptográfico pueda resistirlos.
+\item \textit{Ataques estadísticos}. Son ataques de histogramas y correlación, donde se debe mostrar mediante análisis de correlación e histogramas, la uniformidad del texto cifrado, para resistir estos ataques.  
+\item \textit{Ataque exhaustivo}. Son ataques donde se tratan todas las posibles combinaciones de claves, por lo que, la clave debe contener más de $2^{100}$ opciones \cite{AyL_2006}. \\
+\end{enumerate}
+
+En el capítulo 6, se define al algoritmo de cifrado caótico propuesto en este trabajo de tesis doctoral, considerando los requerimientos y reglas básicas de un sistema criptográfico basado en caos digital, con base a Alvarez y Li \cite{AyL_2006}.  
+
+\section{Conclusiones}
+La cripografía se encarga de cifrar información de tal manera que sólo personas autorizadas puedan decodificar y entender. Métodos de cifrado no convencionales como la criptografía caótica están actualmente en investigación, donde se utilizan las propiedades que presentan los sistemas caóticos para diseñar algoritmo criptográficos. En la literatura se reportan sistemas criptográficos basados en caos analógico con serios problemas de seguridad y también se reportan sistemas criptográficos basados en caos digital con perspectiva de mayor seguridad criptográficamente. Sin embargo, en la mayoría de las propuestas se omiten análisis de seguridad para validar su uso en sistemas de comunicaciones seguras      

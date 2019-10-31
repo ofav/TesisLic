@@ -1,0 +1,312 @@
+% Apendice A
+
+\chapter{Programa MatLab: cifrado de imagen a color RGB}
+
+En esta apéndice, se presenta el software de cifrado propuesto en este trabajo doctoral aplicado a imágenes a color RGB. Se realizo con lenguaje C en MatLab. Los software de cifrado de texto y de plantilla dactilar que se implementaron en microcontrolador son similares al que se presenta en este apéndice. 
+
+\begin{lstlisting}
+clear all;  % Limpia variables.
+format long; % Variables con 15 decimales de precision.
+tic % Mide tiempo de proceso. 
+
+%% Clave secreta:
+CLAVE = '1234567890ABCDEF1234567890ABCDEF';
+TAMANO_CLAVE = size(CLAVE,2);
+
+%% Leer las matrices RGB de imagen clara:
+P = imread('lena_png_512.png'); 
+[FIL COL MAT]=size(P)
+
+%% Manejo de clave secreta Tabla 6.1
+% Separar en 4 secciones:
+SA1 = CLAVE(1:8);
+SA2 = CLAVE(9:16);
+SX1 = CLAVE(17:24);
+SX2 = CLAVE(25:32);
+
+% Convertir de hexadecimal a decimal 
+dec_SA1 = hex2dec(SA1);
+dec_SA2 = hex2dec(SA2);
+dec_SX1 = hex2dec(SX1);
+dec_SX2 = hex2dec(SX2);
+
+% Determinar el valor a sumar en las C.I. y P.C.:
+A = dec_SA1 / (4294967296 + 1);
+B = dec_SA2 / (4294967296 + 1);
+C = dec_SX1 / (4294967296 + 1);
+D = dec_SX2 / (4294967296 + 1);
+
+%% Iteracion del mapa logistico 2:
+PC_L2 = mod(A + B,1) * 0.001;
+x2 = mod(C + D,1);
+
+a2 = 3.999 + PC_L2; % Parametro de control de logistico 2
+LOG_2(1) = x2;      % Condicion inicial de logistico 2
+
+R=1000;    % Iteraciones de mapa logistico 2
+for n=1:R
+    LOG_2(n+1)=a2*LOG_2(n)*(1-LOG_2(n));
+end
+
+LOG_2=mod(LOG_2*1000,1); % Optimizacion de secuencias caoticas.
+
+%% Suma de pixeles de imagen clara con 50 datos caoticos de logistico 2:
+a_sumar_32k=im2double(P); %Transformar de 0-255 a 0-1
+
+if(MAT == 1)    % Para imagen a escala de grises
+    sum_vec_32k=0;
+    for k=1:FIL
+    sum_vec_32k =sum_vec_32k + a_sumar_32k(k,:,1);
+    end    
+else  
+    sum_vec_32k=0;
+    for k=1:FIL
+    sum_vec_32k =sum_vec_32k + a_sumar_32k(k,:,1) + a_sumar_32k(k,:,2) + 
+    a_sumar_32k(k,:,3);
+    end
+end
+
+S=0;
+for j=1:size(sum_vec_32k,2)
+   S=S+sum_vec_32k(j); 
+end
+
+% Agregar los ultimos 50 datos de mapa logistico 2:
+F=0;
+for n=1:50
+    F = F + LOG_2(1001-n);
+end
+
+v1 = mod((S*1000) + F,1);   % Valor entre 0-1.
+v2 = 1 + round(v1 * 253);   % Valor entre 1-254.
+Z = v2 / 255;               % Valor de Z.
+                             
+%% Iteracion del mapa log\'istico 1:
+PC_L1 = mod(A + B + Z,1) * 0.001;
+x1 = mod(C + D + Z,1);
+
+a1 = 3.999 + PC_L1; % Parametro de control de logistico 1
+LOG_1(1) = x1;      % Condicion inicial de logistico 1
+
+T=5000;     % Iteraciones de mapa logistico 2
+for n=1:T
+    LOG_1(n+1)=a1*LOG_1(n)*(1-LOG_1(n)); % mapa logistico
+end
+
+%% Determinar local para almacenar Z en criptograma:
+if(MAT == 1) % Para imagen a escala de grises.
+    I = round((LOG_2(R-10) * (FIL-1))+1);
+    J = round((LOG_2(R-100)* (COL-1))+1);
+    K = 1;    
+else         % Para imagen a color.
+    I = round((LOG_2(R-10) * (FIL-1))+1);
+    J = round((LOG_2(R-100)* (COL-1))+1);
+    K = round((LOG_2(R-200) * (MAT-1))+1);
+end
+
+%% Sub-secuencia para confusion de filas:
+% Seleccion de los ultimos datos caoticos.
+RE(1:FIL)=round((LOG_1((T+1)-FIL:T).*(FIL-1))+1);
+
+% Limpia de variables
+valor_r_32k = 0;
+vect_r_32k = 0;
+num_no_est_32k = 0;
+
+% Busca posiciones de repetidos y los pone en un vector
+bus_32k(1)=RE(1);
+s=1;
+for b=2:FIL
+    en=1;
+    bus_32k(b)=RE(b);
+    for j=1:b-1
+       if(bus_32k(b) == bus_32k(j) && en == 1) 
+            valor_r_32k(s)=bus_32k(j);
+            vect_r_32k(s)=b;
+            s=s+1;
+            en=0;
+       end
+    end
+end
+
+% Buscar numeros que no esten en RE 
+tam_v_32k=size(valor_r_32k,2);
+preg_num=1;
+saltar=0;
+no=1;
+for v=1:FIL
+    for vv=1:tam_v_32k
+          if(saltar == 0 && preg_num == valor_r_32k(vv))
+              saltar=1;
+              %entra aqui si esta el numero (no se puede usar)
+           end
+    end
+    % Pregunta si esta en RE
+    for vvv=1:FIL
+        if(preg_num == RE(vvv))
+            saltar=1; % si esta entra.
+        end      
+    end
+    % Si no esta en repetidos y en RE, entra
+    if(saltar == 0)
+        num_no_est_32k(no)=preg_num; % Guarda n\'umero.
+        no=no+1;
+    end
+    saltar=0;   
+    preg_num=preg_num+1;
+end
+
+tam_vect_32k=size(vect_r_32k,2);
+
+% Se actualiza RE (tiene todos los espacios)
+en_dos=round(tam_vect_32k/2);
+cambio=1;
+S=1;
+for s=1:tam_vect_32k
+    if(cambio == 1)
+     RE(vect_r_32k(s))=num_no_est_32k(S);
+     cambio=0;
+    else
+     RE(vect_r_32k(s))=num_no_est_32k(S+en_dos);
+     S=S+1;
+     cambio=1;        
+    end
+end
+
+%% Sub-secuencia para confusion de columnas:
+CO = round((LOG_1((T+1)-COL-FIL:T-FIL).*(COL-1))+1);
+
+% Lipmia de variables
+valor_re_32k = 0;
+vect_re_32k = 0;
+num_no_esta_32k = 0;
+
+% Busca posiciones de repetidos y los pone en un vector
+busq_32k(1)=CO(1);
+s=1;
+for b=2:COL
+    en=1;
+    busq_32k(b)=CO(b);
+    for j=1:b-1
+       if(busq_32k(b) == busq_32k(j) && en == 1) 
+            valor_re_32k(s)=busq_32k(j);
+            vect_re_32k(s)=b;
+            s=s+1;
+            en=0;
+       end
+    end
+end
+
+% Buscar numeros que no esten en CO 
+tam_ve_32k=size(valor_re_32k,2);
+preg_nume=1;
+salta=0;
+no=1;
+for v=1:COL
+    for vv=1:tam_ve_32k
+          if(salta == 0 && preg_nume == valor_re_32k(vv))
+              salta=1;
+              %entra aqui si esta el numero (no se puede usar)
+           end
+    end
+    % Pregunta si esta en CO
+    for vvv=1:COL
+        if(preg_nume == CO(vvv))
+            salta=1; % si esta entra.
+        end      
+    end
+    % Si no esta en repetidos y en CO, entra
+    if(salta == 0)
+        num_no_esta_32k(no)=preg_nume; % Guarda numero.
+        no=no+1;
+    end
+    salta=0;   
+    preg_nume=preg_nume+1;
+end
+
+tam_vecto_32k=size(vect_re_32k,2);
+
+% Se actualiza CO (tiene todos los espacios)
+en_dos=round(tam_vecto_32k/2);
+cambio=1;
+S=1;
+for s=1:tam_vecto_32k
+    if(cambio == 1)
+     CO(vect_re_32k(s))=num_no_esta_32k(S);
+     cambio=0;
+    else
+     CO(vect_re_32k(s))=num_no_esta_32k(S+en_dos);
+     S=S+1;
+     cambio=1;        
+    end
+end
+
+%% Sub-secuencia para difusion:
+M = mod((LOG_1((T+1)-5000:T).*(1000)) + Z,1); 
+
+% Construir una matriz de M x N
+inc=1;
+for k=1:FIL
+    for kk=1:COL
+        MATRIZ_M(k,kk)=M(inc);
+        inc=inc+1;
+        if (inc == 5001)
+            inc=1;
+        end
+    end
+end
+
+%% Proceso de cifrado: una ronda de confusion-difusion
+P_DOUBLE=im2double(P); % Se transforma P de 0-255 a 0-1
+
+if(MAT == 1) % Para imagenes a escala de grises.
+    E_DOUBLE(:,:,1)=P_DOUBLE(RE(:),CO(:),1) + MATRIZ_M(:,:);
+else        % Para imagen a color.
+    E_DOUBLE(:,:,1)=P_DOUBLE(RE(:),CO(:),1) + MATRIZ_M(:,:); 
+    E_DOUBLE(:,:,2)=P_DOUBLE(RE(:),CO(:),2) + MATRIZ_M(:,:); 
+    E_DOUBLE(:,:,3)=P_DOUBLE(RE(:),CO(:),3) + MATRIZ_M(:,:);
+end
+
+%% Agregar valor de Z en imagen cifrada
+E_DOUBLE(I,J,K)= Z; % Agrega Z 
+E_DOUBLE = mod(E_DOUBLE,1); % Valores entre 0 - 1
+E = im2uint8(E_DOUBLE); % Transformar a 0 - 255
+
+toc % Termina de medir tiempo de calculo.
+
+%% Guardar imagen cifrada y desplegar histogramas.
+imwrite(E, 'E.png'); %Guarda imagen cifrada
+% Muestra imagen clara y cifrada
+figure;subplot(1,2,1);imshow(P)
+title('Imagen clara')
+subplot(1,2,2);imshow(E)
+title('Imagen cifrada')
+
+% Histogramas
+figure;
+if(MAT == 1) % Para imagenes a escala de grises.
+    matriz_roj=E(:,:,1);
+    subplot(2,1,1);imshow(matriz_roj)
+    title('Imagen a ROJO')
+    subplot(2,1,2);imhist(matriz_roj)
+    title('Histograma Imagen ROJO')
+else    % Para imagen a color.
+    matriz_roj=E(:,:,1);
+    matriz_verd=E(:,:,2);
+    matriz_azu=E(:,:,3);    
+    
+    subplot(3,2,1);imshow(matriz_roj)
+    title('Imagen a ROJO')
+    subplot(3,2,3);imshow(matriz_verd)
+    title('Imagen a VERDE')
+    subplot(3,2,5);imshow(matriz_azu)
+    title('Imagen a AZUL')
+    % Graficar Histograma
+    subplot(3,2,2);imhist(matriz_roj)
+    title('Histograma Imagen ROJO')
+    subplot(3,2,4);imhist(matriz_verd)
+    title('Histograma Imagen VERDE')
+    subplot(3,2,6);imhist(matriz_azu)
+    title('Histograma Imagen AZUL')   
+end
+\end{lstlisting} 

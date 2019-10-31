@@ -1,0 +1,2838 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6800 64-bit) (preloaded format=pdflatex 2018.9.5)  6 SEP 2018 17:56
+entering extended mode
+**./TESIS_MIGUEL.tex
+(TESIS_MIGUEL.tex
+LaTeX2e <2018-04-01> patch level 5
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\report
+.cls"
+Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size12
+.clo"
+File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count80
+\c@chapter=\count81
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@subparagraph=\count86
+\c@figure=\count87
+\c@table=\count88
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\natbib\natb
+ib.sty"
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip43
+\bibsep=\skip44
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count89
+)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\bab
+el.sty"
+Package: babel 2018/06/05 3.22 The Babel package
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\swi
+tch.def"
+File: switch.def 2018/06/05 3.22 Babel switching mechanism
+)
+*************************************
+* Local config file bblopts.cfg used
+*
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\arabi\bblop
+ts.cfg"
+File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of
+ babel
+)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\babel-spani
+sh\spanish.ldf"
+Language: spanish.ldf 2016/03/03 v5.0p Spanish support from the babel system
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\bab
+el.def"
+File: babel.def 2018/06/05 3.22 Babel common definitions
+\babel@savecnt=\count90
+\U@D=\dimen103
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\txt
+babel.def")
+\bbl@dirlevel=\count91
+)
+\es@quottoks=\toks14
+\es@quotdepth=\count92
+Package babel Info: Making " an active character on input line 561.
+Package babel Info: Making . an active character on input line 662.
+Package babel Info: Making < an active character on input line 707.
+Package babel Info: Making > an active character on input line 707.
+))
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\inpute
+nc.sty"
+Package: inputenc 2018/04/06 v1.3b Input encoding file
+\inpenc@prehook=\toks15
+\inpenc@posthook=\toks16
+)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\ams
+math.sty"
+Package: amsmath 2017/09/02 v2.17a AMS math features
+\@mathmargin=\skip45
+
+For additional information on amsmath, use the `?' option.
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\ams
+text.sty"
+Package: amstext 2000/06/29 v2.01 AMS text
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\ams
+gen.sty"
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks17
+\ex@=\dimen104
+))
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\ams
+bsy.sty"
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen105
+)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\ams
+opn.sty"
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count93
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count94
+\leftroot@=\count95
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count96
+\DOTSCASE@=\count97
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen106
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count98
+\c@MaxMatrixCols=\count99
+\dotsspace@=\muskip10
+\c@parentequation=\count100
+\dspbrk@lvl=\count101
+\tag@help=\toks18
+\row@=\count102
+\column@=\count103
+\maxfields@=\count104
+\andhelp@=\toks19
+\eqnshift@=\dimen107
+\alignsep@=\dimen108
+\tagshift@=\dimen109
+\tagwidth@=\dimen110
+\totwidth@=\dimen111
+\lineht@=\dimen112
+\@envbody=\toks20
+\multlinegap=\skip46
+\multlinetaggap=\skip47
+\mathdisplay@stack=\toks21
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\am
+ssymb.sty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\am
+sfonts.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\latexs
+ym.sty"
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 52.
+)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amscls\amst
+hm.sty"
+Package: amsthm 2017/10/31 v2.20.4
+\thm@style=\toks22
+\thm@bodyfont=\toks23
+\thm@headfont=\toks24
+\thm@notefont=\toks25
+\thm@headpunct=\toks26
+\thm@preskip=\skip48
+\thm@postskip=\skip49
+\thm@headsep=\skip50
+\dth@everypar=\toks27
+)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xy.
+sty"
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xy.
+tex" Bootstrap'ing: catcodes, docmode,
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xyr
+ecat.tex")
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xyi
+dioms.tex")
+
+ Xy-pic version 3.8.9 <2013/10/06>
+ Copyright (c) 1991-2013 by Kristoffer H. Rose <krisrose@tug.org> and others
+ Xy-pic is free software: see the User's Guide for details.
+
+Loading kernel: messages; fonts; allocations: state,
+\X@c=\dimen113
+\Y@c=\dimen114
+\U@c=\dimen115
+\D@c=\dimen116
+\L@c=\dimen117
+\R@c=\dimen118
+\Edge@c=\toks28
+\X@p=\dimen119
+\Y@p=\dimen120
+\U@p=\dimen121
+\D@p=\dimen122
+\L@p=\dimen123
+\R@p=\dimen124
+\Edge@p=\toks29
+\X@origin=\dimen125
+\Y@origin=\dimen126
+\X@xbase=\dimen127
+\Y@xbase=\dimen128
+\X@ybase=\dimen129
+\Y@ybase=\dimen130
+\X@min=\dimen131
+\Y@min=\dimen132
+\X@max=\dimen133
+\Y@max=\dimen134
+\lastobjectbox@=\box28
+\zerodotbox@=\box29
+\almostz@=\dimen135
+ direction,
+\d@X=\dimen136
+\d@Y=\dimen137
+\K@=\count105
+\KK@=\count106
+\Direction=\count107
+\K@dXdY=\dimen138
+\K@dYdX=\dimen139
+\xyread@=\read1
+\xywrite@=\write3
+\csp@=\count108
+\quotPTK@=\dimen140
+
+utility macros; pictures: \xy, positions,
+\swaptoks@@=\toks30
+\connectobjectbox@@=\box30
+ objects,
+\styletoks@=\toks31
+ decorations;
+kernel objects: directionals, circles, text; options; algorithms: directions,
+edges, connections;  Xy-pic loaded)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\
+ifpdf.sty"
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+)
+Package: xy 2013/10/06 Xy-pic version 3.8.9
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xya
+ll.tex"  Xy-pic option: All features v.3.8
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xyc
+urve.tex"  Xy-pic option: Curve and Spline extension v.3.12 curve,
+\crv@cnt@=\count109
+\crvpts@=\toks32
+\splinebox@=\box31
+\splineval@=\dimen141
+\splinedepth@=\dimen142
+\splinetol@=\dimen143
+\splinelength@=\dimen144
+ circles,
+\L@=\dimen145
+
+loaded)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xyf
+rame.tex"  Xy-pic option: Frame and Bracket extension v.3.14 loaded)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xyc
+mtip.tex"  Xy-pic option: Computer Modern tip extension v.3.7
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xyt
+ips.tex"  Xy-pic option: More Tips extension v.3.11 loaded) loaded)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xyl
+ine.tex"  Xy-pic option: Line styles extension v.3.10
+\xylinethick@=\dimen146
+ loaded)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xyr
+otate.tex"  Xy-pic option: Rotate and Scale extension v.3.8 loaded)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xyc
+olor.tex"  Xy-pic option: Colour extension v.3.11 loaded)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xym
+atrix.tex"  Xy-pic option: Matrix feature v.3.14
+\Row=\count110
+\Col=\count111
+\queue@=\toks33
+\queue@@=\toks34
+\qcount@=\count112
+\qcount@@=\count113
+\matrixsize@=\count114
+ loaded)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xya
+rrow.tex"  Xy-pic option: Arrow and Path feature v.3.9 path, \ar, loaded)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xyg
+raph.tex"  Xy-pic option: Graph feature v.3.11 loaded) loaded)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xyp
+df.tex"  Xy-pic option: PDF driver v.1.7
+Xy-pic pdf driver: `color' extension support
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xyp
+df-co.tex" loaded) Xy-pic pdf driver: `curve' extension support
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xyp
+df-cu.tex" loaded) Xy-pic pdf driver: `frame' extension support
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xyp
+df-fr.tex" loaded) Xy-pic pdf driver: `line' extension support
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xyp
+df-li.tex" loaded) Xy-pic pdf driver: `rotate' extension support
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\xypic\xyp
+df-ro.tex" loaded) loaded))
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\gr
+aphicx.sty"
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\ke
+yval.sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks35
+)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\gr
+aphics.sty"
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\tr
+ig.sty"
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cf
+g\graphics.cfg"
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: dvips.def on input line 99.
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-de
+f\dvips.def"
+File: dvips.def 2017/06/20 v3.1d Graphics/color driver for dvips
+))
+\Gin@req@height=\dimen147
+\Gin@req@width=\dimen148
+)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\co
+lor.sty"
+Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cf
+g\color.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 147.
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-de
+f\pdftex.def"
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\capt-of\cap
+t-of.sty"
+Package: capt-of 2009/12/29 v0.2 standard captions outside of floats
+)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\float\float
+.sty"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count115
+\float@exts=\toks36
+\float@box=\box32
+\@float@everytoks=\toks37
+\@floatcapt=\box33
+)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\ls
+cape.sty"
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\array
+.sty"
+Package: array 2018/04/30 v2.4h Tabular extension package (FMi)
+\col@sep=\dimen149
+\ar@mcellbox=\box34
+\extrarowheight=\dimen150
+\NC@list=\toks38
+\extratabsurround=\skip51
+\backup@length=\skip52
+\ar@cellbox=\box35
+)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\cap
+tion.sty"
+Package: caption 2018/05/01 v3.3-147 Customizing captions (AR)
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\cap
+tion3.sty"
+Package: caption3 2018/05/27 v1.8a caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 64.
+\captionmargin=\dimen151
+\captionmargin@=\dimen152
+\captionwidth=\dimen153
+\caption@tempdima=\dimen154
+\caption@indent=\dimen155
+\caption@parindent=\dimen156
+\caption@hangindent=\dimen157
+)
+\c@ContinuedFloat=\count116
+Package caption Info: float package is loaded.
+)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\tabul
+arx.sty"
+Package: tabularx 2016/02/03 v2.11b `tabularx' package (DPC)
+\TX@col@width=\dimen158
+\TX@old@table=\dimen159
+\TX@old@col=\dimen160
+\TX@target=\dimen161
+\TX@delta=\dimen162
+\TX@cols=\count117
+\TX@ftn=\toks39
+)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\xcolor\xcol
+or.sty"
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cf
+g\color.cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+LaTeX Info: Redefining \color on input line 709.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\colortbl\co
+lortbl.sty"
+Package: colortbl 2018/05/02 v1.0c Color table columns (DPC)
+\everycr=\toks40
+\minrowclearance=\skip53
+)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\slashbox\sl
+ashbox.sty"
+slashbox style by K.Yasuoka, May 1993.
+\@slashboxa=\box36
+\@slashboxb=\box37
+\@slashboxc=\box38
+\@slashboxwd=\count118
+\@slashboxht=\count119
+\@slashsepl=\dimen163
+\@slashsepr=\dimen164
+)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\mdwtools\md
+wlist.sty"
+Package: mdwlist 1996/05/02 1.1 Various list-related things
+)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\pifo
+nt.sty"
+Package: pifont 2005/04/12 PSNFSS-v9.2a Pi font support (SPQR) 
+LaTeX Font Info:    Try loading font information for U+pzd on input line 63.
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\upzd
+.fd"
+File: upzd.fd 2001/06/04 font definitions for U/pzd.
+)
+LaTeX Font Info:    Try loading font information for U+psy on input line 64.
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\upsy
+.fd"
+File: upsy.fd 2001/06/04 font definitions for U/psy.
+))
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\ro
+tating.sty"
+Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ifthen
+.sty"
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\c@r@tfl@t=\count120
+\rotFPtop=\skip54
+\rotFPbot=\skip55
+\rot@float@box=\box39
+\rot@mess@toks=\toks41
+)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\url\url.sty
+"
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\doc.st
+y"
+Package: doc 2018/02/01 v2.1h Standard LaTeX documentation package (FMi)
+\c@StandardModuleDepth=\count121
+\guard@level=\count122
+\MacrocodeTopsep=\skip56
+\MacroIndent=\dimen165
+\macro@cnt=\count123
+\MacroTopsep=\skip57
+\index@excludelist=\toks42
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\multi
+col.sty"
+Package: multicol 2018/04/20 v1.8s multicolumn formatting (FMi)
+\c@tracingmulticols=\count124
+\mult@box=\box40
+\multicol@leftmargin=\dimen166
+\c@unbalance=\count125
+\c@collectmore=\count126
+\doublecol@number=\count127
+\multicoltolerance=\count128
+\multicolpretolerance=\count129
+\full@width=\dimen167
+\page@free=\dimen168
+\premulticols=\dimen169
+\postmulticols=\dimen170
+\multicolsep=\skip58
+\multicolbaselineskip=\skip59
+\partial@page=\box41
+\last@line=\box42
+\maxbalancingoverflow=\dimen171
+\mult@rightbox=\box43
+\mult@grightbox=\box44
+\mult@gfirstbox=\box45
+\mult@firstbox=\box46
+\@tempa=\box47
+\@tempa=\box48
+\@tempa=\box49
+\@tempa=\box50
+\@tempa=\box51
+\@tempa=\box52
+\@tempa=\box53
+\@tempa=\box54
+\@tempa=\box55
+\@tempa=\box56
+\@tempa=\box57
+\@tempa=\box58
+\@tempa=\box59
+\@tempa=\box60
+\@tempa=\box61
+\@tempa=\box62
+\@tempa=\box63
+\c@columnbadness=\count130
+\c@finalcolumnbadness=\count131
+\last@try=\dimen172
+\multicolovershoot=\dimen173
+\multicolundershoot=\dimen174
+\mult@nat@firstbox=\box64
+\colbreak@box=\box65
+\mc@col@check@num=\count132
+)
+\IndexMin=\dimen175
+\c@IndexColumns=\count133
+\GlossaryMin=\dimen176
+\c@GlossaryColumns=\count134
+\check@sum=\count135
+\bslash@cnt=\count136
+\wrong@table=\toks43
+\c@CodelineNo=\count137
+)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\verba
+tim.sty"
+Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks44
+\verbatim@line=\toks45
+\verbatim@in@stream=\read2
+) (mcode.sty
+-- Package: `mcode' 2.5 <2014/03/06> --
+Package: mcode 2014/03/06 2.5
+ - settings optimized for display (colour formating)
+ - line numbering enabled
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\li
+stings.sty"
+\lst@mode=\count138
+\lst@gtempboxa=\box66
+\lst@token=\toks46
+\lst@length=\count139
+\lst@currlwidth=\dimen177
+\lst@column=\count140
+\lst@pos=\count141
+\lst@lostspace=\dimen178
+\lst@width=\dimen179
+\lst@newlines=\count142
+\lst@lineno=\count143
+\lst@maxwidth=\dimen180
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\ls
+tmisc.sty"
+File: lstmisc.sty 2018/09/02 1.7 (Carsten Heinz)
+\c@lstnumber=\count144
+\lst@skipnumbers=\count145
+\lst@framebox=\box67
+)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\li
+stings.cfg"
+File: listings.cfg 2018/09/02 1.7 listings configuration
+))
+Package: listings 2018/09/02 1.7 (Carsten Heinz)
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\textco
+mp.sty"
+Package: textcomp 2017/04/05 v2.0i Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1enc
+.def"
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+Now handling font encoding TS1 ...
+... processing UTF-8 mapping file for font encoding TS1
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1enc
+.dfu"
+File: ts1enc.dfu 2018/04/05 v1.2c UTF-8 support for inputenc
+   defining Unicode char U+00A2 (decimal 162)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00A4 (decimal 164)
+   defining Unicode char U+00A5 (decimal 165)
+   defining Unicode char U+00A6 (decimal 166)
+   defining Unicode char U+00A7 (decimal 167)
+   defining Unicode char U+00A8 (decimal 168)
+   defining Unicode char U+00A9 (decimal 169)
+   defining Unicode char U+00AA (decimal 170)
+   defining Unicode char U+00AC (decimal 172)
+   defining Unicode char U+00AE (decimal 174)
+   defining Unicode char U+00AF (decimal 175)
+   defining Unicode char U+00B0 (decimal 176)
+   defining Unicode char U+00B1 (decimal 177)
+   defining Unicode char U+00B2 (decimal 178)
+   defining Unicode char U+00B3 (decimal 179)
+   defining Unicode char U+00B4 (decimal 180)
+   defining Unicode char U+00B5 (decimal 181)
+   defining Unicode char U+00B6 (decimal 182)
+   defining Unicode char U+00B7 (decimal 183)
+   defining Unicode char U+00B9 (decimal 185)
+   defining Unicode char U+00BA (decimal 186)
+   defining Unicode char U+00BC (decimal 188)
+   defining Unicode char U+00BD (decimal 189)
+   defining Unicode char U+00BE (decimal 190)
+   defining Unicode char U+00D7 (decimal 215)
+   defining Unicode char U+00F7 (decimal 247)
+   defining Unicode char U+0192 (decimal 402)
+   defining Unicode char U+02C7 (decimal 711)
+   defining Unicode char U+02D8 (decimal 728)
+   defining Unicode char U+02DD (decimal 733)
+   defining Unicode char U+0E3F (decimal 3647)
+   defining Unicode char U+2016 (decimal 8214)
+   defining Unicode char U+2020 (decimal 8224)
+   defining Unicode char U+2021 (decimal 8225)
+   defining Unicode char U+2022 (decimal 8226)
+   defining Unicode char U+2030 (decimal 8240)
+   defining Unicode char U+2031 (decimal 8241)
+   defining Unicode char U+203B (decimal 8251)
+   defining Unicode char U+203D (decimal 8253)
+   defining Unicode char U+2044 (decimal 8260)
+   defining Unicode char U+204E (decimal 8270)
+   defining Unicode char U+2052 (decimal 8274)
+   defining Unicode char U+20A1 (decimal 8353)
+   defining Unicode char U+20A4 (decimal 8356)
+   defining Unicode char U+20A6 (decimal 8358)
+   defining Unicode char U+20A9 (decimal 8361)
+   defining Unicode char U+20AB (decimal 8363)
+   defining Unicode char U+20AC (decimal 8364)
+   defining Unicode char U+20B1 (decimal 8369)
+   defining Unicode char U+2103 (decimal 8451)
+   defining Unicode char U+2116 (decimal 8470)
+   defining Unicode char U+2117 (decimal 8471)
+   defining Unicode char U+211E (decimal 8478)
+   defining Unicode char U+2120 (decimal 8480)
+   defining Unicode char U+2122 (decimal 8482)
+   defining Unicode char U+2126 (decimal 8486)
+   defining Unicode char U+2127 (decimal 8487)
+   defining Unicode char U+212E (decimal 8494)
+   defining Unicode char U+2190 (decimal 8592)
+   defining Unicode char U+2191 (decimal 8593)
+   defining Unicode char U+2192 (decimal 8594)
+   defining Unicode char U+2193 (decimal 8595)
+   defining Unicode char U+2329 (decimal 9001)
+   defining Unicode char U+232A (decimal 9002)
+   defining Unicode char U+2422 (decimal 9250)
+   defining Unicode char U+25E6 (decimal 9702)
+   defining Unicode char U+25EF (decimal 9711)
+   defining Unicode char U+266A (decimal 9834)
+   defining Unicode char U+FEFF (decimal 65279)
+))
+LaTeX Info: Redefining \oldstylenums on input line 334.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 349.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 350.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 351.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 352.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 353.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 354.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 355.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 356.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 357.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 358.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 359.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 360.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 361.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 362.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 363.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 364.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 365.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 366.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 367.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 368.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 369.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 370.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 371.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 372.
+
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 373.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 374.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 375.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 376.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 377.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 378.
+Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 379.
+Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 380.
+Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 381.
+Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 382.
+Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 383.
+Package textcomp Info: Setting lmtt sub-encoding to TS1/0 on input line 384.
+Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 385.
+Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 386.
+Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 387.
+Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 388.
+Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 389.
+Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 390.
+Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 391.
+Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 392.
+Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 393.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 394.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 395.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 396.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 397.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 398.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 399.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 400.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 401.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 402.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 403.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 404.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 405.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 406.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
+))
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\ge
+ometry.sty"
+Package: geometry 2018/04/16 v5.8 Page Geometry
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\
+ifvtex.sty"
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\ifxetex\i
+fxetex.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count146
+\Gm@cntv=\count147
+\c@Gm@tempcnt=\count148
+\Gm@bindingoffset=\dimen181
+\Gm@wd@mp=\dimen182
+\Gm@odd@mp=\dimen183
+\Gm@even@mp=\dimen184
+\Gm@layoutwidth=\dimen185
+\Gm@layoutheight=\dimen186
+\Gm@layouthoffset=\dimen187
+\Gm@layoutvoffset=\dimen188
+\Gm@dimlist=\toks47
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\ge
+ometry.cfg")) (TESIS_MIGUEL.aux
+LaTeX Info: Redefining \. on input line 6.
+LaTeX Info: Redefining \% on input line 6.
+
+
+! Package natbib Error: Bibliography not compatible with author-year citations.
+
+(natbib)                Press <return> to continue in numerical citation style.
+
+
+See the natbib package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.492 ...and\NAT@force@numbers{}\NAT@force@numbers
+                                                  
+Check the bibliography entries for non-compliant syntax,
+or select author-year BibTeX style, e.g. plainnat
+
+)
+\openout1 = `TESIS_MIGUEL.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 79.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 79.
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1cmr
+.fd"
+File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Info: Redefining \. on input line 79.
+LaTeX Info: Redefining \% on input line 79.
+LaTeX Font Info:    Try loading font information for U+msa on input line 79.
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\um
+sa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 79.
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\um
+sb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for U+lasy on input line 79.
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ulasy.
+fd"
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+Package xypdf Info: Line width: 0.47998pt on input line 79.
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp
+-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count149
+\scratchdimen=\dimen189
+\scratchbox=\box68
+\nofMPsegments=\count150
+\nofMParguments=\count151
+\everyMPshowfont=\toks48
+\MPscratchCnt=\count152
+\MPscratchDim=\dimen190
+\MPnumerator=\count153
+\makeMPintoPDFobject=\count154
+\everyMPtoPDFconversion=\toks49
+)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\ep
+stopdf-base.sty"
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\
+infwarerr.sty"
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\gr
+fext.sty"
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\
+kvdefinekeys.sty"
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\
+ltxcmds.sty"
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)))
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\kv
+options.sty"
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\
+kvsetkeys.sty"
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\
+etexcmds.sty"
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\
+ifluatex.sty"
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\
+pdftexcmds.sty"
+Package: pdftexcmds 2018/01/30 v0.27 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.gif,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+)
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: listings package is loaded.
+Package caption Info: rotating package is loaded.
+Package caption Info: End \AtBeginDocument code.
+\c@lstlisting=\count155
+
+*geometry* detected driver: dvips
+*geometry* verbose mode - [ preamble ] result:
+* driver: dvips
+* paper: letterpaper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(85.35826pt, 443.57848pt, 85.35826pt)
+* v-part:(T,H,B)=(85.35826pt, 624.25346pt, 85.35826pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=443.57848pt
+* \textheight=624.25346pt
+* \oddsidemargin=13.08827pt
+* \evensidemargin=13.08827pt
+* \topmargin=-23.91173pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=96.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemargintrue
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(Portada.tex
+*geometry* verbose mode - [ newgeometry ] result:
+* driver: dvips
+* paper: letterpaper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(56.9055pt, 500.484pt, 56.9055pt)
+* v-part:(T,H,B)=(71.13188pt, 652.70622pt, 71.13188pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=500.484pt
+* \textheight=652.70622pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-38.1381pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=96.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemargintrue
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+<FIG_PORTADA/UABC_escudo.jpg, id=1, 192.72pt x 277.7577pt>
+File: FIG_PORTADA/UABC_escudo.jpg Graphic file (type jpg)
+<use FIG_PORTADA/UABC_escudo.jpg>
+Package pdftex.def Info: FIG_PORTADA/UABC_escudo.jpg  used on input line 16.
+(pdftex.def)             Requested size: 125.2665pt x 180.54036pt.
+ [1
+Non-PDF special ignored!
+<special> papersize=614.295pt,794.96999pt
+Non-PDF special ignored!
+<special> papersize=614.295pt,794.96999pt
+
+
+{C:/Users/OSCAR ATONDO/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./FI
+G_PORTADA/UABC_escudo.jpg>]) (Votos.tex
+<VOTOS/FIRMA_CESAR.pdf, id=9, 480.99701pt x 183.887pt>
+File: VOTOS/FIRMA_CESAR.pdf Graphic file (type pdf)
+<use VOTOS/FIRMA_CESAR.pdf>
+Package pdftex.def Info: VOTOS/FIRMA_CESAR.pdf  used on input line 32.
+(pdftex.def)             Requested size: 192.39539pt x 73.55348pt.
+<VOTOS/FIRMA_ROSA.pdf, id=10, 175.857pt x 172.645pt>
+File: VOTOS/FIRMA_ROSA.pdf Graphic file (type pdf)
+<use VOTOS/FIRMA_ROSA.pdf>
+Package pdftex.def Info: VOTOS/FIRMA_ROSA.pdf  used on input line 63.
+(pdftex.def)             Requested size: 87.92828pt x 86.32228pt.
+<VOTOS/FIRMA_LILIANA.pdf, id=11, 392.667pt x 172.645pt>
+File: VOTOS/FIRMA_LILIANA.pdf Graphic file (type pdf)
+<use VOTOS/FIRMA_LILIANA.pdf>
+Package pdftex.def Info: VOTOS/FIRMA_LILIANA.pdf  used on input line 63.
+(pdftex.def)             Requested size: 137.4355pt x 60.42664pt.
+<VOTOS/FIRMA_CORNELIO.pdf, id=12, 569.32701pt x 427.196pt>
+File: VOTOS/FIRMA_CORNELIO.pdf Graphic file (type pdf)
+<use VOTOS/FIRMA_CORNELIO.pdf>
+Package pdftex.def Info: VOTOS/FIRMA_CORNELIO.pdf  used on input line 63.
+(pdftex.def)             Requested size: 113.86337pt x 85.43768pt.
+<VOTOS/FIRMA_MARTIN.pdf, id=13, 310.761pt x 302.731pt>
+File: VOTOS/FIRMA_MARTIN.pdf Graphic file (type pdf)
+<use VOTOS/FIRMA_MARTIN.pdf>
+Package pdftex.def Info: VOTOS/FIRMA_MARTIN.pdf  used on input line 63.
+(pdftex.def)             Requested size: 62.1511pt x 60.54512pt.
+ [2
+
+ <./VOTOS/FIRMA_CESAR.pdf> <./VOTOS/FIRMA_ROSA.pdf
+
+pdfTeX warning: pdflatex (file ./VOTOS/FIRMA_ROSA.pdf): PDF inclusion: multiple
+ pdfs with page group included in a single page
+> <./VOTOS/FIRMA_LILIANA.pdf
+
+pdfTeX warning: pdflatex (file ./VOTOS/FIRMA_LILIANA.pdf): PDF inclusion: multi
+ple pdfs with page group included in a single page
+> <./VOTOS/FIRMA_CORNELIO.pdf
+
+pdfTeX warning: pdflatex (file ./VOTOS/FIRMA_CORNELIO.pdf): PDF inclusion: mult
+iple pdfs with page group included in a single page
+> <./VOTOS/FIRMA_MARTIN.pdf
+
+pdfTeX warning: pdflatex (file ./VOTOS/FIRMA_MARTIN.pdf): PDF inclusion: multip
+le pdfs with page group included in a single page
+>]) (Resumen_esp.tex
+*geometry* verbose mode - [ newgeometry ] result:
+* driver: dvips
+* paper: letterpaper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(85.35826pt, 443.57848pt, 85.35826pt)
+* v-part:(T,H,B)=(71.13188pt, 652.70622pt, 71.13188pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=443.57848pt
+* \textheight=652.70622pt
+* \oddsidemargin=13.08827pt
+* \evensidemargin=13.08827pt
+* \topmargin=-38.1381pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=96.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemargintrue
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 11--12
+
+ []
+
+File: VOTOS/FIRMA_CESAR.pdf Graphic file (type pdf)
+<use VOTOS/FIRMA_CESAR.pdf>
+Package pdftex.def Info: VOTOS/FIRMA_CESAR.pdf  used on input line 20.
+(pdftex.def)             Requested size: 120.24895pt x 45.97163pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--28
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--30
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--33
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--33
+
+ []
+
+) (Resumen_ing.tex [1
+
+
+
+]
+File: VOTOS/FIRMA_CESAR.pdf Graphic file (type pdf)
+<use VOTOS/FIRMA_CESAR.pdf>
+Package pdftex.def Info: VOTOS/FIRMA_CESAR.pdf  used on input line 25.
+(pdftex.def)             Requested size: 144.3002pt x 55.16652pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--35
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--37
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--39
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 40--41
+
+ []
+
+) (Dedicatoria.tex [2]) (Agradecimientos.tex [3]
+Underfull \hbox (badness 10000) in paragraph at lines 17--18
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--20
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--23
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--25
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--27
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--31
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--35
+
+ []
+
+) [4] (TESIS_MIGUEL.toc
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/sc' undefined
+(Font)              using `OT1/cmr/bx/n' instead on input line 2.
+
+
+Package spanish Warning: Replacing `OT1/cmr/bx/sc' by 
+(spanish)                faked small caps on input line 2.
+
+
+Package spanish Warning: Replacing `OT1/cmr/bx/sc' by 
+(spanish)                faked small caps on input line 3.
+
+
+Package spanish Warning: Replacing `OT1/cmr/bx/sc' by 
+(spanish)                faked small caps on input line 4.
+
+
+Package spanish Warning: Replacing `OT1/cmr/bx/sc' by 
+(spanish)                faked small caps on input line 5.
+
+
+Package spanish Warning: Replacing `OT1/cmr/bx/sc' by 
+(spanish)                faked small caps on input line 6.
+
+[5
+
+] [6])
+\tf@toc=\write4
+\openout4 = `TESIS_MIGUEL.toc'.
+
+ [7] (TESIS_MIGUEL.lof
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+ [8
+
+
+] [9])
+\tf@lof=\write5
+\openout5 = `TESIS_MIGUEL.lof'.
+
+ [10] (TESIS_MIGUEL.lot
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+)
+\tf@lot=\write6
+\openout6 = `TESIS_MIGUEL.lot'.
+
+ [11
+
+
+]
+(Capitulo_01.tex
+Cap\'{\i }tulo 1.
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 6--7
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--9
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 10--11
+
+ []
+
+[1
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 12--13
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--15
+
+ []
+
+<FIG_CAP_01/SCH_CIFRADO_ANAL.pdf, id=80, 957.97902pt x 446.46799pt>
+File: FIG_CAP_01/SCH_CIFRADO_ANAL.pdf Graphic file (type pdf)
+<use FIG_CAP_01/SCH_CIFRADO_ANAL.pdf>
+Package pdftex.def Info: FIG_CAP_01/SCH_CIFRADO_ANAL.pdf  used on input line 18
+.
+(pdftex.def)             Requested size: 431.08658pt x 200.90874pt.
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 25--26
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
+
+ []
+
+[3 <./FIG_CAP_01/SCH_CIFRADO_ANAL.pdf>]
+<FIG_CAP_01/FOTO_CIFRA_AUDIO.pdf, id=97, 3468.96pt x 2601.72pt>
+File: FIG_CAP_01/FOTO_CIFRA_AUDIO.pdf Graphic file (type pdf)
+<use FIG_CAP_01/FOTO_CIFRA_AUDIO.pdf>
+Package pdftex.def Info: FIG_CAP_01/FOTO_CIFRA_AUDIO.pdf  used on input line 32
+.
+(pdftex.def)             Requested size: 346.91632pt x 260.18724pt.
+ [4 <./FIG_CAP_01/FOTO_CIFRA_AUDIO.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 46--47
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 48--49
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 51--52
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--54
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 55--56
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 57--58
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 59--60
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 64--65
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 66--67
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--80
+
+ []
+
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 81--82
+
+ []
+
+[8]) (Capitulo_02.tex [9]
+Cap\'{\i }tulo 2.
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+
+ []
+
+[10
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 11--12
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 13--14
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--16
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--18
+
+ []
+
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 19--20
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
+
+ []
+
+<FIG_CAP_02/TRES_CUERPOS.pdf, id=127, 792.56097pt x 535.60098pt>
+File: FIG_CAP_02/TRES_CUERPOS.pdf Graphic file (type pdf)
+<use FIG_CAP_02/TRES_CUERPOS.pdf>
+Package pdftex.def Info: FIG_CAP_02/TRES_CUERPOS.pdf  used on input line 25.
+(pdftex.def)             Requested size: 356.64914pt x 241.0182pt.
+<FIG_CAP_02/NEWTON_LINEAL.pdf, id=128, 585.38701pt x 211.189pt>
+File: FIG_CAP_02/NEWTON_LINEAL.pdf Graphic file (type pdf)
+<use FIG_CAP_02/NEWTON_LINEAL.pdf>
+Package pdftex.def Info: FIG_CAP_02/NEWTON_LINEAL.pdf  used on input line 31.
+(pdftex.def)             Requested size: 351.23491pt x 126.71436pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--37
+
+ []
+
+[12 <./FIG_CAP_02/TRES_CUERPOS.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 38--39
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 49--50
+
+ []
+
+[13 <./FIG_CAP_02/NEWTON_LINEAL.pdf>]
+<FIG_CAP_02/LORENZ_TEMP.pdf, id=144, 963.6pt x 508.06494pt>
+File: FIG_CAP_02/LORENZ_TEMP.pdf Graphic file (type pdf)
+<use FIG_CAP_02/LORENZ_TEMP.pdf>
+Package pdftex.def Info: FIG_CAP_02/LORENZ_TEMP.pdf  used on input line 64.
+(pdftex.def)             Requested size: 433.616pt x 228.6271pt.
+<FIG_CAP_02/LORENZ_ATRACT.pdf, id=145, 963.6pt x 508.90125pt>
+File: FIG_CAP_02/LORENZ_ATRACT.pdf Graphic file (type pdf)
+<use FIG_CAP_02/LORENZ_ATRACT.pdf>
+Package pdftex.def Info: FIG_CAP_02/LORENZ_ATRACT.pdf  used on input line 70.
+(pdftex.def)             Requested size: 385.43317pt x 203.55688pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--76
+
+ []
+
+[14 <./FIG_CAP_02/LORENZ_TEMP.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 83--86
+
+ []
+
+[15 <./FIG_CAP_02/LORENZ_ATRACT.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 94--96
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 100--101
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 105--107
+
+ []
+
+<FIG_CAP_02/LOGISTICO_TEMP.pdf, id=232, 963.6pt x 508.90125pt>
+File: FIG_CAP_02/LOGISTICO_TEMP.pdf Graphic file (type pdf)
+<use FIG_CAP_02/LOGISTICO_TEMP.pdf>
+Package pdftex.def Info: FIG_CAP_02/LOGISTICO_TEMP.pdf  used on input line 112.
+
+(pdftex.def)             Requested size: 385.43317pt x 203.55688pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 117--118
+
+ []
+
+[16]
+Underfull \hbox (badness 10000) in paragraph at lines 122--124
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 125--126
+
+ []
+
+<FIG_CAP_02/LOGISTICO_LYAP.pdf, id=236, 963.6pt x 508.06494pt>
+File: FIG_CAP_02/LOGISTICO_LYAP.pdf Graphic file (type pdf)
+<use FIG_CAP_02/LOGISTICO_LYAP.pdf>
+Package pdftex.def Info: FIG_CAP_02/LOGISTICO_LYAP.pdf  used on input line 131.
+
+(pdftex.def)             Requested size: 433.616pt x 228.6271pt.
+) (Capitulo_03.tex [17 <./FIG_CAP_02/LOGISTICO_TEMP.pdf>] [18 <./FIG_CAP_02/LOG
+ISTICO_LYAP.pdf>]
+Cap\'{\i }tulo 3.
+
+Underfull \hbox (badness 10000) in paragraph at lines 6--7
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 11--12
+
+ []
+
+[19
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 13--14
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--16
+
+ []
+
+[20]
+<FIG_CAP_03/ENCITALA.pdf, id=297, 401.5pt x 229.658pt>
+File: FIG_CAP_03/ENCITALA.pdf Graphic file (type pdf)
+<use FIG_CAP_03/ENCITALA.pdf>
+Package pdftex.def Info: FIG_CAP_03/ENCITALA.pdf  used on input line 33.
+(pdftex.def)             Requested size: 240.90184pt x 137.79585pt.
+<FIG_CAP_03/ENIGMA.pdf, id=298, 361.35pt x 481.8pt>
+File: FIG_CAP_03/ENIGMA.pdf Graphic file (type pdf)
+<use FIG_CAP_03/ENIGMA.pdf>
+Package pdftex.def Info: FIG_CAP_03/ENIGMA.pdf  used on input line 39.
+(pdftex.def)             Requested size: 216.81168pt x 289.08221pt.
+ [21 <./FIG_CAP_03/ENCITALA.pdf> <./FIG_CAP_03/ENIGMA.pdf
+
+pdfTeX warning: pdflatex (file ./FIG_CAP_03/ENIGMA.pdf): PDF inclusion: multipl
+e pdfs with page group included in a single page
+>]
+Underfull \hbox (badness 10000) in paragraph at lines 50--51
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 56--58
+
+ []
+
+[22]
+<FIG_CAP_03/SISTEMA_CRIPTOGRAFICO.pdf, id=312, 909.79903pt x 331.63899pt>
+File: FIG_CAP_03/SISTEMA_CRIPTOGRAFICO.pdf Graphic file (type pdf)
+<use FIG_CAP_03/SISTEMA_CRIPTOGRAFICO.pdf>
+Package pdftex.def Info: FIG_CAP_03/SISTEMA_CRIPTOGRAFICO.pdf  used on input li
+ne 89.
+(pdftex.def)             Requested size: 363.91316pt x 132.65323pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--95
+
+ []
+
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 100--101
+
+ []
+
+[24 <./FIG_CAP_03/SISTEMA_CRIPTOGRAFICO.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 109--110
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 118--119
+
+ []
+
+[25]
+Underfull \hbox (badness 10000) in paragraph at lines 144--146
+
+ []
+
+[26]
+Underfull \hbox (badness 10000) in paragraph at lines 153--154
+
+ []
+
+[27]
+Underfull \hbox (badness 10000) in paragraph at lines 180--181
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 189--190
+
+ []
+
+[28] [29]
+Underfull \hbox (badness 10000) in paragraph at lines 210--211
+
+ []
+
+[30]
+Underfull \hbox (badness 10000) in paragraph at lines 217--218
+
+ []
+
+) (Capitulo_04.tex [31]
+Cap\'{\i }tulo 4.
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
+
+ []
+
+<FIG_CAP_04/APL_SIST_EMBEBIDO.pdf, id=346, 576.55403pt x 458.51299pt>
+File: FIG_CAP_04/APL_SIST_EMBEBIDO.pdf Graphic file (type pdf)
+<use FIG_CAP_04/APL_SIST_EMBEBIDO.pdf>
+Package pdftex.def Info: FIG_CAP_04/APL_SIST_EMBEBIDO.pdf  used on input line 1
+1.
+(pdftex.def)             Requested size: 345.93509pt x 275.10991pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--16
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--18
+
+ []
+
+[32
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 22--23
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--25
+
+ []
+
+[33 <./FIG_CAP_04/APL_SIST_EMBEBIDO.pdf>]
+<FIG_CAP_04/ESTRUCTURA_MICRO.pdf, id=357, 342.88101pt x 240.9pt>
+File: FIG_CAP_04/ESTRUCTURA_MICRO.pdf Graphic file (type pdf)
+<use FIG_CAP_04/ESTRUCTURA_MICRO.pdf>
+Package pdftex.def Info: FIG_CAP_04/ESTRUCTURA_MICRO.pdf  used on input line 28
+.
+(pdftex.def)             Requested size: 342.88017pt x 240.8994pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
+
+ []
+
+<FIG_CAP_04/M52259DEMOKIT.pdf, id=358, 441.65pt x 317.98799pt>
+File: FIG_CAP_04/M52259DEMOKIT.pdf Graphic file (type pdf)
+<use FIG_CAP_04/M52259DEMOKIT.pdf>
+Package pdftex.def Info: FIG_CAP_04/M52259DEMOKIT.pdf  used on input line 38.
+(pdftex.def)             Requested size: 309.15288pt x 222.59006pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 43--44
+
+ []
+
+[34 <./FIG_CAP_04/ESTRUCTURA_MICRO.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 45--46
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 47--48
+
+ []
+
+[35 <./FIG_CAP_04/M52259DEMOKIT.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 52--53
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 54--55
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 59--60
+
+ []
+
+[36]
+Underfull \hbox (badness 10000) in paragraph at lines 61--62
+
+ []
+
+) (Capitulo_05.tex [37]
+Cap\'{\i }tulo 5.
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
+
+ []
+
+[38
+
+] [39]
+Underfull \hbox (badness 10000) in paragraph at lines 83--86
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 87--88
+
+ []
+
+<FIG_CAP_05/LORENZ_MICRO.pdf, id=386, 591.81097pt x 383.031pt>
+File: FIG_CAP_05/LORENZ_MICRO.pdf Graphic file (type pdf)
+<use FIG_CAP_05/LORENZ_MICRO.pdf>
+Package pdftex.def Info: FIG_CAP_05/LORENZ_MICRO.pdf  used on input line 93.
+(pdftex.def)             Requested size: 355.08932pt x 229.82037pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--99
+
+ []
+
+[40]
+<FIG_CAP_05/LORENZ_LYAPUNOV.pdf, id=390, 856.80098pt x 472.96701pt>
+File: FIG_CAP_05/LORENZ_LYAPUNOV.pdf Graphic file (type pdf)
+<use FIG_CAP_05/LORENZ_LYAPUNOV.pdf>
+Package pdftex.def Info: FIG_CAP_05/LORENZ_LYAPUNOV.pdf  used on input line 132
+.
+(pdftex.def)             Requested size: 428.39944pt x 236.48293pt.
+<FIG_CAP_05/PUNTO_FIJO_LYAP.pdf, id=391, 963.6pt x 508.06494pt>
+File: FIG_CAP_05/PUNTO_FIJO_LYAP.pdf Graphic file (type pdf)
+<use FIG_CAP_05/PUNTO_FIJO_LYAP.pdf>
+Package pdftex.def Info: FIG_CAP_05/PUNTO_FIJO_LYAP.pdf  used on input line 138
+.
+(pdftex.def)             Requested size: 481.79883pt x 254.03185pt.
+
+Overfull \hbox (38.22035pt too wide) in paragraph at lines 138--139
+ [] 
+ []
+
+<FIG_CAP_05/CAOS_LYAP.pdf, id=392, 963.6pt x 508.06494pt>
+File: FIG_CAP_05/CAOS_LYAP.pdf Graphic file (type pdf)
+<use FIG_CAP_05/CAOS_LYAP.pdf>
+Package pdftex.def Info: FIG_CAP_05/CAOS_LYAP.pdf  used on input line 144.
+(pdftex.def)             Requested size: 481.79883pt x 254.03185pt.
+
+Overfull \hbox (38.22035pt too wide) in paragraph at lines 144--145
+ [] 
+ []
+
+[41 <./FIG_CAP_05/LORENZ_MICRO.pdf>] [42 <./FIG_CAP_05/LORENZ_LYAPUNOV.pdf>]
+[43 <./FIG_CAP_05/PUNTO_FIJO_LYAP.pdf> <./FIG_CAP_05/CAOS_LYAP.pdf
+
+pdfTeX warning: pdflatex (file ./FIG_CAP_05/CAOS_LYAP.pdf): PDF inclusion: mult
+iple pdfs with page group included in a single page
+>]
+<FIG_CAP_05/LOGISTICO_MICRO.pdf, id=520, 636.77902pt x 444.05899pt>
+File: FIG_CAP_05/LOGISTICO_MICRO.pdf Graphic file (type pdf)
+<use FIG_CAP_05/LOGISTICO_MICRO.pdf>
+Package pdftex.def Info: FIG_CAP_05/LOGISTICO_MICRO.pdf  used on input line 193
+.
+(pdftex.def)             Requested size: 382.07036pt x 266.43744pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 198--199
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 200--201
+
+ []
+
+[44]
+<FIG_CAP_05/LOGISTICO_LYAP.pdf, id=524, 790.15201pt x 609.477pt>
+File: FIG_CAP_05/LOGISTICO_LYAP.pdf Graphic file (type pdf)
+<use FIG_CAP_05/LOGISTICO_LYAP.pdf>
+Package pdftex.def Info: FIG_CAP_05/LOGISTICO_LYAP.pdf  used on input line 204.
+
+(pdftex.def)             Requested size: 395.07503pt x 304.73776pt.
+<FIG_CAP_05/COMPAR_SEC_LYAP_MICRO.pdf, id=525, 963.6pt x 508.06494pt>
+File: FIG_CAP_05/COMPAR_SEC_LYAP_MICRO.pdf Graphic file (type pdf)
+<use FIG_CAP_05/COMPAR_SEC_LYAP_MICRO.pdf>
+Package pdftex.def Info: FIG_CAP_05/COMPAR_SEC_LYAP_MICRO.pdf  used on input li
+ne 210.
+(pdftex.def)             Requested size: 481.79883pt x 254.03185pt.
+
+Overfull \hbox (38.22035pt too wide) in paragraph at lines 210--211
+ [] 
+ []
+
+[45 <./FIG_CAP_05/LOGISTICO_MICRO.pdf>] [46 <./FIG_CAP_05/LOGISTICO_LYAP.pdf> <
+./FIG_CAP_05/COMPAR_SEC_LYAP_MICRO.pdf
+
+pdfTeX warning: pdflatex (file ./FIG_CAP_05/COMPAR_SEC_LYAP_MICRO.pdf): PDF inc
+lusion: multiple pdfs with page group included in a single page
+>]
+Underfull \hbox (badness 10000) in paragraph at lines 220--221
+
+ []
+
+) (Capitulo_06.tex [47]
+Cap\'{\i }tulo 6.
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--15
+
+ []
+
+[48
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 22--23
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--31
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--36
+
+ []
+
+<FIG_CAP_06/ESQUEMA_CIFRADO.pdf, id=563, 362.07271pt x 292.81395pt>
+File: FIG_CAP_06/ESQUEMA_CIFRADO.pdf Graphic file (type pdf)
+<use FIG_CAP_06/ESQUEMA_CIFRADO.pdf>
+Package pdftex.def Info: FIG_CAP_06/ESQUEMA_CIFRADO.pdf  used on input line 39.
+
+(pdftex.def)             Requested size: 253.44916pt x 204.96835pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 43--44
+
+ []
+
+<FIG_CAP_06/ESQUEMA_DESCIFRADO.pdf, id=564, 339.54855pt x 214.52145pt>
+File: FIG_CAP_06/ESQUEMA_DESCIFRADO.pdf Graphic file (type pdf)
+<use FIG_CAP_06/ESQUEMA_DESCIFRADO.pdf>
+Package pdftex.def Info: FIG_CAP_06/ESQUEMA_DESCIFRADO.pdf  used on input line 
+47.
+(pdftex.def)             Requested size: 254.66078pt x 160.89069pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 52--53
+
+ []
+
+[49] [50 <./FIG_CAP_06/ESQUEMA_CIFRADO.pdf> <./FIG_CAP_06/ESQUEMA_DESCIFRADO.pd
+f
+
+pdfTeX warning: pdflatex (file ./FIG_CAP_06/ESQUEMA_DESCIFRADO.pdf): PDF inclus
+ion: multiple pdfs with page group included in a single page
+>]
+Underfull \hbox (badness 10000) in paragraph at lines 54--55
+
+ []
+
+<FIG_CAP_07/ANA_LYAP.pdf, id=586, 963.6pt x 508.06494pt>
+File: FIG_CAP_07/ANA_LYAP.pdf Graphic file (type pdf)
+<use FIG_CAP_07/ANA_LYAP.pdf>
+Package pdftex.def Info: FIG_CAP_07/ANA_LYAP.pdf  used on input line 81.
+(pdftex.def)             Requested size: 433.616pt x 228.6271pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 88--89
+
+ []
+
+[51]
+<FIG_CAP_06/HISTO_CHAOS.pdf, id=591, 963.6pt x 508.06494pt>
+File: FIG_CAP_06/HISTO_CHAOS.pdf Graphic file (type pdf)
+<use FIG_CAP_06/HISTO_CHAOS.pdf>
+Package pdftex.def Info: FIG_CAP_06/HISTO_CHAOS.pdf  used on input line 92.
+(pdftex.def)             Requested size: 481.79883pt x 254.03185pt.
+
+Overfull \hbox (38.22035pt too wide) in paragraph at lines 92--93
+ [] 
+ []
+
+[52 <./FIG_CAP_07/ANA_LYAP.pdf> <./FIG_CAP_06/HISTO_CHAOS.pdf
+
+pdfTeX warning: pdflatex (file ./FIG_CAP_06/HISTO_CHAOS.pdf): PDF inclusion: mu
+ltiple pdfs with page group included in a single page
+>]
+Underfull \hbox (badness 10000) in paragraph at lines 111--113
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 114--115
+
+ []
+
+[53]
+Underfull \hbox (badness 10000) in paragraph at lines 123--125
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 129--131
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 135--137
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 141--142
+
+ []
+
+[54]
+Underfull \hbox (badness 10000) in paragraph at lines 150--151
+
+ []
+
+[55]) (Capitulo_07.tex [56]
+Cap\'{\i }tulo 7.
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 11--12
+
+ []
+
+[57
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 13--14
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--16
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--18
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--20
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
+
+ []
+
+[58]
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--26
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--28
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--35
+
+ []
+
+[59]
+<FIG_CAP_07/IM_GRIS_MAT.pdf, id=647, 542.025pt x 150.96399pt>
+File: FIG_CAP_07/IM_GRIS_MAT.pdf Graphic file (type pdf)
+<use FIG_CAP_07/IM_GRIS_MAT.pdf>
+Package pdftex.def Info: FIG_CAP_07/IM_GRIS_MAT.pdf  used on input line 40.
+(pdftex.def)             Requested size: 271.01183pt x 75.4818pt.
+<FIG_CAP_07/IM_COL_MAT.pdf, id=648, 810.227pt x 456.90701pt>
+File: FIG_CAP_07/IM_COL_MAT.pdf Graphic file (type pdf)
+<use FIG_CAP_07/IM_COL_MAT.pdf>
+Package pdftex.def Info: FIG_CAP_07/IM_COL_MAT.pdf  used on input line 46.
+(pdftex.def)             Requested size: 405.1125pt x 228.45294pt.
+ [60 <./FIG_CAP_07/IM_GRIS_MAT.pdf> <./FIG_CAP_07/IM_COL_MAT.pdf
+
+pdfTeX warning: pdflatex (file ./FIG_CAP_07/IM_COL_MAT.pdf): PDF inclusion: mul
+tiple pdfs with page group included in a single page
+>]
+<FIG_CAP_07/ESQUEMA_CIFRADO_IM.pdf, id=660, 906.587pt x 464.93701pt>
+File: FIG_CAP_07/ESQUEMA_CIFRADO_IM.pdf Graphic file (type pdf)
+<use FIG_CAP_07/ESQUEMA_CIFRADO_IM.pdf>
+Package pdftex.def Info: FIG_CAP_07/ESQUEMA_CIFRADO_IM.pdf  used on input line 
+55.
+(pdftex.def)             Requested size: 407.96039pt x 209.21971pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 59--60
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
+
+ []
+
+[61 <./FIG_CAP_07/ESQUEMA_CIFRADO_IM.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 91--93
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 101--103
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 104--105
+
+ []
+
+[62]
+Underfull \hbox (badness 10000) in paragraph at lines 128--129
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 130--131
+
+ []
+
+<FIG_CAP_07/ENCRYPTION_1.pdf, id=671, 963.6pt x 508.06494pt>
+File: FIG_CAP_07/ENCRYPTION_1.pdf Graphic file (type pdf)
+<use FIG_CAP_07/ENCRYPTION_1.pdf>
+Package pdftex.def Info: FIG_CAP_07/ENCRYPTION_1.pdf  used on input line 134.
+(pdftex.def)             Requested size: 433.616pt x 228.6271pt.
+<FIG_CAP_07/ENCRYPTION_2.pdf, id=672, 963.6pt x 508.06494pt>
+File: FIG_CAP_07/ENCRYPTION_2.pdf Graphic file (type pdf)
+<use FIG_CAP_07/ENCRYPTION_2.pdf>
+Package pdftex.def Info: FIG_CAP_07/ENCRYPTION_2.pdf  used on input line 140.
+(pdftex.def)             Requested size: 481.79883pt x 254.03185pt.
+
+Overfull \hbox (38.22035pt too wide) in paragraph at lines 140--141
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 147--148
+
+ []
+
+[63] [64 <./FIG_CAP_07/ENCRYPTION_1.pdf> <./FIG_CAP_07/ENCRYPTION_2.pdf
+
+pdfTeX warning: pdflatex (file ./FIG_CAP_07/ENCRYPTION_2.pdf): PDF inclusion: m
+ultiple pdfs with page group included in a single page
+>]
+Underfull \hbox (badness 10000) in paragraph at lines 186--187
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 188--189
+
+ []
+
+[65]
+Underfull \hbox (badness 10000) in paragraph at lines 190--191
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 196--197
+
+ []
+
+<FIG_CAP_07/SENSI_CLAVE_DESCIFRADO.pdf, id=1031, 963.6pt x 508.06494pt>
+File: FIG_CAP_07/SENSI_CLAVE_DESCIFRADO.pdf Graphic file (type pdf)
+<use FIG_CAP_07/SENSI_CLAVE_DESCIFRADO.pdf>
+Package pdftex.def Info: FIG_CAP_07/SENSI_CLAVE_DESCIFRADO.pdf  used on input l
+ine 219.
+(pdftex.def)             Requested size: 481.79883pt x 254.03185pt.
+
+Overfull \hbox (38.22035pt too wide) in paragraph at lines 219--220
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 224--225
+
+ []
+
+[66]
+Underfull \hbox (badness 10000) in paragraph at lines 241--243
+
+ []
+
+[67 <./FIG_CAP_07/SENSI_CLAVE_DESCIFRADO.pdf>]
+<FIG_CAP_07/SENSI_IM_CLARA.pdf, id=1227, 963.6pt x 508.90125pt>
+File: FIG_CAP_07/SENSI_IM_CLARA.pdf Graphic file (type pdf)
+<use FIG_CAP_07/SENSI_IM_CLARA.pdf>
+Package pdftex.def Info: FIG_CAP_07/SENSI_IM_CLARA.pdf  used on input line 248.
+
+(pdftex.def)             Requested size: 433.616pt x 229.00345pt.
+ [68 <./FIG_CAP_07/SENSI_IM_CLARA.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 284--285
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 286--287
+
+ []
+
+<FIG_CAP_07/CORRELACION.pdf, id=1286, 963.6pt x 508.90125pt>
+File: FIG_CAP_07/CORRELACION.pdf Graphic file (type pdf)
+<use FIG_CAP_07/CORRELACION.pdf>
+Package pdftex.def Info: FIG_CAP_07/CORRELACION.pdf  used on input line 298.
+(pdftex.def)             Requested size: 481.79883pt x 254.45pt.
+
+Overfull \hbox (38.22035pt too wide) in paragraph at lines 298--299
+ [] 
+ []
+
+[69] [70 <./FIG_CAP_07/CORRELACION.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 336--337
+
+ []
+
+<FIG_CAP_07/ATAQUE_IM_ELEGIDA.pdf, id=1304, 963.6pt x 508.90125pt>
+File: FIG_CAP_07/ATAQUE_IM_ELEGIDA.pdf Graphic file (type pdf)
+<use FIG_CAP_07/ATAQUE_IM_ELEGIDA.pdf>
+Package pdftex.def Info: FIG_CAP_07/ATAQUE_IM_ELEGIDA.pdf  used on input line 3
+43.
+(pdftex.def)             Requested size: 481.79883pt x 254.45pt.
+
+Overfull \hbox (38.22035pt too wide) in paragraph at lines 343--344
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 348--349
+
+ []
+
+[71 <./FIG_CAP_07/ATAQUE_IM_ELEGIDA.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 353--355
+
+ []
+
+[72]
+Underfull \hbox (badness 10000) in paragraph at lines 418--419
+
+ []
+
+[73]
+Underfull \hbox (badness 10000) in paragraph at lines 427--428
+
+ []
+
+
+Overfull \hbox (4.67174pt too wide) in paragraph at lines 453--454
+ [] 
+ []
+
+) (Capitulo_08.tex [74]
+Cap\'{\i }tulo 8.
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+
+ []
+
+[75
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 11--12
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 13--14
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--16
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 20--21
+
+ []
+
+<FIG_CAP_08/ESQUEMA_CIFRADO_TXT.pdf, id=1364, 679.33798pt x 444.86201pt>
+File: FIG_CAP_08/ESQUEMA_CIFRADO_TXT.pdf Graphic file (type pdf)
+<use FIG_CAP_08/ESQUEMA_CIFRADO_TXT.pdf>
+Package pdftex.def Info: FIG_CAP_08/ESQUEMA_CIFRADO_TXT.pdf  used on input line
+ 24.
+(pdftex.def)             Requested size: 407.60593pt x 266.91925pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
+
+ []
+
+[76]
+Underfull \hbox (badness 10000) in paragraph at lines 43--44
+
+ []
+
+[77 <./FIG_CAP_08/ESQUEMA_CIFRADO_TXT.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 48--50
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--64
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 65--66
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 70--72
+
+ []
+
+<FIG_CAP_08/ESQUEMA_DESCIFRADO_TXT.pdf, id=1375, 770.07701pt x 423.984pt>
+File: FIG_CAP_08/ESQUEMA_DESCIFRADO_TXT.pdf Graphic file (type pdf)
+<use FIG_CAP_08/ESQUEMA_DESCIFRADO_TXT.pdf>
+Package pdftex.def Info: FIG_CAP_08/ESQUEMA_DESCIFRADO_TXT.pdf  used on input l
+ine 85.
+(pdftex.def)             Requested size: 385.03757pt x 211.99147pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 90--92
+
+ []
+
+[78]
+<FIG_CAP_08/DATOS_EXTRAIDOS_MCRO.pdf, id=1380, 789.34903pt x 587.79597pt>
+File: FIG_CAP_08/DATOS_EXTRAIDOS_MCRO.pdf Graphic file (type pdf)
+<use FIG_CAP_08/DATOS_EXTRAIDOS_MCRO.pdf>
+Package pdftex.def Info: FIG_CAP_08/DATOS_EXTRAIDOS_MCRO.pdf  used on input lin
+e 97.
+(pdftex.def)             Requested size: 394.67355pt x 293.89726pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 105--106
+
+ []
+
+[79 <./FIG_CAP_08/ESQUEMA_DESCIFRADO_TXT.pdf>]
+<FIG_CAP_08/SENSIBILIDAD_LLAVE_ENC.pdf, id=1388, 963.6pt x 492.33937pt>
+File: FIG_CAP_08/SENSIBILIDAD_LLAVE_ENC.pdf Graphic file (type pdf)
+<use FIG_CAP_08/SENSIBILIDAD_LLAVE_ENC.pdf>
+Package pdftex.def Info: FIG_CAP_08/SENSIBILIDAD_LLAVE_ENC.pdf  used on input l
+ine 124.
+(pdftex.def)             Requested size: 433.616pt x 221.55066pt.
+<FIG_CAP_08/SENSIBILIDAD_LLAVE_DESENC.pdf, id=1389, 963.6pt x 508.06494pt>
+File: FIG_CAP_08/SENSIBILIDAD_LLAVE_DESENC.pdf Graphic file (type pdf)
+<use FIG_CAP_08/SENSIBILIDAD_LLAVE_DESENC.pdf>
+Package pdftex.def Info: FIG_CAP_08/SENSIBILIDAD_LLAVE_DESENC.pdf  used on inpu
+t line 130.
+(pdftex.def)             Requested size: 433.616pt x 228.6271pt.
+ [80 <./FIG_CAP_08/DATOS_EXTRAIDOS_MCRO.pdf>] [81 <./FIG_CAP_08/SENSIBILIDAD_LL
+AVE_ENC.pdf> <./FIG_CAP_08/SENSIBILIDAD_LLAVE_DESENC.pdf
+
+pdfTeX warning: pdflatex (file ./FIG_CAP_08/SENSIBILIDAD_LLAVE_DESENC.pdf): PDF
+ inclusion: multiple pdfs with page group included in a single page
+>]
+<FIG_CAP_08/FREQUENCIA_FLOT.pdf, id=1493, 963.6pt x 508.06494pt>
+File: FIG_CAP_08/FREQUENCIA_FLOT.pdf Graphic file (type pdf)
+<use FIG_CAP_08/FREQUENCIA_FLOT.pdf>
+Package pdftex.def Info: FIG_CAP_08/FREQUENCIA_FLOT.pdf  used on input line 171
+.
+(pdftex.def)             Requested size: 433.616pt x 228.6271pt.
+ [82]
+<FIG_CAP_08/HISTOGRAMA.pdf, id=1497, 963.6pt x 508.06494pt>
+File: FIG_CAP_08/HISTOGRAMA.pdf Graphic file (type pdf)
+<use FIG_CAP_08/HISTOGRAMA.pdf>
+Package pdftex.def Info: FIG_CAP_08/HISTOGRAMA.pdf  used on input line 180.
+(pdftex.def)             Requested size: 433.616pt x 228.6271pt.
+ [83 <./FIG_CAP_08/FREQUENCIA_FLOT.pdf> <./FIG_CAP_08/HISTOGRAMA.pdf
+
+pdfTeX warning: pdflatex (file ./FIG_CAP_08/HISTOGRAMA.pdf): PDF inclusion: mul
+tiple pdfs with page group included in a single page
+>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 195.
+
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr
+.fd"
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 195.
+
+Underfull \hbox (badness 10000) in paragraph at lines 214--216
+
+ []
+
+[84]
+<FIG_CAP_08/AUTOCORRELACION.pdf, id=1550, 963.6pt x 508.90125pt>
+File: FIG_CAP_08/AUTOCORRELACION.pdf Graphic file (type pdf)
+<use FIG_CAP_08/AUTOCORRELACION.pdf>
+Package pdftex.def Info: FIG_CAP_08/AUTOCORRELACION.pdf  used on input line 221
+.
+(pdftex.def)             Requested size: 433.616pt x 229.00345pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 228--229
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 230--231
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 232--233
+
+ []
+
+[85 <./FIG_CAP_08/AUTOCORRELACION.pdf>] [86]) (Capitulo_09.tex [87]
+Cap\'{\i }tulo 9.
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+
+ []
+
+[88
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 11--12
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 13--14
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--16
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--18
+
+ []
+
+[89]
+Underfull \hbox (badness 10000) in paragraph at lines 19--20
+
+ []
+
+[90]
+Underfull \hbox (badness 10000) in paragraph at lines 24--25
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 26--27
+
+ []
+
+<FIG_CAP_09/ESQUEMA_AUT_TRAD.pdf, id=1600, 821.46902pt x 444.86201pt>
+File: FIG_CAP_09/ESQUEMA_AUT_TRAD.pdf Graphic file (type pdf)
+<use FIG_CAP_09/ESQUEMA_AUT_TRAD.pdf>
+Package pdftex.def Info: FIG_CAP_09/ESQUEMA_AUT_TRAD.pdf  used on input line 30
+.
+(pdftex.def)             Requested size: 410.7335pt x 222.43045pt.
+<FIG_CAP_09/ESQUEMA_AUT_PROPUESTO.pdf, id=1601, 803.0pt x 428.80202pt>
+File: FIG_CAP_09/ESQUEMA_AUT_PROPUESTO.pdf Graphic file (type pdf)
+<use FIG_CAP_09/ESQUEMA_AUT_PROPUESTO.pdf>
+Package pdftex.def Info: FIG_CAP_09/ESQUEMA_AUT_PROPUESTO.pdf  used on input li
+ne 36.
+(pdftex.def)             Requested size: 401.49902pt x 214.40048pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 40--41
+
+ []
+
+[91] [92 <./FIG_CAP_09/ESQUEMA_AUT_TRAD.pdf> <./FIG_CAP_09/ESQUEMA_AUT_PROPUEST
+O.pdf
+
+pdfTeX warning: pdflatex (file ./FIG_CAP_09/ESQUEMA_AUT_PROPUESTO.pdf): PDF inc
+lusion: multiple pdfs with page group included in a single page
+>]
+<FIG_CAP_09/SISTEMA_EMBEBIDO_AUT.pdf, id=1615, 876.07298pt x 438.43799pt>
+File: FIG_CAP_09/SISTEMA_EMBEBIDO_AUT.pdf Graphic file (type pdf)
+<use FIG_CAP_09/SISTEMA_EMBEBIDO_AUT.pdf>
+Package pdftex.def Info: FIG_CAP_09/SISTEMA_EMBEBIDO_AUT.pdf  used on input lin
+e 46.
+(pdftex.def)             Requested size: 394.2292pt x 197.29526pt.
+<FIG_CAP_09/SCH_ENROLAMIENTO.pdf, id=1616, 973.23598pt x 301.125pt>
+File: FIG_CAP_09/SCH_ENROLAMIENTO.pdf Graphic file (type pdf)
+<use FIG_CAP_09/SCH_ENROLAMIENTO.pdf>
+Package pdftex.def Info: FIG_CAP_09/SCH_ENROLAMIENTO.pdf  used on input line 51
+.
+(pdftex.def)             Requested size: 389.28749pt x 120.44786pt.
+<FIG_CAP_09/SCH_AUTENTIFICACION.pdf, id=1617, 931.48pt x 422.37799pt>
+File: FIG_CAP_09/SCH_AUTENTIFICACION.pdf Graphic file (type pdf)
+<use FIG_CAP_09/SCH_AUTENTIFICACION.pdf>
+Package pdftex.def Info: FIG_CAP_09/SCH_AUTENTIFICACION.pdf  used on input line
+ 56.
+(pdftex.def)             Requested size: 372.5854pt x 168.9482pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 61--62
+
+ []
+
+[93 <./FIG_CAP_09/SISTEMA_EMBEBIDO_AUT.pdf> <./FIG_CAP_09/SCH_ENROLAMIENTO.pdf
+
+pdfTeX warning: pdflatex (file ./FIG_CAP_09/SCH_ENROLAMIENTO.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+>]
+<FIG_CAP_09/SCH_CIFRADO.pdf, id=1628, 704.23097pt x 457.71pt>
+File: FIG_CAP_09/SCH_CIFRADO.pdf Graphic file (type pdf)
+<use FIG_CAP_09/SCH_CIFRADO.pdf>
+Package pdftex.def Info: FIG_CAP_09/SCH_CIFRADO.pdf  used on input line 65.
+(pdftex.def)             Requested size: 422.54184pt x 274.62813pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--70
+
+ []
+
+[94 <./FIG_CAP_09/SCH_AUTENTIFICACION.pdf> <./FIG_CAP_09/SCH_CIFRADO.pdf
+
+pdfTeX warning: pdflatex (file ./FIG_CAP_09/SCH_CIFRADO.pdf): PDF inclusion: mu
+ltiple pdfs with page group included in a single page
+>]
+Underfull \hbox (badness 10000) in paragraph at lines 86--88
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 89--90
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 94--96
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 108--110
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 111--112
+
+ []
+
+[95]
+Underfull \hbox (badness 10000) in paragraph at lines 135--136
+
+ []
+
+[96]
+<FIG_CAP_09/SENS_CLAVE_CIF.pdf, id=1646, 963.6pt x 508.90125pt>
+File: FIG_CAP_09/SENS_CLAVE_CIF.pdf Graphic file (type pdf)
+<use FIG_CAP_09/SENS_CLAVE_CIF.pdf>
+Package pdftex.def Info: FIG_CAP_09/SENS_CLAVE_CIF.pdf  used on input line 153.
+
+(pdftex.def)             Requested size: 433.616pt x 229.00345pt.
+<FIG_CAP_09/SENS_CLAVE_DES.pdf, id=1647, 963.6pt x 508.90125pt>
+File: FIG_CAP_09/SENS_CLAVE_DES.pdf Graphic file (type pdf)
+<use FIG_CAP_09/SENS_CLAVE_DES.pdf>
+Package pdftex.def Info: FIG_CAP_09/SENS_CLAVE_DES.pdf  used on input line 159.
+
+(pdftex.def)             Requested size: 433.616pt x 229.00345pt.
+ [97 <./FIG_CAP_09/SENS_CLAVE_CIF.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 178--180
+
+ []
+
+<FIG_CAP_09/NPCR.pdf, id=1701, 963.6pt x 508.06494pt>
+File: FIG_CAP_09/NPCR.pdf Graphic file (type pdf)
+<use FIG_CAP_09/NPCR.pdf>
+Package pdftex.def Info: FIG_CAP_09/NPCR.pdf  used on input line 185.
+(pdftex.def)             Requested size: 433.616pt x 228.6271pt.
+[98 <./FIG_CAP_09/SENS_CLAVE_DES.pdf>]
+<FIG_CAP_09/FREC_FLOTANTE.pdf, id=1752, 963.6pt x 508.06494pt>
+File: FIG_CAP_09/FREC_FLOTANTE.pdf Graphic file (type pdf)
+<use FIG_CAP_09/FREC_FLOTANTE.pdf>
+Package pdftex.def Info: FIG_CAP_09/FREC_FLOTANTE.pdf  used on input line 194.
+(pdftex.def)             Requested size: 433.616pt x 228.6271pt.
+<FIG_CAP_09/HISTO.pdf, id=1753, 963.6pt x 508.06494pt>
+File: FIG_CAP_09/HISTO.pdf Graphic file (type pdf)
+<use FIG_CAP_09/HISTO.pdf>
+Package pdftex.def Info: FIG_CAP_09/HISTO.pdf  used on input line 203.
+(pdftex.def)             Requested size: 433.616pt x 228.6271pt.
+ [99 <./FIG_CAP_09/NPCR.pdf>] [100 <./FIG_CAP_09/FREC_FLOTANTE.pdf> <./FIG_CAP_
+09/HISTO.pdf
+
+pdfTeX warning: pdflatex (file ./FIG_CAP_09/HISTO.pdf): PDF inclusion: multiple
+ pdfs with page group included in a single page
+>]
+Underfull \hbox (badness 10000) in paragraph at lines 211--213
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 214--215
+
+ []
+
+<FIG_CAP_09/AUTOCORRELACION.pdf, id=1825, 963.6pt x 508.06494pt>
+File: FIG_CAP_09/AUTOCORRELACION.pdf Graphic file (type pdf)
+<use FIG_CAP_09/AUTOCORRELACION.pdf>
+Package pdftex.def Info: FIG_CAP_09/AUTOCORRELACION.pdf  used on input line 218
+.
+(pdftex.def)             Requested size: 433.616pt x 228.6271pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 223--224
+
+ []
+
+[101 <./FIG_CAP_09/AUTOCORRELACION.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 225--226
+
+ []
+
+<FIG_CAP_09/VECT_CONFUSION.pdf, id=1859, 963.6pt x 508.90125pt>
+File: FIG_CAP_09/VECT_CONFUSION.pdf Graphic file (type pdf)
+<use FIG_CAP_09/VECT_CONFUSION.pdf>
+Package pdftex.def Info: FIG_CAP_09/VECT_CONFUSION.pdf  used on input line 229.
+
+(pdftex.def)             Requested size: 433.616pt x 229.00345pt.
+<FIG_CAP_09/VECT_DIFUSION.pdf, id=1860, 963.6pt x 508.90125pt>
+File: FIG_CAP_09/VECT_DIFUSION.pdf Graphic file (type pdf)
+<use FIG_CAP_09/VECT_DIFUSION.pdf>
+Package pdftex.def Info: FIG_CAP_09/VECT_DIFUSION.pdf  used on input line 235.
+(pdftex.def)             Requested size: 433.616pt x 229.00345pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 243--244
+
+ []
+
+[102] [103 <./FIG_CAP_09/VECT_CONFUSION.pdf> <./FIG_CAP_09/VECT_DIFUSION.pdf
+
+pdfTeX warning: pdflatex (file ./FIG_CAP_09/VECT_DIFUSION.pdf): PDF inclusion: 
+multiple pdfs with page group included in a single page
+>]
+
+Package amsmath Warning: Foreign command \over;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on input line 251.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 260--262
+
+ []
+
+[104]
+<FIG_CAP_09/RANDOMNESS.pdf, id=1967, 963.6pt x 492.33937pt>
+File: FIG_CAP_09/RANDOMNESS.pdf Graphic file (type pdf)
+<use FIG_CAP_09/RANDOMNESS.pdf>
+Package pdftex.def Info: FIG_CAP_09/RANDOMNESS.pdf  used on input line 267.
+(pdftex.def)             Requested size: 433.616pt x 221.55066pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 272--273
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 274--275
+
+ []
+
+[105 <./FIG_CAP_09/RANDOMNESS.pdf>]) (Capitulo_10.tex [106]
+Cap\'{\i }tulo 10.
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 6--7
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--9
+
+ []
+
+[107
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 13--14
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 16--17
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
+
+ []
+
+[108] [109]
+Underfull \hbox (badness 10000) in paragraph at lines 67--68
+
+ []
+
+
+Overfull \hbox (1.25423pt too wide) in paragraph at lines 71--72
+[]\OT1/cmr/bx/sc/12 Murillo-Escobar M.A.\OT1/cmr/m/n/12 , Cruz-Hernandez C., A
+bundiz-Perez F., Lopez-Gutierrez
+ []
+
+
+Overfull \hbox (6.80147pt too wide) in paragraph at lines 73--74
+[]\OT1/cmr/bx/sc/12 Murillo-Escobar M.A.\OT1/cmr/m/n/12 , Cruz-Hernandez C., A
+bundiz-Perez F. y Lopez-Gutierrez
+ []
+
+
+Overfull \hbox (6.80147pt too wide) in paragraph at lines 75--76
+[]\OT1/cmr/bx/sc/12 Murillo-Escobar M.A.\OT1/cmr/m/n/12 , Cruz-Hernandez C., A
+bundiz-Perez F. y Lopez-Gutierrez
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--76
+
+ []
+
+
+Overfull \hbox (6.80147pt too wide) in paragraph at lines 80--81
+[]\OT1/cmr/bx/sc/12 Murillo-Escobar M.A.\OT1/cmr/m/n/12 , Cruz-Hernandez C., A
+bundiz-Perez F. y Lopez-Gutierrez
+ []
+
+
+Overfull \hbox (6.80147pt too wide) in paragraph at lines 82--83
+[]\OT1/cmr/bx/sc/12 Murillo-Escobar M.A.\OT1/cmr/m/n/12 , Abundiz-Perez F., Cr
+uz-Hernandez C. y Lopez-Gutierrez
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
+
+ []
+
+[110]
+Underfull \hbox (badness 10000) in paragraph at lines 91--92
+
+ []
+
+
+Overfull \hbox (6.80147pt too wide) in paragraph at lines 97--98
+[]\OT1/cmr/bx/sc/12 Murillo-Escobar M.A.\OT1/cmr/m/n/12 , Cruz-Hernandez C., A
+bundiz-Perez F. y Lopez-Gutierrez
+ []
+
+
+Overfull \hbox (6.80147pt too wide) in paragraph at lines 112--113
+[]\OT1/cmr/m/n/12 Abundiz-Perez F., Cruz-Hernandez C., \OT1/cmr/bx/sc/12 Muri
+llo-Escobar M.A. \OT1/cmr/m/n/12 y Lopez-Gutierrez
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 112--113
+
+ []
+
+
+Overfull \hbox (6.80147pt too wide) in paragraph at lines 118--119
+[]\OT1/cmr/m/n/12 Abundiz-Perez F., Cruz-Hernandez C., \OT1/cmr/bx/sc/12 Muri
+llo-Escobar M.A. \OT1/cmr/m/n/12 y Lopez-Gutierrez
+ []
+
+[111]
+Overfull \hbox (1.25423pt too wide) in paragraph at lines 120--121
+[]\OT1/cmr/m/n/12 Abundiz-Perez F., Cruz-Hernandez C., \OT1/cmr/bx/sc/12 Muri
+llo-Escobar M.A.\OT1/cmr/m/n/12 , Lopez-Gutierrez
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 120--121
+
+ []
+
+
+Overfull \hbox (2.01714pt too wide) in paragraph at lines 125--126
+[]\OT1/cmr/m/n/12 Cruz-Hernandez C., Lopez-Gutierrez R.M., Abundiz-Perez F.
+ y \OT1/cmr/bx/sc/12 Murillo-Escobar
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 125--126
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 128--129
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 133--134
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 136--137
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 152--153
+
+ []
+
+[112]) (Bibliografia.tex [113] [114
+
+]
+Underfull \hbox (badness 1184) in paragraph at lines 101--104
+[]\OT1/cmr/m/n/12 Lopez-Gutierrez R. M., Rodrguez-Orozco E., Cruz-Hernande
+z C., Inzunza-
+ []
+
+[115] [116] [117] [118] [119] [120] [121] [122] [123]
+Underfull \hbox (badness 3396) in paragraph at lines 712--715
+[]\OT1/cmr/m/n/12 Futronic.  Fu-tro-nic FS83C PIV se-rial Fin-ger-print Aut-hen
+-ti-ca-tion Mo-
+ []
+
+
+Underfull \hbox (badness 1859) in paragraph at lines 712--715
+\OT1/cmr/m/n/12 du-le(sFAM).  \OT1/cmr/m/it/12 Fu-tro-nic Tech-no-logy Com-pany
+ Li-mi-ted\OT1/cmr/m/n/12 , http://www.futronic-
+ []
+
+) (Apendice_1.tex [124]
+Ap\IeC {\'e}ndice A.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 7.
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ot1p
+cr.fd"
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+LaTeX Font Info:    Try loading font information for TS1+pcr on input line 13.
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\ts1p
+cr.fd"
+File: ts1pcr.fd 2001/06/04 font definitions for TS1/pcr.
+) [125
+
+]
+LaTeX Font Info:    Try loading font information for OMS+pcr on input line 84.
+
+("C:\Users\OSCAR ATONDO\AppData\Local\Programs\MiKTeX 2.9\tex\latex\psnfss\omsp
+cr.fd"
+File: omspcr.fd 
+)
+LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <8> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 84.
+ [126] [127] [128]) [129] (TESIS_MIGUEL.aux
+LaTeX Info: Redefining \. on input line 6.
+LaTeX Info: Redefining \% on input line 6.
+)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 12501 strings out of 492973
+ 184898 string characters out of 3123590
+ 339358 words of memory out of 3000000
+ 15958 multiletter control sequences out of 15000+200000
+ 23719 words of font info for 95 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 41i,20n,43p,3225b,1658s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Users/OSCAR ATONDO/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/base
+/8r.enc} <C:\Users\OSCAR ATONDO\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknapp
+en\ec\dpi600\tcrm1200.pk><C:/Users/OSCAR ATONDO/AppData/Local/Programs/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/OSCAR ATONDO/AppData/Loc
+al/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/OSCA
+R ATONDO/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx8
+.pfb><C:/Users/OSCAR ATONDO/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
+c/amsfonts/cm/cmbxti10.pfb><C:/Users/OSCAR ATONDO/AppData/Local/Programs/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/OSCAR ATONDO/AppData/
+Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/O
+SCAR ATONDO/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+mi10.pfb><C:/Users/OSCAR ATONDO/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmmi12.pfb><C:/Users/OSCAR ATONDO/AppData/Local/Programs/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/OSCAR ATONDO/AppData/
+Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/OS
+CAR ATONDO/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr
+10.pfb><C:/Users/OSCAR ATONDO/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmr12.pfb><C:/Users/OSCAR ATONDO/AppData/Local/Programs/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/OSCAR ATONDO/AppData/Loc
+al/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/OSCAR 
+ATONDO/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pf
+b><C:/Users/OSCAR ATONDO/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmr8.pfb><C:/Users/OSCAR ATONDO/AppData/Local/Programs/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmsl12.pfb><C:/Users/OSCAR ATONDO/AppData/Local/Pr
+ograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/OSCAR ATO
+NDO/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+<C:/Users/OSCAR ATONDO/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmsy8.pfb><C:/Users/OSCAR ATONDO/AppData/Local/Programs/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/OSCAR ATONDO/AppData/Local/Pro
+grams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/OSCAR ATON
+DO/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10
+.pfb><C:/Users/OSCAR ATONDO/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/c
+ourier/ucrr8a.pfb>
+Output written on TESIS_MIGUEL.pdf (142 pages, 47602316 bytes).
+PDF statistics:
+ 2168 PDF objects out of 2487 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 316 words of extra memory for PDF output out of 10000 (max. 10000000)
+

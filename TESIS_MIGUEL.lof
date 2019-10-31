@@ -1,0 +1,69 @@
+\babel@toc {spanish}{}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Esquema de cifrado \textit {anal\IeC {\'o}gico} unidireccional empleando \textit {enmascaramiento ca\IeC {\'o}tico} con dos sistemas de Lorenz \cite {CEtAl_1993}.\relax }}{3}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Sistema criptogr\IeC {\'a}fico basado en caos \textit {anal\IeC {\'o}gico} implementado en circuiter\IeC {\'\i }a electr\IeC {\'o}nica para el cifrado de audio anal\IeC {\'o}gico.\relax }}{4}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Ejemplo de la din\IeC {\'a}mica del problema de los tres cuerpos.\relax }}{12}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Ejemplo de un sistema lineal con la segunda ley de Newton.\relax }}{13}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Comportamientos temporales del sistema ca\IeC {\'o}tico de Lorenz: a) estado $x$, b) estado $y$ y c) estado $z$.\relax }}{14}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Atractor extra\IeC {\~n}o generado por el sistema ca\IeC {\'o}tico de Lorenz ployectado en el plano $xyz$.\relax }}{15}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Comportamiento temporal del mapa log\IeC {\'\i }stico.\relax }}{17}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Sensibilidad del mapa log\IeC {\'\i }stico a condiciones iniciales: a) comportamiento temporal y b) gr\IeC {\'a}fica del error.\relax }}{18}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces \textit {Esc\IeC {\'\i }tala}, instrumento criptogr\IeC {\'a}fico utilizada por los griegos en el siglo V a.C.\relax }}{21}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces \textit {Enigma}, m\IeC {\'a}quina criptogr\IeC {\'a}fica utilizada por los alemanes en 1940.\relax }}{21}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Esquema de un sistema criptogr\IeC {\'a}fico sim\IeC {\'e}trico.\relax }}{24}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Algunas aplicaciones de sistemas embebidos.\relax }}{33}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Estructura de un microcontrolador.\relax }}{34}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Microcontrolador de 32 bits M52259DEMOKIT utilizado en las aplicaciones experimentales en este trabajo de tesis.\relax }}{35}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Datos generados del sistema de Lorenz discreto (5.4) implementado en microcontrolador con una precisi\IeC {\'o}n de $10^{-15}$.\relax }}{41}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Extracci\IeC {\'o}n de 10,000 datos de la implementaci\IeC {\'o}n en microcontrolador del sistema de Lorenz (5.4): a) secuencia estable y b) secuencia ca\IeC {\'o}tica.\relax }}{42}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Gr\IeC {\'a}ficas temporales y atractores de punto fijo, de la aproximaci\IeC {\'o}n discreta de Lorenz (5.4) generada en microcontrolador.\relax }}{43}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Gr\IeC {\'a}ficas temporales y atractores ca\IeC {\'o}ticos de la aproximaci\IeC {\'o}n discreta de Lorenz (5.4) generada en microcontrolador.\relax }}{43}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Datos generados por el mapa log\IeC {\'\i }stico en microcontrolador: a) primeros 20 de 10,000 y b) \IeC {\'u}ltimos 20 de 10,000.\relax }}{45}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Datos del mapa log\IeC {\'\i }stico extra\IeC {\'\i }dos del microcontrolador para determinar el m\IeC {\'a}ximo exponente de Lyapunov.\relax }}{46}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Trayectorias de dos secuencias ca\IeC {\'o}ticas del mapa log\IeC {\'\i }stico generadas en microcontrolador para determinar el m\IeC {\'a}ximo exponente de Lyapunov.\relax }}{46}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Diagrama a bloques del proceso de cifrado ca\IeC {\'o}tico del algoritmo criptogr\IeC {\'a}fico propuesto.\relax }}{50}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Diagrama a bloques del proceso de descifrado ca\IeC {\'o}tico del algoritmo criptogr\IeC {\'a}fico propuesto.\relax }}{50}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces M\IeC {\'a}ximo exponente de Lyapunov del mapa log\IeC {\'\i }stico para todo el espacio de claves.\relax }}{52}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Distribuci\IeC {\'o}n de 10,000 valores del mapa log\IeC {\'\i }stico ca\IeC {\'o}tico con una separaci\IeC {\'o}n de 0.001: (a) Datos del mapa log\IeC {\'\i }stico directo y (b) datos del mapa log\IeC {\'\i }stico ``optimizado'' (utilizados en el proceso de cifrado).\relax }}{52}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Representaci\IeC {\'o}n matricial de una imagen a escala de grises.\relax }}{60}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Representaci\IeC {\'o}n matricial de una imagen a color RGB.\relax }}{60}
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Diagrama a bloques del proceso de cifrado de imagen a color RGB.\relax }}{61}
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Cifrado de imagen a color: (a) Lena clara y sus histogramas RGB, (b) Lena cifrada y sus histogramas RGB, (c) vegetales claro y sus tres histogramas RGB y (d) vegetales cifrado y sus tres histogramas RGB.\relax }}{64}
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Cifrado de imagen a color: (a) estatua de la libertad clara y sus tres componentes RGB, (b) estatua de la libertad cifrada y sus tres componentes RGB, (c) paisaje claro y sus tres componentes RGB y (d) paisaje cifrado y sus tres componentes RGB.\relax }}{64}
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Sensibilidad a clave secreta en proceso de descifrado: (a) imagen descifrada con la clave secreta correcta 1 y sus histogramas RGB, (b) imagen descifrada con incorrecta clave secreta 2 y sus histogramas RGB y (c) imagen descifrada con incorrecta clave secreta 3 y sus histogramas RGB.\relax }}{67}
+\contentsline {figure}{\numberline {7.7}{\ignorespaces An\IeC {\'a}lisis diferencial de dos im\IeC {\'a}genes similares: (a) imagen clara Lena, (b) imagen cifrada Lena, (c) imagen clara Lena con un peque\IeC {\~n}o cambio y (d) Lena con un peque\IeC {\~n}o cambio es cifrada con la misma clave secreta.\relax }}{68}
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Distribuci\IeC {\'o}n de correlaci\IeC {\'o}n horizontal de imagen clara y de imagen cifrada de Lena: (a) componente R de imagen clara, (b) componente G de imagen clara, (c) componente B de imagen clara, (d) componente R de imagen cifrada, (e) componente G de imagen cifrada y (f) componente B de imagen cifrada.\relax }}{70}
+\contentsline {figure}{\numberline {7.9}{\ignorespaces Ataque de s\IeC {\'o}lo imagen clara conocida y elegida: (a) imagen clara elegida, (b) imagen negra cifrada, (c) imagen de \textit {Lena} cifrada y (d) imagen de \textit {Lena} descifrada con la posible clave secreta.\relax }}{71}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Diagrama a bloques del proceso de cifrado ca\IeC {\'o}tico de texto.\relax }}{77}
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Diagrama a bloques del proceso de descifrado de texto.\relax }}{79}
+\contentsline {figure}{\numberline {8.3}{\ignorespaces Texto claro y texto cifrado extra\IeC {\'\i }do del microcontrolador con memoria USB.\relax }}{80}
+\contentsline {figure}{\numberline {8.4}{\ignorespaces Sensibilidad a la clave secreta en proceso de cifrado de texto.\relax }}{81}
+\contentsline {figure}{\numberline {8.5}{\ignorespaces Sensibilidad a la clave secreta en proceso de descifrado de texto\relax }}{81}
+\contentsline {figure}{\numberline {8.6}{\ignorespaces An\IeC {\'a}lisis de frecuencia flotante de cifrado de texto: a) texto claro y b) texto cifrado.\relax }}{83}
+\contentsline {figure}{\numberline {8.7}{\ignorespaces Histogramas de texto: a) texto claro y b) texto cifrado.\relax }}{83}
+\contentsline {figure}{\numberline {8.8}{\ignorespaces Autocorrelaci\IeC {\'o}n de texto alfanum\IeC {\'e}rico: a) texto claro y b) texto cifrado.\relax }}{85}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {9.1}{\ignorespaces Esquema de autentificaci\IeC {\'o}n biom\IeC {\'e}trica tradicional \cite {LGEtAl_2003}.\relax }}{92}
+\contentsline {figure}{\numberline {9.2}{\ignorespaces Esquema de autentificaci\IeC {\'o}n biom\IeC {\'e}trica con protecci\IeC {\'o}n de plantilla empleando caos propuesto en esta tesis.\relax }}{92}
+\contentsline {figure}{\numberline {9.3}{\ignorespaces Esquema del sistema embebido de autentificaci\IeC {\'o}n por huella dactilar seguro y propuesto en esta tesis.\relax }}{93}
+\contentsline {figure}{\numberline {9.4}{\ignorespaces Esquema del proceso de enrolamiento del sistema embebido propuesto en esta tesis.\relax }}{93}
+\contentsline {figure}{\numberline {9.5}{\ignorespaces Esquema del proceso de autentificaci\IeC {\'o}n del sistema embebido propuesto en esta tesis.\relax }}{94}
+\contentsline {figure}{\numberline {9.6}{\ignorespaces Esquema de cifrado de plantilla de huella dactilar.\relax }}{94}
+\contentsline {figure}{\numberline {9.7}{\ignorespaces Sensibilidad a la clave secreta en proceso de cifrado de plantilla.\relax }}{97}
+\contentsline {figure}{\numberline {9.8}{\ignorespaces Sensibilidad a la clave secreta en proceso de descifrado de plantilla.\relax }}{98}
+\contentsline {figure}{\numberline {9.9}{\ignorespaces Resultados diferenciales de 800 criptogramas de huella dactilar: a) resultados de NPCR y b) resultados de UACI.\relax }}{99}
+\contentsline {figure}{\numberline {9.10}{\ignorespaces An\IeC {\'a}lisis de frecuencia flotante de plantilla de huella dactilar: a) plantilla clara y b) plantilla cifrada.\relax }}{100}
+\contentsline {figure}{\numberline {9.11}{\ignorespaces Histogramas de la plantilla: a) plantilla clara y b) plantilla cifrado.\relax }}{100}
+\contentsline {figure}{\numberline {9.12}{\ignorespaces Autocorrelaci\IeC {\'o}n de plantilla dactilar: a) plantilla clara y b) plantilla cifrada.\relax }}{101}
+\contentsline {figure}{\numberline {9.13}{\ignorespaces Sensibilidad del vector de confusi\IeC {\'o}n a clave secreta y plantilla clara.\relax }}{103}
+\contentsline {figure}{\numberline {9.14}{\ignorespaces Sensibilidad del vector de difusi\IeC {\'o}n a clave secreta y plantilla clara.\relax }}{103}
+\contentsline {figure}{\numberline {9.15}{\ignorespaces An\IeC {\'a}lisis de aleatoriedad FIPS-140-2 de cien criptogramas: a) prueba \textit {monobit}, b) prueba \textit {poker}, c) prueba \textit {run} y d) prueba \textit {serial}.\relax }}{105}
+\addvspace {10\p@ }
+\addvspace {10\p@ }

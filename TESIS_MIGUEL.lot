@@ -1,0 +1,31 @@
+\babel@toc {spanish}{}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces Intervalos para \textit {prueba runs} de acuerdo con FIPS 140-2.\relax }}{27}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {5.1}{\ignorespaces Valores para el an\IeC {\'a}lisis del m\IeC {\'a}ximo exponente de Lyapunov del sistema de Lorenz (5.4) implementado en microcontrolador.\relax }}{42}
+\contentsline {table}{\numberline {5.2}{\ignorespaces M\IeC {\'a}ximo exponente de Lyapunov para las secuencias de la aproximaci\IeC {\'o}n discreta de Lorenz (5.4) generadas en microcontrolador.\relax }}{42}
+\contentsline {table}{\numberline {5.3}{\ignorespaces Eficiencia y recursos de implementaci\IeC {\'o}n de Lorenz discreto (5.4) y log\IeC {\'\i }stico en microcontrolador.\relax }}{44}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {6.1}{\ignorespaces Clave secreta propuesta.\relax }}{51}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {7.1}{\ignorespaces Error de descifrado de imagen RGB para dos im\IeC {\'a}genes.\relax }}{65}
+\contentsline {table}{\numberline {7.2}{\ignorespaces Sensibilidad a clave secreta en proceso de cifrado de imagen RGB.\relax }}{66}
+\contentsline {table}{\numberline {7.3}{\ignorespaces Resultados de $NPCR$ y $UACI$ con el algoritmo propuesto.\relax }}{68}
+\contentsline {table}{\numberline {7.4}{\ignorespaces Comparaci\IeC {\'o}n de an\IeC {\'a}lisis diferencial con otros algoritmos reportados en la literatura.\relax }}{68}
+\contentsline {table}{\numberline {7.5}{\ignorespaces Coeficiente de correlaci\IeC {\'o}n horizontal.\relax }}{70}
+\contentsline {table}{\numberline {7.6}{\ignorespaces Resultados de entrop\IeC {\'\i }a y su comparaci\IeC {\'o}n con otros algoritmos reportados en la literatura, donde NP significa que no presento.\relax }}{72}
+\contentsline {table}{\numberline {7.7}{\ignorespaces Tiempo de cifrado en segundos para im\IeC {\'a}genes a color RGB.\relax }}{73}
+\contentsline {table}{\numberline {7.8}{\ignorespaces Tiempo de cifrado en segundos para im\IeC {\'a}genes a escala de grises, donde NP significa que no presento.\relax }}{73}
+\contentsline {table}{\numberline {7.9}{\ignorespaces Comparaci\IeC {\'o}n del algoritmo de cifrado de imagen RGB propuesto en la tesis \textit {vs} algoritmo reciente reportado en literatura.\relax }}{74}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {8.1}{\ignorespaces Claves secretas utilizadas para an\IeC {\'a}lisis de sensibilidad a la clave en cifrado de texto alfanum\IeC {\'e}rico.\relax }}{81}
+\contentsline {table}{\numberline {8.2}{\ignorespaces Resultados de an\IeC {\'a}lisis diferencial NPCR y UACI para cifrado de texto.\relax }}{82}
+\contentsline {table}{\numberline {8.3}{\ignorespaces An\IeC {\'a}lisis de bigramas y trigramas de texto claro y cifrado.\relax }}{84}
+\contentsline {table}{\numberline {8.4}{\ignorespaces Recursos de la implementaci\IeC {\'o}n de cifrado de texto en microcontrolador.\relax }}{86}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {9.1}{\ignorespaces Claves secretas utilizadas para an\IeC {\'a}lisis de sensibilidad a la clave en cifrado de plantilla de huella dactilar.\relax }}{97}
+\addvspace {10\p@ }
+\addvspace {10\p@ }

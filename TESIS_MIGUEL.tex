@@ -1,0 +1,137 @@
+% TESIS DOCTORADO
+% MIGUEL ANGEL MURILLO ESCOBAR
+% UABC-FIAD
+% AGOSTO 2014
+
+\documentclass[12pt,letterpaper]{report}
+
+% Aqui Va el Preambulo del Documento Como es el Titulo, el Autor, Librerias etc.
+ \author{Miguel Angel Murillo Escobar}
+ \title{Cifrado caótico en sistemas digitales}
+ \date{12 Agosto 2014}
+
+% bibliografia
+\usepackage[sort&compress,square,comma]{natbib}
+% \usepackage[square,comma]{natbib}
+ 
+ 
+\usepackage[spanish]{babel}   %idioma en español
+%\usepackage[latin1]{inputenc} % Acentos directos
+\usepackage[utf8]{inputenc}
+
+% Paquetes utilizados para la edición de textos matemáticos, manejo de símbolos,teoremas
+% y sus respectivas demostraciones.
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsmath, amssymb, latexsym}
+\usepackage{latexsym}
+\usepackage{amsthm}
+
+%Para generar diagramas en latex se utiliza el siguiente paquete
+\usepackage[all]{xy}
+
+% Paquetes utilizados parael entorno grafico del documento
+% graphicx  Es utilizado para realizar la inclusión de gráficas.
+% color     Permite la inclusión de textos en color y colocar fondos coloreados.
+\usepackage[dvips]{graphicx}
+\usepackage{color}
+
+% complementos que permite introducir imagens .jpg
+\DeclareGraphicsExtensions{.pdf,.png,.jpg,.gif} %solo para PDFLaTeX
+\DeclareGraphicsRule{.emf}{.bmp}{}{}
+
+\usepackage{capt-of}
+\usepackage{float}
+\usepackage{amsfonts}
+\usepackage{lscape}
+\usepackage{array}
+\usepackage{caption} % para modificar atributos de caption con \captionsetup
+\captionsetup{font=footnotesize}
+
+% Paquetes referentes a la ayuda de edicion de tablas
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{colortbl}
+    % para poder dividir las celdas en diagonal
+\usepackage{slashbox}
+
+\usepackage{mdwlist}
+\usepackage{pifont}
+\usepackage{rotating}
+      % para agregar paguinas Web
+\usepackage{url}
+\usepackage{doc}
+% para agregar enumeracion
+%\setcounter{tocdepth}{4}
+%\setcounter{secnumdepth}{4}
+\usepackage{verbatim}
+
+\usepackage[numbered]{mcode} % Programa MatLab
+
+\usepackage[letterpaper,left=3cm, right=3cm, top=3cm, bottom=3cm,dvips]{geometry} % Geometria general del documento
+
+\spanishdecimal{.}
+
+%\newcommand{\dirfigp}[1]{Figuras_Portada/#1}
+
+%% ********  INICIA DOCUMENTO  ******
+
+\begin{document}
+
+\pagestyle{empty}
+
+\input{Portada.tex} % Archivo de la portada
+\input{Votos.tex}	% Archivo de los votos provatorios de tesis por el comite
+
+% Inicio de paguinas con numeraciones y encabezados
+\pagestyle{myheadings} % paginas con encabezado
+\pagenumbering{roman}  % paginas con numeracion Romana 
+\clearpage % \clearpage Reinicia la nuemracion de las paguinas.
+
+% Para cambiar el nombre del indice ganeral, figuras y tablas
+\def\listtablename{Lista de Tablas}    % Nombre de indice de tablas
+\def\listfigurename{Lista de Figuras}  % Nombre de indice de figuras
+\def\contentsname{Tabla de Contenido}  % Nombre de indice General
+\def\appendixname{Apéndice}               % Nombre de apéndice
+%\def\contentsname{\'Indice General}%
+\def\figurename{\textbf{\footnotesize Figura}} % Cambia el nombre que se muestra en las figuras
+\def\tablename{\textbf{\footnotesize Tabla}}   % Cambia el nombre que se muestra en las tablas
+
+\input{Resumen_esp} % Resumen en espanol
+\input{Resumen_ing} % Resumen en Ingles
+
+\input{Dedicatoria} % Dedicatoria
+\input{Agradecimientos} % Agradecimientos
+
+\tableofcontents % Genera un indice de los temas que contiene el documento.
+
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Lista de Figuras} % Para agregar a Tabla de Contenido
+\listoffigures   % Genera un indice de las figuras que contiene el documento.
+
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Lista de Tablas} % Para agregar a Tabla de Contenido
+\listoftables    % Genera un indice de las tablas  que contiene el documento.
+
+
+\clearpage % \clearpage Reinicia la nuemracion de las paguinas.
+\pagestyle{myheadings} % paginas con encabezado
+\pagenumbering{arabic}  % paginas con numeracion Latina
+
+\input{Capitulo_01}
+\input{Capitulo_02}
+\input{Capitulo_03}
+\input{Capitulo_04}
+\input{Capitulo_05}
+\input{Capitulo_06}
+\input{Capitulo_07}
+\input{Capitulo_08}
+\input{Capitulo_09}
+\input{Capitulo_10}
+
+\input{Bibliografia} % Inician las referencias
+
+\appendix	% Inician los apendices.
+\input{Apendice_1.tex}
+
+\end{document} 

@@ -1,0 +1,280 @@
+% CAPITULO IX
+
+\chapter{Cifrado caótico de plantilla de huella dactilar en microcontrolador}
+Desde mucho tiempo atrás, la huella dactilar ha sido utilizada para identificar o autentificar a una persona, debido a propiedades como singularidad, inalterabilidad, universalidad, accesibilidad y aceptabilidad que posee como identificador biométrico. Hoy en día, los sistemas de autentificación se usan en control de accesos físicos en bancos, oficinas, fábricas, etc. y en accesos lógicos como comercio electrónico, celulares, computadoras, etc. Sin embargo, los identificadores biométricos no se encuentran protegidos en estos sistemas de control de acceso y de identificación y se corre el riesgo de robo de identidad. Una solución es el cifrado de plantilla biométrica para proporcionar seguridad a la identidad del usuario cuando se utiliza un sistema de autentificación en sistemas embebidos. \\
+
+En este capítulo, se presenta un sistema de autentificación basado en la huella dactilar y su cifrado caótico para incrementar la seguridad del sistema embebido y evitar robo de identidad; el proceso de cifrado se basa en el algoritmo criptográfico propuesto en este trabajo doctoral, con mínimas adecuaciones. Se reporta un análisis completo de seguridad a nivel lógico como espacio de la clave, sensibilidad a la clave, sensibilidad a la plantilla biométrica, correlación, entropía y análisis de aleatoriedad con FIPS-140-2. Además, se presenta los recursos de implementación y el desempeño del cifrado propuesto. Basado en los resultados, el sistema de autentificación embebido propuesto es seguro, efectivo y de bajo costo para ser implementado en sistemas de control de accesos.
+
+\section{Introducción}
+Una persona tiene características fisiológicas y conductuales únicas que la distingue de cualquier otra persona en el mundo, estas características se conocen como \textit{identificadores biométricos}, por ejemplo las características del rostro, iris, palma de la mano, huella dactilar, geometría de la mano, voz, forma de teclear, entre otros, han sido utilizados para identificar personas porque son únicos e inalterables y además, se pueden cuantificar. Debido a estas ventajas, actualmente la identificación de personas de forma biométrica se esta haciendo popular, comparado con técnicas de identificación tradicional como tarjetas de identificación (ID), claves, número de identificación personal (NIP), tarjeta inteligente, etc. En 1926, EUA empezó a utilizar la huella dactilar para identificar criminales con métodos manuales; desde entonces, métodos automáticos para identificación por medio de huella dactilar son desarrollados con mejor precisión. Actualmente, la huella dactilar es la característica biométrica más utilizada para identificar personas ya que es práctica, es la más estudiada, es la más desarrollada y sus costos de implementación son bajos. Otros identificadores biométricos comúnmente utilizados en estos días son la palma de la mano, iris, rostro y voz, ver por ejemplo \cite{IyC_2013, JyU_2003}. \\
+
+El proceso de \textit{identificación} se basa en dos etapas: \textit{enrolamiento} y \textit{verificación}. En la etapa de \textit{enrolamiento}, una o más muestras se toman del identificador biométrico mediante un método (por ejemplo extracción de minucias) para generar una plantilla (usualmente de varios KB) que se almacena local o remotamente en una base de datos para futuras comparaciones. La etapa de \textit{verificación}, una o más muestras son tomadas del identificador biométrico para generar una plantilla que se compara con una plantilla previamente almacenada en la base de datos para verificar a un usuario. Además, un sistema biométrico tiene dos objetivos: identificación y autentificación. La identificación biométrica se utiliza para identificar a una persona, por ejemplo en el forense, a un criminal, a un paciente, etc., donde la plantilla se compara con todas las registradas en la base de datos; mientras que, autentificación biométrica implementa comparaciones de plantilla uno a uno, por ejemplo en sistemas de acceso seguro a nivel físico y lógico, como en oficinas, bancos, industria, hospitales, universidades, centros de investigación, comercio electrónico, computadoras, celulares, entre otros, ver por ejemplo \cite{SEtAl_1999}. \\      
+
+Sin embargo, muchos sistemas de identificación biométrica comerciales, tienen problemas de seguridad como robo de identidad mediante ataque a plantillas almacenadas en la base de datos o ataques en las lineas de comunicación ya que no cifran la información biométrica de los usuarios \cite{REtAl_2001}. Recientemente, \textit{biométria cancelable} y \textit{baúl difuso} (Fuzzy vault) fueron propuestos para proteger la información biométrica mediante el uso de la criptografía. El método de biométrico cancelable consiste en distorsionar los datos con una función de distorsión de un sentido (one-way) \cite{PyK_2014, JEtAl_2012}, pero las principales desventajas es que la seguridad del sistema es difícil de verificar debido que no se tienen fundamentos matemáticos \cite{KEtAl_2010}. Mientras que el método de \textit{baúl difuso} es un esquema criptográfico que une la plantilla biométrica con una clave aleatoria uniforme, para construir una plantilla al azar que se utiliza en vez de la plantilla original. Sin embargo, este método presenta muchas vulnerabilidades cuando el \textit{baúl difuso} se implementa en sistemas de autentificación \cite{NEtAl_2007}. \\
+
+Esteganografía, marca de agua y criptografía son otros métodos utilizados para resolver el problema de seguridad; esteganografía es una técnica, el la cual, el mensaje se oculta en otro mensaje para que pase desapercibido, por ejemplo ocultar texto en una imagen clara. La técnica de marca de agua se utiliza para protección de derechos de autor.   \\
+
+Por otra parte, criptografía es una técnica ámpliamente utilizada en esquemas de comunicación segura y almacenamiento de datos privados, donde básicamente los datos claros son convertidos en datos cifrados por un algoritmo y una clave secreta. En capítulos anteriores 7 y 8, se mostró que los sistemas caóticos son muy recomendados para utilizarse en la criptografía.  \\    
+
+Los sistemas de autentificación biométrica se implementan usualmente en sistemas embebidos. En la literatura, se reportan algunos esquemas de autentificación basados en identificadores biométricos: en \cite{CyD_2005} se presentó un método de autentificación por huella dactilar que es rápido y preciso; en el cual, la imagen de la huella se captura y se aplica cancelación de ruido con un filtro pasa baja. Después, el proceso de verificación se lleva a cabo con detección de desplazamiento y características circulares de la huella y finalmente, el método del autor se implementa en un microcontrolador de 8 bits; aunque los resultados experimentales muestran el alto desempeño y eficiencia del método propuesto, los datos biométricos no son protegidos de ninguna forma, por lo que el templete del usuario esta expuesto y corre riesgo de robo de identidad. En \cite{N_2008} se propuso un sistema novedoso de autentificación biométrico, donde la huella dactilar y la voz se utilizan en etapas separadas; cada etapa se implementa en un microcontrolador para verificar la identidad del usuario, pero los datos biométricos no se protegen de ninguna manera. En \cite{MEtAl_2008} se propuso un sistema de autentificación basado en puntos singulares, la comparación de huella utiliza pocas características en el proceso de verificación, por tanto, la tasa de reconocimiento es mayor que el método por minucias. Además, el esquema se implementa en tecnología digital FPGA (\textit{Arreglo de Compuertas Lógicas Programables}) con excelentes resultados como alta velocidad de reconocimiento. Otro esquema de autentificación implementado en FPGA fue presentado en \cite{NEtAl_2013}, donde la propiedad intelectual se protege con la huella dactilar. Sin embargo, el cifrado de datos biométricos no es considerado en ninguna implementación mencionada anteriormente. También, hay otras imeplementaciones donde se utiliza combinación de microcontrolador y FPGA, para sistemas de autentificación con huella dactilar reportados en \cite{FEtAl_2007, WEtAl_2004}; también los datos biométricos no son protegidos y la identidad del usuario sigue expuesta \cite{R_2007}.  \\         
+
+En este capítulo, se presenta un novedoso sistema de autentificación por huella dactilar, implementado en un microcontrolador de 32 bits, con protección de plantilla dactilar con su cifrado mediante sistemas caóticos. Se utiliza el algoritmo de cifrado propuesto en este trabajo doctoral (Sec.~6) para proteger la identidad del usuario. En la etapa de \textit{enrolamiento}, la plantilla del usuario se lee por el módulo MAHD que funciona como esclavo y    los datos se envían al microcontrolador vía RS-232; una vez que la plantilla esta en el microcontrolador, esta se cifra y almacena en memoria Flash. En el proceso de \textit{autentificación}, el usuario solicita su plantilla cifrada al microcontrolador y la plantilla original se recupera mediante el descifrado con la misma clave secreta de 32 caracteres hexadecimales. Después, el microcontrolador envía la plantilla descifrada al módulo lector de huella y se lleva a cabo el proceso de comparación de plantillas con la plantilla actual del usuario para autentificarlo. Se realiza un análisis muy completo de seguridad del cifrado como en el capítulo 8, pero en este caso, se incluye un importante análisis de aleatoriedad con FIPS-140-2 para verificar la calidad del cifrado y determinar si es una fuente meramente aleatoria. También, se presentan los recursos de implementación para validar su uso en sistemas embebidos, así como el desempeño donde se muestra que puede ser utilizado en aplicaciones en tiempo real.
+
+\section{Sistema de autentificación propuesto}
+El proceso de autentificación biométrica tradicional se basa en la lectura del identificador biométrico mediante un sensor, extracción de características del biométrico, procesamiento de plantillas biométricas y comparación con plantillas previamente almacenadas en la base de datos. Inicialmente, en el proceso de \textit{enrolamiento} se determina un biométrico físico o de comportamiento como iris, rostro, huella dactilar, palma de la mano, voz, firma, etc., para utilizarse como identificador; después, un sensor realiza la adquisición de datos y un algoritmo los procesa para extraer características biométricas (plantillas); finalmente, la plantilla se almacena en una memoria local o remota para futuras comparaciones. Una vez que el \textit{enrolamiento} se ha concluido con éxito, se puede realizar el proceso de \textit{verificación} para autentificar al usuario con los siguientes pasos: leer el biométrico, extraer características y comparar \textit{uno a uno} con la plantilla previamente almacenada (ver figura~9.1) \cite{LGEtAl_2003}.   \\         
+
+En la figura~9.2, se muestra el esquema de protección de plantilla biométrica implementada en este trabajo. Antes del almacenamiento de plantillas en el proceso de \textit{enrolamiento}, la plantilla se cifra mediante el algoritmo de cifrado caótico propuesto en este trabajo doctoral (ver capítulo~6); una vez que se ha cifrado la información, ésta se puede transmitir por un canal inseguro y almacenar local o remotamente. En el proceso de autentificación, la plantilla se descifra y compara con una plantilla reciente del mismo biométrico del usuario para validar su identificación.   \\ 
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.5]{FIG_CAP_09/ESQUEMA_AUT_TRAD.pdf}    
+	\caption{Esquema de autentificación biométrica tradicional \cite{LGEtAl_2003}.}
+\end{figure}      
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.5]{FIG_CAP_09/ESQUEMA_AUT_PROPUESTO.pdf}   
+	\caption{Esquema de autentificación biométrica con protección de plantilla empleando caos propuesto en esta tesis.}
+\end{figure}  
+
+La implementación del sistema embebido propuesto está basado en tres módulos de hardware: microcontrolador de 32 bits M52259, módulo de autentificación de huella dactilar (MAHD) Futronic FS83 \cite{FS83} y dispositivos de interfaz humana como LCD y teclado (ver figura~9.3). El proceso de enrolamiento puede registrar un nuevo usuario autorizado en el sistema embebido con una huella dactilar (ejemplo, la huella dactilar del dedo índice derecho); primero, MAHD utiliza el método de extracción de minucias para generar una plantilla del usuario (2,072 bytes de tres muestras) y la envía al microcontrolador vía RS-232; después, la plantilla se cifra mediante el algoritmo basado en caos y finalmente, la plantilla cifrada se almacena en la memoria flash del microcontrolador, ver figura~9.4. Una vez que el usuario autorizado fue registrado en el sistema, este puede acceder al área restringida física o lógicamente mediante el proceso de autentificación: primero, el usuario autorizado solicita su plantilla cifrada al sistema embebido; después, el microcontrolador envía la plantilla descifrada al MAHD y finalmente, el proceso de autentificación se lleva a cabo en el MAHD. Si las plantillas son muy similares (lo determina el algoritmo de MAHD), el sistema permite el acceso del usuario al área restringida, ver figura~9.5.   \\
+
+El escaner del MAHD esta basado en LEDs infrarrojos y un procesador con algoritmo de reconocimiento de huella dactilar basado en el método de extracción de minucias con una tasa de falsa aceptación de $10^{6}$ (una en un millón) y taza de falso rechazo de $10^{2}$ (una de cada cien). Además, MAHD realiza el proceso de comparación y otros. La unidad central del sistema es el microcontrolador, el cual, es responsable de realizar tareas como: leer  la plantilla dactilar del usuario, cifrar la plantilla, descifrar la plantilla, almacenar plantilla en memoria flash, solicitar el proceso de comparación para autentificar a un usuario, leer el teclado, enviar datos a una pantalla LCD y controlar señales de salida para el control de acceso físico o lógico. La interfaz humana esta basada en una pantalla LCD, teclado, botones de presionar, entre otros que permiten desempeñar los procesos de enrolamiento y autentificación. 
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.45]{FIG_CAP_09/SISTEMA_EMBEBIDO_AUT.pdf} 
+	\caption{Esquema del sistema embebido de autentificación por huella dactilar seguro y propuesto en esta tesis.}
+\end{figure}
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.4]{FIG_CAP_09/SCH_ENROLAMIENTO.pdf} 
+	\caption{Esquema del proceso de enrolamiento del sistema embebido propuesto en esta tesis.}
+\end{figure}
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.4]{FIG_CAP_09/SCH_AUTENTIFICACION.pdf}  
+	\caption{Esquema del proceso de autentificación del sistema embebido propuesto en esta tesis.}
+\end{figure}
+
+\section{Cifrado}
+El proceso de cifrado es similar al presentado en el capítulo anterior, ver sección~8.2. Se asume un texto claro $P\in [0,255]$ de longitud $\ell=2072$ basado en datos leídos del módulo MAHD que están representados por 8 bits (0-255 en decimal). La figura~9.6 muestra el diagrama a bloques del proceso de cifrado. Se tienen 2,072 bytes del módulo FS83 como plantilla clara cada vez que se registra un nuevo usuario al sistema de autentificación o solicita que se autentifique su identidad.    \\
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.6]{FIG_CAP_09/SCH_CIFRADO.pdf} 
+	\caption{Esquema de cifrado de plantilla de huella dactilar.}
+\end{figure}
+
+\textbf{Primero}, el valor de $Z$ se determina de la siguiente manera:  \\
+
+El mapa logístico 2 se itera $I_{2}=2,172$ con valores de $a_{2}$ y $x_{2_{0}}$ tomados de la tabla~6.1 para generar la secuencia caótica de datos $x^{L2}$ con $x^{L2}\in (0,1)$ y precisión $10^{-15}$. $x^{L2}$ se optimiza de la siguiente manera
+\begin{equation}
+x_{I}^{L2}=\left\lbrace \left[x_{I_{2}}^{L2}\right]\ast 1000\right\rbrace \pmod 1, ~~ para ~I_{2}=1,2,3,\ldots ,2172 
+\end{equation}   
+Después, todos los elementos de la plantilla clara se suman con la secuencia caótica $x^{L2}$ como sigue
+\begin{equation}
+S=\left\lbrace S+[P_{i}\ast x_{2173-i}^{L2}]+x_{2173-i}^{L2}\right\rbrace \pmod 1, ~~ para ~i=1,2,3,\ldots ,2072
+\end{equation}
+donde $P_{i}$ representa el elemento $i$ de la plantilla clara, $S$ es una variable inicializada en cero y \textit{mód} es la operación de módulo. El valor de $Z$ debe ser un valor entero entre 1-255 para evitar la cancelación de $Z$, por tanto se calcula lo siguiente
+\begin{equation}
+V=~round(S\ast 254)+1,
+\end{equation}
+donde $V\in \lbrack 1,255]$ y \textit{round} es la operación de redondeo al valor más cercano. Finalmente, el valor de $Z$ está dado por
+\begin{equation}
+Z=V/256,
+\end{equation}
+donde $V\in (0,1)$ con precisión de $10^{-15}$.  \\
+
+\textbf{Segundo}, el proceso de cifrado consiste de las siguientes operaciones:   \\
+
+El mapa logístico 1 se itera $I_{1}=5,000$ con valores de $a_{1}$ y $x_{1_{0}}$ tomados de la tabla~6.1 para generar la secuencia caótica de datos $x^{L1}$ con $x^{L1}\in(0,1)$ y una precisión de $10^{-15}$. De esta secuencia caótica se determinan dos subsecuencias, una para el proceso de confusión y otra para difusión como sigue
+\begin{equation}
+Q_{i}=~round\left(x_{2928+i}^{L1}\ast 2071\right)+1, ~~ para ~i=1,2,3,\ldots,2072
+\end{equation}
+donde $Q_{i}\in \left[1,2072\right]$ es el vector de confusión pseudoaleatorio. Se considera que el vector $Q_{i}$ esta optimizado y contiene todas las posiciones de forma pseudoaleatoria, ver sección~6.5. \\
+
+La segunda subsecuencia para el proceso de difusión se determina como sigue
+\begin{equation}
+F_{i}=\left\lbrace \left(x_{2928+i}^{L1}\ast 1000\right)+Z\right\rbrace \pmod 1, ~~ para ~i=1,2,3,\ldots ,2,072 
+\end{equation}
+donde $F_{i}\in \left(0,1\right)$ es un vector de longitud de 2072 elementos con precisión de $10^{-15}$. Después, $F_{i}$ se transforma de $\left(0,1\right)$ a $\left[0,255\right]$ como sigue   
+\begin{equation}
+Y_{i}=~round\left(M_{i}\ast 255\right), ~~ para ~i=1,2,3,\ldots ,2072
+\end{equation}
+donde $Y_{i}\in \left[0,255\right]$ es un vector de longitud $2072$. Finalmente, el proceso de cifrado se calcula con
+\begin{equation}
+E_{i}=\left(P(Q_{i})+Y_{i}\right) ~mod~256, ~~ donde ~i=1,2,3,\ldots ,2072
+\end{equation}
+donde $E_{i}\in \lbrack 0,255]$ es la plantilla cifrada y $P$ es la plantilla clara. \\ 
+
+\textbf{Tercer paso:}\\
+
+El valor de $Z$ se agrega al criptograma en la posición 2,073 como sigue
+\begin{equation}
+E_{2073}=V.
+\end{equation} 
+
+El \textbf{proceso de descifrado} consiste básicamente de invertir los pasos del cifrado y se considera que el criptograma no fue modificado durante su transmisión y almacenamiento. Primero, $Z$ se recupera del criptograma como sigue
+\begin{equation}
+Z=E_{2073}/256.
+\end{equation}  
+Después, $x^{L1}$ se genera con la misma clave secreta utilizada en el cifrado; posteriormente, se determinan $Q_{i}$ y $Y_{i}$ de la misma forma que el proceso de cifrado. Finalmente, la plantilla descifrada se calcula con la siguiente expresión
+\begin{equation}
+D(Q_{i})=\left(E_{i} - Y_{i}\right) ~mod~ 256, ~~ para ~i=1,2,3,\ldots ,2072
+\end{equation} 
+donde $Q_{i}$ es el vector de confusión, $E_{i}$ es el criptograma, $Y_{i}$ es el vector de difusión y $D$ es la plantilla recuperada.
+
+\section{Análisis de seguridad}
+Los detalles de programación e implementación en microcontrolador se presentaron en la sección~8.3. Para los análisis de seguridad, en este caso, también se extrae del microcontrolador la plantilla clara y su respectiva plantilla cifrada, para realizar los distintos análisis de seguridad en MatLab. En las siguientes secciones, se presentan los diferentes análisis de seguridad a los que se somete el cifrado de plantilla dactilar con el algoritmo propuesto implementado en microcontrolador para un sistema embebido de autentificación biométrica por huella dactilar. 
+
+\subsection{Espacio de clave secreta}
+De acuerdo con la sección~7.3.2, el espacio de claves es de $2^{128}$ posibilidades, por lo que puede resistir un ataque exhaustivo.
+
+\subsection{Sensibilidad a clave secreta}
+En los capítulos 7 y 8, se mencionó la necesidad de que el algoritmo de cifrado responda de manera drástica a pequeños cambios en la clave secreta. En esta sección, la sensibilidad a la clave secreta en el proceso de cifrado y descifrado, se prueba y verifica, con tres claves secretas similares, las cuales, se pueden consultar en la tabla~9.1. Para realizar este análisis, se propone una plantilla clara de 80 elementos fijos en 150. La figura~9.7 muestra la sensibilidad de la clave secreta al proceso de cifrado con el uso de las claves de la tabla~9.1; se aprecia que cada criptograma tiene su propia ruta, por tanto el algoritmo de cifrado es altamente sensible a la clave secreta. En la figura~9.8 se muestra la sensibilidad a la clave secreta en el proceso de descifrado donde sólo la clave correcta puede recuperar el mensaje original de 50 elementos fijos en 100. \\
+
+\begin{table}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\begin{tabular}{c c} 
+	\hline
+	No. clave & Clave secreta \\
+	\hline
+	Clave 1	& 	11223344556677889900AABBCCDDEEFF	\\
+	Clave 2	& 	1122334\textbf{{\large 5}}556677889900AABBCCDDEEFF	\\ 	
+	Clave 3	& 	11223344556677889900AAB\textbf{{\large C}}CCDDEEFF	\\
+	\hline
+\end{tabular}
+	\caption{Claves secretas utilizadas para análisis de sensibilidad a la clave en cifrado de plantilla de huella dactilar.}
+\end{table}
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.45]{FIG_CAP_09/SENS_CLAVE_CIF.pdf}      
+	\caption{Sensibilidad a la clave secreta en proceso de cifrado de plantilla.}
+\end{figure}
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.45]{FIG_CAP_09/SENS_CLAVE_DES.pdf}      
+	\caption{Sensibilidad a la clave secreta en proceso de descifrado de plantilla.}
+\end{figure}
+
+\subsection{Sensibilidad a texto claro}
+En los capítulos 7 y 8, se menciona la necesidad de que el algoritmo de cifrado responda de manera drástica a pequeños cambios en la plantilla clara. Se utilizan dos medidas para determinar esta sensibilidad: \textit{NPCR} y \textit{UACI} (Sec.~8.3.3). El valor de \textit{NPCR} se determina con
+\begin{equation}
+NPCR=\frac{\sum_{i=1}^{i=2073}W(i)}{2073} \times 100
+\end{equation}
+donde
+\begin{equation}
+W(i) = \left\{ \begin{array}{rl}
+ 0 &\mbox{ if $E_{1}(i)=E_{2}(i)$} \\
+ 1 &\mbox{ if $E_{1}(i)\neq E_{2}(i)$}
+       \end{array} \right.
+\end{equation}  
+y el valor de \textit{UACI} se determina con
+\begin{equation}
+UACI=\frac{100}{2073}\sum_{i=1}^{i=2073}|E_{1}(i)-E_{2}(i)|
+\end{equation}
+donde $\ell$ es la longitud del texto, $E_{1}$ y $E_{2}$ son los dos criptogramas.  \\
+
+Para este análisis, se utilizan plantillas claras con un bit de diferencia entre ellos y se cifran con la misma clave secreta. Se tiene un valor de $NPCR=99.5\%$ y $UACI=88.4\%$ en promedio de 800 criptogramas; este resultado muestra la sensibilidad a la plantilla clara, ya que casi el 100\% de los elementos son diferentes comparando dos criptogramas $E_{1}$ y $E_{2}$ con una magnitud en promedio de 88\%. Además, los resultados son uniformes de acuerdo con la figura~9.9; el pico negativo que se muestra en el criptograma 288 se debe a que existe una pequeña probabilidad de obtener el mismo valor de $Z$, pero esto no es un problema de seguridad, ya que para descifrar correctamente se requiere de la clave secreta de 128 bits.  
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.45]{FIG_CAP_09/NPCR.pdf}   
+	\caption{Resultados diferenciales de 800 criptogramas de huella dactilar: a) resultados de NPCR y b) resultados de UACI.}
+\end{figure}
+
+\subsection{Frecuencia flotante}
+La \textit{frecuencia flotante} determina cuantos símbolos son diferentes en una sección (ventana) del mensaje. Esta información puede utilizarse para determinar si la plantilla cifrada tiene propiedades de uniformidad, es decir, si la plantilla cifrada se divide en varias secciones, cada sección debe tener todos los posibles símbolos de forma uniforme. Para este análisis, se utiliza una ventana de 256 elementos que son el total de elementos que acepta el sistema criptográfico: inicialmente, se seleccionan los primeros 256 elementos del texto y después, la ventana se recorre una posición a la derecha y la prueba se repite a estos otros 256 elementos; así sucesivamente hasta terminar todo el mensaje. La figura~9.10(a) y (b) muestra la frecuencia flotante de la plantilla clara y de la plantilla cifrada, respectivamente; la frecuencia flotante de la plantilla cifrada es uniforme, por tanto, el cifrado propuesto no tiene secciones débiles. Además, el texto cifrado tiene hasta 62\% de todos los posibles elementos contra 24\% del texto claro. 
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.45]{FIG_CAP_09/FREC_FLOTANTE.pdf}  
+	\caption{Análisis de frecuencia flotante de plantilla de huella dactilar: a) plantilla clara y b) plantilla cifrada.}
+\end{figure}
+
+\subsection{Histogramas}
+De acuerdo con la sección~7.3.5, el \textit{histograma} de la plantilla cifrada debe ser uniforme para resistir un ataque estadístico. El histograma de la plantilla clara se muestra en la figura~9.11(a) y se puede apreciar la característica estadística de la fuente; sin embargo, el histograma del texto cifrado es uniforme, como se aprecia en la figura~9.11(b). Por tanto, el esquema propuesto es robusto ante un ataque de histograma y ataque de frecuencia de letras.  
+  
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.45]{FIG_CAP_09/HISTO.pdf}    
+	\caption{Histogramas de la plantilla: a) plantilla clara y b) plantilla cifrado.}
+\end{figure}
+
+\subsection{Autocorrelación}
+De acuerdo con la sección~8.3.7, con la \textit{autocorrelación} se puede determinar si la plantilla cifrada tiene patrones repetitivos, periodicidad o alguna dependencia. Esta se calcula con
+\begin{equation}
+AC(k) = \frac {A-D}{T},
+\end{equation}
+donde \textit{AC}$\in [1 -1]$ es la autocorrelación del mensaje desplazado \textit{k} posiciones, \textit{A} es el número de elementos que concuerdan entre el mensaje original y el mensaje desplazado, \textit{D} es el número de elementos que no concuerdan y \textit{T} es la longitud del mensaje. Grandes valores positivos de $AC$ significa que muchos bits son idénticos y grandes valores negativos de $AC$ significa que muchos bits son opuestos; mientras que un valor de $AC$ nulo significa que se tiene el mismo número de 1's y 0's, situación deseable.   \\
+
+En este análisis, se calcula la autocorrelación a nivel bit y se utilizan 8 bits para representar cada elemento de la plantilla. Primero, la autocorrelación de la plantilla clara se calcula como sigue: los 2,072 elementos se transforman a un renglón de 16,576 bits: \textit{1001001110}\ldots; después, se determina la autocorrelación del mensaje con un valor de hasta $k=500$ hacia la derecha. La figura~9.12(a) y (b), muestran la autocorrelación de la plantilla clara y de la plantilla cifrada, respectivamente. La autocorrelación de la plantilla clara tiene patrones repetitivos con altos valores positivos y altos valores negativos de $AC$; mientras que la plantilla cifrada tiene una autocorrelación cercana a 0, es decir, el proceso de cifrado genera números pseudoaleatorios uniformemente. \\
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.45]{FIG_CAP_09/AUTOCORRELACION.pdf}    
+	\caption{Autocorrelación de plantilla dactilar: a) plantilla clara y b) plantilla cifrada.}
+\end{figure}
+
+\subsection{Ataque de sólo texto claro elegido y conocido}
+El criptoanalista puede atacar un sistema criptográfico para encontrar la clave secreta bajo el principio de Kerckhoffs: el algoritmo de cifrado se conoce (es de dominio público), en cambio la clave es secreta \cite{P_2011}. El ataque de plantilla clara elegida y ataque de plantilla clara conocida, se basan en la suposición de que una clave secreta se utiliza para generar varios criptogramas, por lo que el criptoanalista puede implementar este tipo de ataques sobre el algoritmo de cifrado, para determinar la clave secreta que se ha utilizado durante un tiempo y con ello descifrar otros criptogramas que tiene a su alcance. Un ataque de plantilla clara elegida y conocida es muy poderoso y puede quebrantar el sistema criptográfico, si no se hace una consideración importante en el proceso de cifrado caótico: las secuencias caóticas utilizadas para el cifrado deben ser diferentes para cada plantilla clara considerando el uso de la misma clave secreta.  \\
+
+En un esquema de cifrado donde se utiliza la arquitectura de confusión y difusión, si se elige una plantilla clara para cancelar el proceso de difusión (por ejemplo, una plantilla clara definida en ceros), el criptograma puede representar la secuencia caótica que se utilizó para cifrar (clave secreta) y puede ser utilizada por el criptoanalista para descifrar otros criptogramas que fueron previamente cifrados con esta clave secreta. El el proceso de cifrado de este trabajo, las secuencias caóticas para confusión y difusión, son determinadas de la clave secreta, de la plantilla clara y de datos caóticos del mapa logístico 2. Por tanto, en cada cifrado se generan secuencias caóticas diferentes, incluso con el uso de la misma clave secreta y con una plantilla clara definida en ceros; este proceso evita un ataque de plantilla clara elegida y conocida exitoso. En la figura~9.13 y figura~9.14, se muestra la sensibilidad de los vectores de confusión y difusión, respectivamente; se tienen tres plantillas claras de 25 elementos cada una que varían en un bit entre ellas (se considera que una esta definida en ceros) y son cifradas con la misma clave secreta. Notar que el vector de confusión tiene un rango de 0-25 ya que son las posiciones que se pueden representar, mientras que el vector de difusión se mantiene entre 0-255. \\
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.45]{FIG_CAP_09/VECT_CONFUSION.pdf}     
+	\caption{Sensibilidad del vector de confusión a clave secreta y plantilla clara.}
+\end{figure} 
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.45]{FIG_CAP_09/VECT_DIFUSION.pdf}      
+	\caption{Sensibilidad del vector de difusión a clave secreta y plantilla clara.}
+\end{figure} 
+
+\subsection{Entropía de la información}
+De acuerdo con la sección~7.3.8, la \textit{entropía} determina qué tan impredecible es cierto mensaje. A mayor entropía, más impredecible es un mensaje. El cifrado de plantilla utiliza 256 símbolos diferentes con una entropía máxima de $H=8$. La entropía de la plantilla clara es de $H(P)=5.47$, mientras que la plantilla cifrada tiene $H(E)=7.91$. Por tanto, el cifrado propuesto genera todos los símbolos con aproximadamente la misma probabilidad para generar gran desorden en la plantilla cifrada.
+
+\subsection{Análisis de aleatoriedad FIPS-140-2}
+El análisis de aleatoriedad esta basado en las siguientes pruebas de acuerdo con el estándar FIPS-140-2: \textit{monobit}, \textit{poker}, \textit{run} y \textit{serial} \cite{MEtAl_1996}. Los resultados de estas pruebas están basados en la distribución Chi-cuadrada $\chi^{2}$ con un nivel de significancia de $\alpha =0.05$ y un grado de libertad variable. Además, cada prueba esta basada en 100 criptogramas de la misma plantilla clara pero de cien claves secretas seleccionadas aleatoriamente. \\
+
+El criptograma debe tener el mismo número de 0's y 1's idealmente. La prueba de \textit{monobit} determina cuantos 0's y 1's tiene un criptograma. La prueba \textit{monobit} se calcula con la siguiente expresión   
+\begin{equation}
+Mt = \left( zeros-ones \right)^{2}/\left(2073 \ast 8\right)
+\end{equation}
+donde $Mt$ es la prueba de \textit{monobit} del templete cifrado, $zeros$ es el número de 0's en el criptograma y $ones$ es el número de 1's en el criptograma. Se considera una distribución de chi-cuadrada $\chi^{2}$ de un grado de libertad y el rango critico para $Mt$ debe ser menor a $3.814$. La figura~9.15(a) muestra el resultado de \textit{monobit} de 100 criptogramas y el 96\% pasa la prueba. La prueba \textit{poker} verifica si una secuencia de longitud $m$ y todas sus combinaciones se reproduce con la misma probabilidad; esta prueba se determina como sigue 
+\begin{equation}
+Pt=\left(2^{m} \over k\right) \left(\sum_{i=1}^{i=c} {sum(i)}\right) - k,
+\end{equation} 
+donde $Pt$ es la prueba \textit{poker}, $sum(i)$ es la concurrencia de la secuencia $i$ en el criptograma, $m=3$ es la longitud de la secuencia, $c=2^{3}$ son todas las posibles combinaciones de $m\in(000,001,...111)$ y $k=(2073\ast 8)/3$ son los trigramas no traslapados del criptograma; de acuerdo con la tabla de $\chi^{2}$ y el grado de libertad definido por $2^{m}-1=7$, el umbral de $Pt$ máximo es $14.07$. En la figura~9.15(b), cien pruebas de \textit{poker} se muestran para cada criptograma y el 97\% la pasa con éxito. En la prueba \textit{run}, una corrida de $j$ 1's $0111...10$ (número de 1's continuos) es conocido como \emph{block} y una corrida de $j$ 0's $1000...01$ es llamado \emph{gap}; este análisis prueba si el número de corridas binarias de 1's aparece con la misma probabilidad en el criptograma. La siguiente expresión se utiliza para calcular las corridas para $j=1,2,3$ de 1's y de 0's
+\begin{equation}
+Rt=\sum_{j=1}^{3} {\left[\left(B_{j}-E_{j}\right)^{2} \over E_{j}\right] + \left[\left(G_{j}-E_{j}\right)^{2} \over E_{j}\right]}
+\end{equation}
+donde $Rt$  es la prueba de \textit{run}, $E_{j}=\left(N-j+3\right)/2^{\left(j+2\right)}$ es el número esperado de corridas de longitud $j=1,2,3$ en una secuencia de $N=8$-bit, $B_{j}$ es el número de \emph{blocks} de longitud $j$ en el criptograma y $G_{j}$ es el número de \emph{gaps} de longitud $j$ en el criptograma; con grado de libertad determinado por $(2\ast j-2)=4$, el límite es de 9.488 de acuerdo con la tabla $\chi^{2}$. En la figura~9.15(c), se muestran los resultados de la prueba de \textit{run} de cien criptogramas y el 97\% pasa el análisis. La prueba \textit{serial} revisa si un bit es dependiente de su bit predecesor, calculado mediante     
+\begin{equation}
+St=\left(4 \over L\right) \left( \left(N_{00}\right)^{2}+\left(N_{01}\right)^{2}+\left(N_{10}\right)^{2}+\left(N_{11}\right)^{2}\right)-\left(2 \over L\right) \left(\left(N_{0}\right)^{2}+\left(N_{1}\right)^{2}\right)+1,
+\end{equation}
+donde $St$ es la prueba \textit{serial}, $L=\left(2073\ast 8\right)-1$ es la longitud, $N_{0}$ y $N_{1}$ son los números de 0's y 1's en el criptograma y $N_{00,01,10,11}$ son los números importantes de la subsecuencia con traslape; la distribución $\chi^{2}$ con dos grados de libertad es de 5.991 y la figura~9.15(d) muestra el resultado de $St$ de cien criptogramas, donde el 94\% pasa con éxito la prueba de aleatoriedad. \\
+
+Las pruebas anteriores aportan información importante sobre la calidad del cifrado en términos de aleatoriedad y se puede considerar que el proceso de cifrado genera criptogramas con características de pseudoaleatoriedad excelentes. También, el 95\% de las claves secretas se pueden considerar fuertes y el otro 5\% se considera de mediana fuerza pero no débiles ya que pueden generar buenas propiedades pseudoaleatorias.    
+       
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.45]{FIG_CAP_09/RANDOMNESS.pdf}     
+	\caption{Análisis de aleatoriedad FIPS-140-2 de cien criptogramas: a) prueba \textit{monobit}, b) prueba \textit{poker}, c) prueba \textit{run} y d) prueba \textit{serial}.}
+\end{figure}
+
+\subsection{Recursos de implementación y desempeño}
+La implementación esta basada en un microcontrolador de 32 bits con procesador COLDFIRE de Freescale; el algoritmo de cifrado se programa con lenguaje C y mediante el software CodeWarrior de Freescale se programa la memoria flash del microcontrolador. La frecuencia de operación es de 80 MHz, se utiliza RS-232 para la comunicación con el módulo FS83 y comunicación I2C para el teclado y pantalla LCD. También, se utiliza la memoria flash y salidas digitales para control de acceso.  \\
+
+El algoritmo de cifrado y configuración del microcontrolador requiere de 116 KB (22\%) de un total de 512 KB; los otros 400 KB son utilizados para almacenar plantillas cifradas de los usuarios autorizados. Por tanto, el sistema embebido de autentificación puede registrar hasta 370 usuarios con la memoria flash del microcontrolador. Además, se puede utilizar una memoria externa para dar mayor capacidad. \\
+
+El sistema de autentificación propuesto posee la precisión del módulo FS83 con una tasa de falsa aceptación de $10^{6}$ (uno en un millón acepta un falso usuario) y una tasa de falso rechazo de $10^{2}$ (una de cada cien rechaza a un usuario autorizado). El tiempo de registro de un nuevo usuario requiere de 2.2 segundos, lo que incluye lectura de huella dactilar, cifrado en microcontrolador y almacenamiento en memoria flash. El proceso de autentificación requiere de 3.1 segundos que incluye leer la huella dactilar, descifrar el criptograma del usuario y proceso de comparación. El costo de implementación es menor a \$250 usd. Por tanto, el esquema propuesto puede ser implementado en aplicaciones en tiempo real. 
+
+\section{Conclusiones}
+En este capítulo, un sistema embebido de autentificación basado en huella dactilar y su cifrado caótico fue presentado. El sistema embebido esta basado en un microcontrolador de 32 bits que funciona como unidad central y un módulo FS83 como esclavo (que lee la huella dactilar y realiza proceso de comparación). El sistema propuesto cifra la plantilla de huella dactilar mediante el algoritmo propuesto en este trabajo doctoral; el cifrado se considera robusto con excelentes características pseudoaleatorias de acuerdo con los análisis de seguridad presentados. Los recursos de implementación son mínimos y a bajo costo para generar un rápido tiempo de cifrado y de autentificación. Basado en las limitaciones de la memoria flash del microcontrolador, el sistema puede registrar hasta 370 usuarios en 400 KB de memoria. Debido a la alta seguridad, precisión, bajo costo y velocidad del sistema embebido propuesto en esta tesis, puede ser implementado en aplicaciones en tiempo real en comercio electrónico, celulares, oficinas, bancos, industria, hospitales, entre muchas otras áreas donde se requiere un sistema de autentificación seguro para el control de acceso.
+

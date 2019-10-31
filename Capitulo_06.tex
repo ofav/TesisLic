@@ -1,0 +1,168 @@
+%CAPITULO VI
+
+\chapter{Algoritmo de cifrado caótico propuesto}
+En este capítulo, se presentan los detalles del algoritmo de cifrado propuesto en esta tesis doctoral. Se basa en la arquitectura ampliamente utilizada en la criptografía, conocida como confusión y difusión. Se propone una clave secreta simétrica de 128 bits representada por 32 caracteres hexadecimales para generar secuencias caóticas de dos mapas logísticos y cifrar los datos de manera secuencial (flujo). Finalmente, se describen algunas características de seguridad que presenta el algoritmo de cifrado. 
+
+\section{Introducción}
+Los riesgos potenciales que presenta el almacenamiento y transmisión de información confidencial en medios inseguros es cada día mayor, por lo que se requiere del cifrado de información. Además de la seguridad que requiere el cifrado para hacerlo confiable, también debe poseer velocidad para cifrar datos y requerir poco espacio de memoria para que pueda utilizarse en sistemas digitales en tiempo real, principalmente en sistemas embebidos, en los cuales, se tienen fuentes limitadas de procesamiento y almacenamiento. \\
+
+El algoritmo de cifrado propuesto en este trabajo doctoral, se basa en las siguientes características criptográficas \cite{KyS_1997}:
+\begin{itemize}
+\item \textit{Cifrado simétrico}. El algoritmo utiliza la misma clave secreta para cifrar y descifrar.
+\item \textit{Arquitectura de confusión y difusión}. El algoritmo utiliza procesos para cambiar de posición y cambiar de valor a cada elemento claro en una sola operación.
+\item \textit{Cifrado a flujo}. El algoritmo cifra cada elemento del texto claro, uno a la vez hasta terminarlo. En este caso, se utilizan elementos que son representados por 8 bits (1 byte).
+\item \textit{Cifrado no convencional}. El algoritmo utiliza \textbf{secuencias caóticas del mapa logístico} (Sec.~2.3), que son determinadas por la clave secreta para generar secuencias pseudoaleatorias para realizar el proceso de confusión y difusión.  \\ 
+\end{itemize}
+
+El uso de mapas caóticos unidimensionales como el mapa logístico, tiene cierta desventaja si se utilizan para fines criptográficos. Algunas de las \textit{desventajas} son \cite{AEtAl_2008}:
+\begin{itemize}
+\item Rangos caóticos discontinuos.
+\item Distribución de datos no uniforme.
+\item Espacio de claves pequeño.
+\item Periodicidad en rangos caóticos.  \\
+\end{itemize}
+
+Sin embargo, los sistemas caóticos unidimensionales tienen poderosas \textit{ventajas} como \cite{CyV_2017}:
+\begin{itemize}
+\item Simple estructura.
+\item Fácil de implementar en sistemas digitales.
+\item Poco consumo de memoria y recursos físicos.
+\item Generación de datos a alta velocidad.  \\
+\end{itemize}
+
+Por lo que, en el cifrado propuesto en esta tesis doctoral, se utiliza el mapa logístico unidimensional (2.5) con algunas consideraciones para evitar las desventajas mencionadas. \\  
+
+En la figura~6.1 se muestra el \textbf{diagrama de bloques del proceso de cifrado}, el cual, procede de la siguiente manera: primero, se itera el mapa logístico 2 con base en la clave secreta, después se calcula el valor de $Z$ que tiene relación con el texto claro y secuencias caóticas del mapa logístico 2, se continua con la iteración del mapa logístico 1 con base en la clave secreta y el valor de $Z$ para realizar los procesos de confusión y difusión sobre el texto claro, y finalmente se agrega el valor de $Z$ al criptograma para que el usuario autorizado pueda descifrar correctamente la información.    \\  
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.7]{FIG_CAP_06/ESQUEMA_CIFRADO.pdf}   
+	\caption{Diagrama a bloques del proceso de cifrado caótico del algoritmo criptográfico propuesto.}
+\end{figure}
+
+El proceso de descifrado consiste en invertir el proceso de cifrado. En la figura~6.2 se muestra el \textbf{diagrama de bloques del proceso de descifrado}, el cual, procede como sigue: primero, el valor de $Z$ se extrae de un elemento del criptograma ($Z$ no se calcula como en el caso de cifrado ni se iteran datos caóticos del mapa logístico 2), después 5000 datos caóticos son calculados del mapa logístico 1 con el uso de la clave secreta y el valor de $Z$, posteriormente, se realizan los procesos de confusión y difusión inversos para recuperar el texto claro $P$.  \\  
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.75]{FIG_CAP_06/ESQUEMA_DESCIFRADO.pdf}   
+	\caption{Diagrama a bloques del proceso de descifrado caótico del algoritmo criptográfico propuesto.}
+\end{figure}
+
+\section{Definición de la clave secreta}
+La clave secreta esta definida como una secuencia de 128 bits, caracterizada por 32 caracteres hexadecimales $K\in (0-9,A-F)$; la condición inicial y el valor del parámetro de control de dos mapas logísticos se determinan de manera indirecta con la clave secreta de 128 bits, por lo que se elimina el problema de poco espacio de claves que presentan los sistemas unidimensionales, al utilizar la técnica propuesta (ver tabla~6.1). \\
+
+Además, las ventanas periódicas que se presentan en rangos caóticos del mapa logístico son eliminadas, al considerar un rango del parámetro de control entre $(3.999,4)$, lo que evita claves débiles. Se considera una precisión decimal de $10^{-15}$ para evitar la degradación caótica y periodicidad en su implementación digital. Todas las combinaciones de la clave secreta genera secuencias caóticas, las cuales, son verificadas determinando el valor del máximo exponente de Lyapunov (ver figura~6.3), donde se utiliza una condición inicial arbitraria $x_{0}$ fija, con una $\delta_{0}=1\times 10^{-13}$ y 1,000 iteraciones en cada prueba y el que se varía es el parámetro de control entre ($a\in 3.999-4$) con incrementos de $5\times 10^{-8}$ para generar 20,000 pruebas. \\  
+
+\begin{table}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\scalebox{0.8}{ 
+	\begin{tabular}{c c c c c} 
+	\hline
+	Clave secreta & \multicolumn{2}{c}{Parámetro de control} & \multicolumn{2}{c}{Condición inicial} \\
+	\hline
+	32 dígitos Hex & \multicolumn{4}{c}{$H_{1},H_{2},\ldots,H_{32}$ donde $H\in[0-9,A-F]$} \\
+	Cálculos & $A=\frac{(H_{1},H_{2},\ldots,H_{8})_{10}}{2^{32}+1}$ & 
+				  $B=\frac{(H_{9},H_{10},\ldots,H_{16})_{10}}{2^{32}+1}$ &
+				  $C=\frac{(H_{17},H_{18},\ldots,H_{24})_{10}}{2^{32}+1}$ &
+				  $D=\frac{(H_{25},H_{26},\ldots,H_{32})_{10}}{2^{32}+1}$ \\
+	Logístico 1 & \multicolumn{2}{c}{$a_{1}=3.999+[((A+B+Z)~mod~1)\ast 0.001]$} &
+				 \multicolumn{2}{c}{$x_{1_{0}}=(C+D+Z)~mod~1$} \\	
+	Logístico 2 & \multicolumn{2}{c}{$a_{2}=3.999+[((A+B)~mod~1)\ast 0.001]$} &
+				 \multicolumn{2}{c}{$x_{2_{0}}=(C+D)~mod~1$} \\
+	Rango & \multicolumn{2}{c}{$3.999<a_{1,2}<4$} & \multicolumn{2}{c}{$0<x_{1_{0},2_{0}}<1$} \\
+	Precisión & \multicolumn{4}{c}{$10^{-15}$} \\
+		&	\multicolumn{4}{c}{donde $(a~mod~b)=(a-b)\times (a/b)$ con $b\neq 0$}	\\
+	\hline
+\end{tabular}}
+	\caption{Clave secreta propuesta.}
+\end{table}
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\includegraphics[scale=0.45]{FIG_CAP_07/ANA_LYAP.pdf}    
+	\caption{Máximo exponente de Lyapunov del mapa logístico para todo el espacio de claves.}
+\end{figure}
+
+\section{Optimización de secuencia caótica}
+Se conoce que el mapa logístico genera muchos valores caóticos muy cercanos a 0 y a 1 como se aprecia en la figura~6.4(a), lo que genera una distribución \textit{no uniforme} \cite{AEtAl_2008}. Esta mala distribución, afecta la seguridad del cifrado en los procesos de confusión y difusión, debido a que muchos elementos del texto cifrado no se verán modificados en gran proporción en comparación con el texto claro, lo cual, generaría un criptograma $E$ con propiedades estadísticas inadecuadas y sería susceptible ante ataques de criptoanálisis. Por tanto, no se es recomendable utilizar las secuencias de valores caóticos del mapa logístico directamente. \\
+
+Para superar este problema, en el algoritmo criptográfico propuesto en esta tesis \textbf{se propone un proceso de optimización de secuencias caóticas} mediante una simple operación, la cual, consiste en eliminar los primeros 3 dígitos después del punto de los valores caóticos generados por le mapa logístico; este proceso transforma todos aquellos valores muy cercanos a 0 (ejemplo 0.001321... a 0.321...) y muy cercanos a 1 (ejemplo 0.999231... a 0.231...), a valores totalmente diferentes. Con este proceso se genera una mejor distribución de datos en la secuencia caótica, como se observa en la figura~6.4(b). \\
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.5]{FIG_CAP_06/HISTO_CHAOS.pdf}     	 
+	\caption{Distribución de 10,000 valores del mapa logístico caótico con una separación de 0.001: (a) Datos del mapa logístico directo y (b) datos del mapa logístico ``optimizado'' (utilizados en el proceso de cifrado).}
+\end{figure}
+
+\section{Cálculo de Z}
+El valor de $Z$ es importante para incrementar la sensibilidad a pequeños cambios del texto claro $P$ y a la clave secreta a nivel de bit; al utilizar el valor de $Z$, el proceso de cifrado es robusto ante ataques diferenciales como ataque de texto claro conocido y ataque de texto claro elegido descritos en la sección~4.3. Para determinar el valor de $Z$, todos los elementos de texto claro $P$ se suman con la secuencia de datos caóticos del mapa logístico 2. Primero, el mapa logístico 2 es iterado $I_{2}$ veces con el parámetro de control $a_{2}$ y condición inicial $x_{2_{0}}$ tomados de la tabla~6.1 para generar una secuencia caótica de datos $x^{L2}={x_{1}^{L2},x_{2}^{L2},x_{3}^{L2},\ldots ,x_{I_{2}}^{L2}}$ con $x^{L2}\in (0,1)$ y una precisión decimal de $10^{-15}$. Posteriormente, la secuencia  caótica $x^{L2}$  es ``optimizada'' con la siguiente expresión
+\begin{equation}
+x_{i}^{L2}=\left( x_{i}^{L2}\ast 1000\right)\pmod 1,  ~~    para~i=1,2,3,\ldots,I_{2}
+\end{equation}  
+donde $I_{2}$ es el número de iteraciones del mapa logístico 2, que depende de cada aplicación (entre 1000 y 2000) y \textit{mód} es la operación de módulo. Después, todos los elementos del texto claro se suman con $x^{L2}$ como sigue
+\begin{equation}
+S=\left\lbrace S+[P_{i}\ast x_{I_{2}+1-i}^{L2}]+x_{I_{2}+1-i}^{L2}\right\rbrace \pmod 1,  ~~ para ~i=1,2,3,\ldots,I_{2}
+\end{equation} 
+donde $P_{i}$ representa el elemento $i$ de texto claro, $S$ es una variable inicializada en cero, y $x^{L2}$ corresponde a la secuencia caótica. \textbf{El valor de $Z$ se genera del resultado de $S$} según sea la clase de texto claro como imagen, texto alfanumérico, plantilla dactilar, etc. (por ejemplo ver Sec.~7.2, Sec.~8.2 y Sec.~9.3). 
+
+\section{Cifrado}
+El mapa logístico 1 se itera $I_{1}=5,000$ veces con valores $a_{1}$ y $x_{1_{0}}$ tomados de la tabla~6.1, para generar la segunda secuencia caótica de datos $x^{L1}={x_{1}^{L1},x_{2}^{L1},x_{3}^{L1},\ldots ,x_{I_{1}}^{L1}}$ con $x^{L1}\in(0,1)$ y una precisión decimal de $10^{-15}$. Posteriormente, la secuencia  $x^{L1}$  es ``optimizada'' con la siguiente expresión
+\begin{equation}
+x_{i}^{L1}=\left(x_{i}^{L1}\ast 1000\right)\pmod 1, ~~  para ~i=1,2,3,\ldots,I_{1}
+\end{equation}  
+donde $I_{1}$ es el número de iteraciones para el mapa logístico 1. Cabe mencionar, que sólo los últimos datos requeridos para el cifrado (depende la aplicación) son optimizados para reducir tiempo de cálculo innecesario.\\
+
+De la secuencia caótica $x^{L1}$ se determinan subsecuencias para los procesos de confusión y difusión. Por ejemplo, para el caso de cifrado de imagen a color RGB se requieren dos subsecuencias para el proceso de confusión (una para las filas y otra para las columnas de la imagen) y una secuencia de difusión. \\
+
+Una subsecuencia para el proceso de confusión se determina de la siguiente manera
+\begin{equation}
+CF_{i}=~round\left[ x_{I_{1}-\ell +i}^{L1}\ast (\ell-1)\right]+1, ~~  para ~i=1,2,3,\ldots ,\ell  
+\end{equation} 
+donde $\ell$ es la longitud requerida y $CF\in \left[1,\ell \right]$ es el vector pseudoaleatorio para realizar el proceso de confusión (Nota: se toman los últimos datos de la secuencia caótica $x^{L1}$ para incrementar sensibilidad a la clave secreta y texto claro). En un proceso de confusión eficiente, todos los elementos del texto claro se deben permutar entre si mismos; sin embargo, la ec.~(6.4) genera valores para reposicionamiento repetido. Por tanto, los valores repetidos de $CF$ son cambiados mediante programación como sigue 
+\begin{equation}
+G_{h}=\left[ K_{h} \right], ~~ con ~h\ll \ell 
+\end{equation}
+donde $K_{h}$ es el valor que no esta en $CF$ de menor a mayor. El vector de valores repetidos $G$ se divide en dos secciones y cada valor se asigna a $CF$ de manera alternada donde un valor repetido aparece. Cuando este proceso termina, se tiene un vector para confusión con todas las posibles posiciones (confusión optimizada). \\
+
+Una subsecuencia para difusión se determina de $x^{L1}$ de la misma longitud $\ell$. Como se mencionó, una desventaja del mapa logístico es que genera muchos valores cercanos a 0 y a 1, lo que resultaría en un proceso de difusión ineficiente. Una solución a este problema es eliminar los primeros tres decimales de los datos caóticos, proceso que se realiza sólo para una longitud determinada por $\ell$ y generar un proceso de difusión optimizado. La subsecuencia para difusión se calcula como
+\begin{equation}
+DF_{i}=\left(x_{I_{1}-\ell +i}^{L1}+Z\right)\pmod 1, ~~  para ~i=1,2,3,\ldots ,\ell 
+\end{equation}
+donde $DF_{i}\in \left(0,1\right)$ es el vector pseudoaleatorio para el proceso de difusión con longitud $\ell$ (Nota: se toman los últimos datos de la secuencia $x^{L1}$ por motivos de seguridad). Para cada aplicación en específico, el vector para difusión se determina a partir de $DF$ según se requiera. \\
+
+El proceso de cifrado se calcula con la siguiente expresión
+\begin{equation}
+E_{i}= P(CF_{i}) + DF_{i}, ~~  para ~i=1,2,3,\ldots ,\ell
+\end{equation}
+donde $P$ es el texto claro y $E_{i}$ el el texto cifrado (criptograma). \\
+
+El valor de $Z$ debe ser incluido en el criptograma para que el usuario autorizado pueda descifrar correctamente, ya que no se puede calcular directamente de $E$. Depende la aplicación, el valor de $Z$ es simplemente incorporado al final del criptograma en el caso de texto o escondido en un pixel de una imagen.
+
+\section{Descifrado}
+El proceso de descifrado consiste en invertir todos y cada uno de los pasos desarrollados en el cifrado. Se debe utilizar exactamente la misma clave de 128 bits, ya que si un bit cambia, no se podrá recuperar el mensaje claro. \\
+
+Primero, el valor de $Z$ debe ser recuperado. Después, el mapa logístico 1 es iterado 5,000 veces con la clave secreta y el valor de $Z$. Posteriormente, se calculan las subsecuencias $CF$ y $DF$ para confusión y difusión, respectivamente. Finalmente, el descifrado se realiza con la siguiente expresión
+\begin{equation}
+D_{i}(CF_{i})= E_{i} - DF_{i}, ~~  para ~i=1,2,3,\ldots ,\ell
+\end{equation}
+donde $E_{i}$ el texto cifrado (criptograma) y $D_{i}$ es el mensaje recuperado. 
+
+\section{Características de seguridad y eficiencia}
+El algoritmo de cifrado caótico de información propuesto en este trabajo de investigación doctoral, posee ciertas características de seguridad que aportan robustez ante los ataques criptoanalíticos más poderosos reportados en la literatura (ataque de texto claro elegido/conocido), que han vulnerado un sin número de esquemas criptográficos basados en caos (principalmente para imágenes), ver por ejemplo \cite{WEtAl_2005, WEtAl_2007, ByN_2008, CyS_2009, AyL_2009, LEtAl_2009, REtAl_2010, SEtAl_2010, LEtAl_2011, ZEtAl_2011, LEtAl_2012}. Estas características se discuten a continuación: \\
+\begin{enumerate}
+\item \textbf{Inicialización de secuencias caóticas}. La condición inicial y parámetro de control de dos mapas logísticos, se determinan de manera indirecta a partir de una clave de 128 bits. Con este proceso, se elimina la desventaja de poco espacio de claves de mapas caóticos unidimensionales. 
+\item \textbf{Optimización de secuencias caóticas}. Los datos caóticos del mapa logístico son modificados mediante una simple operación para generar una mejor distribución, lo que genera mejores procesos de confusión y difusión y por tanto, un criptograma con mejores propiedades estadísticas.
+\item \textbf{Cálculo del $Z$}. Al considerar las características del texto claro para realizar el proceso de cifrado, se incremente por mucho la sensibilidad a pequeños cambios (nivel de bit) en el texto claro y a la clave secreta. Además, se utilizan datos caóticos de un segundo mapa logístico para evitar ataques de sólo texto claro elegido (seleccionar un texto claro en ceros y cancelar el valor de $Z$ en el cifrado). Por tanto, este proceso ayuda a dar robustez al algoritmo criptográfico ante los ataques más poderosos que han quebrantado múltiples algoritmos criptográficos basados en caos. 
+\item \textbf{Confusión y difusión optimizados}. Los vectores para cifrado se calculan de tal forma que la confusión es 100\% aplicada en todo el texto claro. Mientras, el proceso de confusión se aplica sobre el texto claro con datos caóticos que presentan una distribución uniforme, lo que genera un cifrado con excelentes características estadísticas.      
+\item \textbf{Selección de datos caóticos}. Los vectores de confusión y difusión se determinan con los últimos valores caóticos del mapa logístico de 5,000 iteraciones. El motivo es porque dos trayectorias caóticas que inician muy cercanas divergen con el tiempo (se vuelven completamente diferentes sin correlación entre ellas) y esto se traduce a una super sensibilidad a la entrada de los mapas logísticos, lo que genera trayectorias completamente distintas al utilizar claves secretas con un bit de diferencia. 
+\item \textbf{Eficiencia de cifrado}. Uso del mapa logístico unidimensional. Este sistema caótico posee ventajas de implementación tanto en velocidad de generación de datos como poco espacio de memoria requerido. Además, los procesos de confusión y difusión son aplicados al texto claro en un mismo proceso, es decir, se evita realizar operaciones de cifrado independientes. De esta manera, se aumenta la eficiencia de procesamiento con reducciones en tiempo de cifrado.   
+\item \textbf{Robustez ante ataques}. Los distintos análisis de seguridad presentados en cada implementación de este trabajo (capítulos 7, 8 y 9) muestran y validan la seguridad estadística del cifrado caótico propuesto.  
+\end{enumerate}
+
+\section{Conclusiones}
+Un buen algoritmo criptográfico basado en caos, debe cumplir con varios aspectos de seguridad para que pueda ser implementado en aplicaciones prácticas, tanto en el método de cifrado como en la selección del generador de secuencias caóticas. En este capítulo, se describió el algoritmo criptográfico basado en caos propuesto en esta tesis doctoral, donde se mencionan las características y aspectos de seguridad que posee para mostrar la eficacia en la protección de información.  
+
+
+
+
+
+

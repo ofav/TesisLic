@@ -1,0 +1,136 @@
+% CAPITULO II
+
+\chapter{Caos}
+En este capítulo, se describe al \textit{caos} desde una perspectiva intuitiva, matemática y gráfica, se presentan las características intrínsecas de un sistema caótico y las propiedades más importantes que posee para su uso en el cifrado. En particular, se describe el sistema caótico tridimensional de Lorenz (en tiempo continuo) y el mapa logístico unidimensional (en tiempo discreto). También, se calcula el máximo exponente de Lyapunov con base a simulaciones en MatLab para verificar la existencia de \textit{caos}. Para mayores detalles sobre el tópico, los lectores interesados puedes consultar, por ejemplo \cite{O_1993, H_2005}.
+
+\section{Introducción}
+Históricamente, el matemático francés H. Poincaré mostró los primeros descubrimientos de dinámicas caóticas con su trabajo de investigación en 1890, con el problema de los tres cuerpos celestes experimentando atracción gravitacional mutua (es decir, una estrella y dos planetas que giran desordenadamente entre ellos de forma circular, ver figura~2.1). Poincaré mostró que las dinámicas muy complicadas (ahora dinámica caótica) que generaba este sistema era posible, en el sentido de que una pequeña perturbación en el estado inicial de la posición del un cuerpo, podría llevar eventualmente a trayectorias radicalmente distintas. Posteriormente, en los años de 1920 al 1980, se desarrolló trabajo matemático sobre la dinámica caótica y la Teoría de caos por G. Birkhoff, M. Cartwright, J. Littlewood, S. Smale, A. Lyapunov, A. Kolmogorov, V. Arnold, E. Lorenz, R. May, M. Feigenbaum, entre otros matemáticos.  \\
+
+A pesar de los avances realizados sobre la dinámica caótica en aquellos tiempos, muy recientemente se apreció que muchos de los sistemas físicos reales se comportan de forma caótica. La principal razón fue la dificultad para diseminar los avances matemáticos a otras áreas de investigación y otra razón fue por que los teoremas mostrados no eran suficientes para convencer a los científicos de otra áreas, de que este tipo de comportamiento podría ser importante en sus sistemas bajo estudio. Actualmente, la situación ha cambiado drásticamente debido a que los sistemas dinámicos son analizados con el uso de computadoras. Avances en esta área, muestran que la dinámica caótica esta presente en una gran variedad de sistemas, por ejemplo en fluidos, plasmas, dispositivos de estado sólido, circuitos electrónicos, láseres, dispositivos mecánicos, biología, química, acústica y mecánica celestial \cite{O_1993}. \\
+
+Intuitivamente, las personas relacionamos el \textit{caos} con adjetivos como desorden, confusión, desconcierto, enredo o desorganización. En matemáticas y otra ciencias, el \textit{caos} se puede describir como un comportamiento impredecible de sistemas dinámicos \textit{no lineales} que son \textit{determinísticos}, presentan extrema sensibilidad a condiciones iniciales y a parámetros de control, presentan una dinámica aperiódica (nunca se repite exactamente) y generan un atractor extraño con dimensión fractal (estructura irregular que ser repite a diferentes escalas). \\
+
+La no linealidad se puede mostrar de forma intuitiva al caracterizar el comportamiento de un sistema en términos de estímulo y respuesta: si a un sistema se le da una ``patada'' y observamos cierta respuesta a esa patada, después nosotros nos podemos preguntar que pasa si le damos una patada al sistema el doble de fuerte. Si la respuesta es doblemente mayor, el comportamiento del sistema se dice que es lineal (al menos para el rango de ``patadas''). Si la respuesta no resulta en el doble de grande (que sea menor o que sea mayor), se dice que el comportamiento del sistema es no lineal \cite{H_2005}. Por ejemplo, la segunda ley de Newton donde dice que la fuerza de una partícula con masa \textit{m} es igual a la masa \textit{m} por su aceleración, en este caso, la fuerza es proporcional a la aceleración de la partícula con una masa fija \textit{m}, por lo cual, es un sistema lineal. En la figura~2.2(a), se muestra un ejemplo de la segunda ley de Newton, donde se tiene una masa fija (automóvil), el cual, es empujado sobre una recta horizontal con la fuerza de un hombre para generar una aceleración de 10 km/h; mientra que, si a esta misma masa se le aplica la fuerza de dos hombres, la aceleración del automóvil sera 20 km/h (el doble).   \\
+
+Por otra parte, un pequeño cambio en el parámetro de entrada en un sistema no lineal resulta en cambios dramáticos en el comportamiento del sistema tanto cualitativa como cuantitativamente. Para ciertos sistemas no lineales, el comportamiento puede ser punto fijo (estable) para cierto valor, para otro valor muy pero muy similar, el comportamiento puede ser ciclo limite (periódico) y para otro valor muy cercano, puede presentar comportamiento caótico. Un sistema se dice que es \textit{determinista}, si su evolución con respecto al tiempo se puede determinar completamente a partir de las condiciones iniciales y parámetros que describen dicho sistema.  \\
+
+Es importante mencionar que determinismo no es igual a predictibilidad. La evolución temporal de las ecuaciones diferenciales son deterministas desde el punto de vista formal, ya que las condiciones iniciales y parámetros de control determinan el futuro de su evolución temporal. En el caso de los sistemas caóticos, estos presentan alta sensibilidad a condiciones iniciales y parámetros de control y su evolución temporal es ``predecible'' a muy corto plazo (ver figura 2.6). En meteorología (sistema complejo que se comporta de forma caótica), la predicción del clima es fiable (precisa) a sólo cuatro días con los modelos computacionales actuales, sin embargo, a diez días, la ``predicción'' es aproximada y muchas veces cambia de forma drástica (por la sensibilidad a condiciones iniciales). \\
+  
+El meteorólogo y matemático estadounidense Edward N. Lorenz es pionero en la \textit{Teoría de caos}. En 1963 desarrolló un sistema de ecuaciones diferenciales no lineales (sistema dinámico) para la predicción del clima, sin embargo, en uno de sus análisis descubrió que el sistema generaba resultados muy diferentes si se variaban ligeramente las condiciones iniciales y además, al generar la gráfica de fase producía un atractor que no era punto fijo ni ciclo límite, el atractor tenía forma \textit{extraña} (ver figura~2.4). \\
+
+\textit{Caos} ha generado mucho interés en áreas científicas, como en ingeniería, física, matemáticas, economía, biología, meteorología, ciencias sociales, entre otras. Sin embargo, recientemente se propuso la aplicación de \textit{caos} en las comunicaciones seguras para brindar confidencialidad a información privada debido a que posee propiedades criptográficas muy interesantes \cite{PyC_1990}. \\
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.45]{FIG_CAP_02/TRES_CUERPOS.pdf}  
+	\caption{Ejemplo de la dinámica del problema de los tres cuerpos.}
+\end{figure}
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.6]{FIG_CAP_02/NEWTON_LINEAL.pdf}  
+	\caption{Ejemplo de un sistema lineal con la segunda ley de Newton.}
+\end{figure}
+
+\section{Sistema caótico y sus propiedades}
+En matemáticas y física, los sistemas dinámicos se pueden clasificar en estables, inestables o caóticos. Un sistema estable es aquel que genera fuerzas de atracción y lo mantiene confinado en un atractor de punto fijo u órbita periódica, mientras que, un sistema inestable generan fuerzas de repulsión que expulsa a la trayectoria fuera del atractor. En este sentido, un sistema caótico presenta ambas características, es decir, existe un atractor que atrae la trayectoria del sistema, pero a la vez, hay otras fuerzas que lo alejan de este y permanece confinado en una zona del atractor para trazar una trayectoria extraña. \\   
+
+Un sistema caótico se puede describir por un conjunto de ecuaciones diferenciales o en diferencias no lineales, que generan secuencias caóticas que son deterministas, es decir, el valor futuro depende del valor actual y que además, presentan las siguientes propiedades: \\
+
+\begin{itemize}
+\item \textit{No linealidad.} Son sistemas de ecuaciones diferenciales (tiempo continuo) o en diferencias (tiempo discreto) no lineales, que no cumple con el principio de superposición. 
+\item \textit{Sensibilidad exponencial a condiciones iniciales y parámetros de control.} La dinámica o trayectoria del sistema caótico se verá altamente modificada si se varía ligeramente una condición inicial o parámetro de control. 
+\item \textit{Mezcla de datos.} Un pequeño rango de condiciones iniciales cubre la mayor parte del espectro caótico.
+\item \textit{Ergodicidad.} La trayectoria caótica se mantiene confinada en un espacio conocido como atractor extraño con respecto al tiempo cubriendo en su totalidad su espacio para cualquier entrada de condición inicial o parámetro de control.
+\item \textit{Exponente de Lyapunov positivo.} Un sistema de dimensión $N$ posee $N$ exponentes de Lyapunov; si uno de ellos es positivo, el sistema es caótico; si dos o más son positivos, el sistema es hipercaótico.
+\item \textit{Atractor extraño con dimensión fractal.} La gráfica de fase del sistema genera lo que se conoce como atractor, que puede ser punto fijo (sistema estable), ciclo límite (sistema periódico) o atractor extraño (sistema caótico).
+\end{itemize}
+
+Muchas de las propiedades mencionadas arriba están estrechamente relacionadas con propiedades criptográficas (Sec.~3.5), por lo que los sistemas caóticos se utilizan para la protección de datos privados en sistemas de comunicación inseguros. \\
+
+\section{Sistema caótico 3D de Lorenz}
+El sistema de Lorenz se conoce ampliamente en la literatura de teoría de caos y su comportamiento dinámico, está descrito por las siguientes ecuaciones diferenciales no lineales \cite{L_1963}:
+\begin{subequations}
+\begin{align}
+\frac{dx}{dt}&=\sigma(y-x), \\
+\frac{dy}{dt}&=\rho x-y-xz, \\
+\frac{dz}{dt}&=xy-\beta z
+\end{align}
+\end{subequations}
+donde $x$, $y$ y $z$ son los estados del sistema, $x_{0}$, $y_{0}$ y $z_{0}$ son las condiciones iniciales, $\sigma$, $\rho$ y $\beta$ son los parámetros de control y $t$ es el tiempo. Con base en programación en MatLab, en la figura~2.3(a)-(c) se muestran los comportamientos temporales de los tres estados caóticos del sistema de Lorenz, a partir de las condiciones iniciales $x_{0}=-8$, $y_{0}=-8$ y $z_{0}=24$ y valores de parámetros de control $\sigma=10$, $\rho=8/3$ y $\beta=28$. Mientras que la figura~2.4 muestra el atractor extraño generado por del sistema de Lorenz proyectado en el plano $xyz$.
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.45]{FIG_CAP_02/LORENZ_TEMP.pdf}  
+	\caption{Comportamientos temporales del sistema caótico de Lorenz: a) estado $x$, b) estado $y$ y c) estado $z$.}
+\end{figure}
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.4]{FIG_CAP_02/LORENZ_ATRACT.pdf}  
+	\caption{Atractor extraño generado por el sistema caótico de Lorenz ployectado en el plano $xyz$.}
+\end{figure}
+
+\subsection{Máximo exponente de Lyapunov}
+La sensibilidad a condiciones iniciales de un sistema dinámico puede medirse a través del máximo exponente de Lyapunov, el cual, determina si dos trayectorias que inician extremadamente cercanas divergen con el tiempo \cite{W_1986}. El sistema de Lorenz es tridimensional (tres estados) por lo que tiene tres exponentes de Lyapunov ($\lambda_{1}$, $\lambda_{2}$ y $\lambda_{3}$) por cada estado del sistema caótico y si existe al menos un exponente de Lyapunov positivo, la secuencia generada es caótica. \\
+
+El método que se implementa para calcular el máximo exponente de Lyapunov se llama \textit{separación de órbita} \cite{S_2003}. El proceso consta de dos secuencias del sistema de Lorenz resuelto por RK4 (Lorenz ``discreto'', Sec.~5.2) $S$ y $S^{*}$ que inician con la misma condición inicial $S_{0}=S^{*}_{0}$, hasta este punto ambas trayectorias son idénticas; después, $S^{*}_{0}$ se perturba por una pequeña constante $\epsilon$ y se vuelve a determinar $S^{*}$. La distancia entre las dos soluciones numéricas se calcula y almacena. Posteriormente, el valor de $S^{*}$ se cambia por las ecuaciones~(2.2)(a)-(c), de tal forma que esté separado sólo $\epsilon$ de $S_{0}$, pero que $S^{*}$ se mantenga en su dirección original:   
+\begin{subequations}
+\begin{align}
+S^{*}_{k} & = S_{k} + (\frac{\epsilon}{D_{k}})C_{k},  \\
+D_{k} & = \sqrt{(C_{k})^{2}}, \\
+C_{k} & = S_{a_{k}} - S_{b_{k}}
+\end{align}
+\end{subequations}
+donde $1 \leq k \leq T$ es el número de iteraciones, $D_{k}$ es la separación de órbita entre $S$ y $S^{*}$ y $C_{k}$ es sólo una resta entre la órbita $S$ y $S^{*}$. \\
+
+Hasta este punto, únicamente se tiene la solución numérica y el proceso de normalización, por lo que para determinar el máximo exponente de Lyapunov, es necesario hacer otros cálculos: en cada iteración se calcula el logaritmo natural de la separación relativa con ec.~(2.3) y se suma el valor de cada iteración, 
+\begin{equation}
+Sep = log(\frac{D_{k}}{\epsilon}) 
+\end{equation}
+donde $Sep$ es la suma de los logaritmos en cada iteración. Al terminar las iteraciones $T$, el mayor exponente de Lyapunov de la órbita $S$ se calcula con la expresión
+\begin{equation}
+\lambda_{1} = \frac{(Sep/T)}{\epsilon}  
+\end{equation}
+donde $\lambda_{1}$ es el \textit{mayor exponente de Lyapunov}. \\
+
+Con base en simulaciones en MatLab, se determina el máximo exponente de Lyapunov para los siguientes valores iniciales:  $x_{0}=-8$, $y_{0}=-8$ y $z_{0}=24$ y valores de los parámetros $\sigma=10$, $\rho=8/3$, $\beta=28$, $\epsilon=1 \times10^{-9}$, $T=10,000$, con lo cual, se obtiene el mayor exponente de Lyapunov $\lambda_{1}=0.8$, lo que verifica la existencia de caos en la secuencia generadas en MatLab (fig.~2.3).   
+
+\section{Mapa caótico 1D logístico}
+En 1976, Robert May estudió un modelo matemático no lineal en tiempo discreto, con el cual, explicó la dinámica poblacional de especies animales \cite{M_1976}. En su modelo, consideró la población proporcional entre 0 y 1, donde 0 representa cero individuos y 1 el máximo número de individuos que pueden existir; para la estimación de la población en un instante de tiempo, consideró la población en un instante de tiempo previo multiplicado por una constante (que depende del clima, alimento, ambiente, etc.) y esto a su vez multiplicado por 1 menos la población en un instante previo (a mayor población, esta crece con más dificultad). May encontró en su modelo soluciones punto fijo, periódicas y caóticas según el valor del parámetro. El hecho de que el modelo generaba dinámicas complejas deterministas para ciertos valores de la constante, generó gran interés en la comunidad científica y fue uno de los modelos matemáticos no lineales que fue base para estudios en la teoría de caos.  \\   
+
+El mapa \textit{logístico} unidimensional es conocido como el sistema no lineal \textit{más simple} que existe y que exhibe claramente la ruta al caos, está descrito por la siguiente ecuación en diferencias \cite{M_1976}:
+\begin{equation}
+x_{n+1}=ax_{n}(x_{n}-1)
+\end{equation}
+donde $x_{n}\in(0,1)$ es el estado del mapa discreto, $x_{0}$ es la condición inicial con valores entre $0< x_{0}<1$ y $a$ es el parámetro de control con $3.57<a<4$ para que el mapa genere secuencias caóticas. \\
+
+En la figura~2.5 se muestra el comportamiento temporal del mapa logístico (2.5) a partir de la condición inicial $x_{0}=0.8$ y el valor del parámetro $a=3.9$; se observa que la trayectoria es caótica con respecto al tiempo discreto.
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.4]{FIG_CAP_02/LOGISTICO_TEMP.pdf} 
+	\caption{Comportamiento temporal del mapa logístico.}
+\end{figure}
+
+\subsection{Máximo exponente de Lyapunov}
+La secuencia caótica del mapa logístico se verifica con el exponente de Lyapunov; se tiene un exponente de Lyapunov ya que el mapa logístico es unidimensional (un estado). De forma similar a la vista en 2.3.1, se generan dos secuencias caóticas del mapa logístico con el mismo valor del parámetro de control pero con condiciones iniciales muy cercanas. \\
+
+El exponente de Lyapunov se determina con la siguiente expresión 
+\begin{equation}
+\lambda=\dfrac{1}{T}~ln~|\dfrac{f^{n}(x_{n}-\delta_{0})-f^{n}(x_{n})}{\delta_{0}}|
+\end{equation}
+donde $\lambda$ es el exponente de Lyapunov, $x_{0}$ es una condición inicial, $x'_{0}=x_{0}+\delta_{0}$ es otra condición inicial extremadamente cercana y $T$ es el número de iteraciones. \\
+
+Para el estudio, se utiliza como condición inicial $x_{0}=0.234567898765432$, una perturbación de $\delta_{0}=1 \times10^{-13}$, número de iteraciones $T=1,000$ y parámetro de control $a=3.9$, para obtener el valor del exponente de Lyapunov $\lambda=0.499$, para verificar que la secuencia es caótica. \\
+
+En la figura~2.6(a), se muestran las primeras 100 iteraciones de la trayectoria de ambas secuencias caóticas que inician muy cercanas pero al pasar el tiempo, estas divergen; en la figura~2.6(b) se muestra el error entre dos trayectorias caóticas generadas por las condiciones iniciales $x_{0}=0.234567898765\textbf{4}32$ y $x'_{0}=0.234567898765\textbf{5}32$.
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	 \includegraphics[scale=0.45]{FIG_CAP_02/LOGISTICO_LYAP.pdf} 
+	\caption{Sensibilidad del mapa logístico a condiciones iniciales: a) comportamiento temporal y b) gráfica del error.}
+\end{figure}
+
+\section{Conclusiones}
+Las características y propiedades de sistemas caóticos fueron presentados en este capítulo, particularmente se presentó el sistema de Lorenz y el mapa logístico, por ser dos sistemas no lineales pioneros en la teoría de caos. También, se presentó el cálculo de los exponentes de Lyapunov en cada caso, para verificar la existencia de caos mediante simulaciones en MatLab. Las secuencia generada por el sistema caótico tiene características de pseudoalatoriedad, por lo que una de sus aplicaciones es la criptografía.  

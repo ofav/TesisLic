@@ -1,0 +1,154 @@
+% CAPITULO X
+
+\chapter{Conclusiones generales}
+En este trabajo de tesis doctoral, se diseñó e implementó un algoritmo criptográfico basado en caos, que se caracteriza por ser seguro y eficiente para aplicaciones en sistemas embebidos (y no embebidos) para brindar confidencialidad a la información cuando se almacena en base de datos o se transmite a través de un canal inseguro y con ello resolver un problema de seguridad que se presenta en los sistemas de comunicación actuales. \\
+
+Primeramente, se analizaron e implementaron dos sistemas caóticos (sistema de Lorenz y mapa logístico) en la tecnología digital del microcontrolador, para determinar qué sistema ofrecía la mejor combinación de desempeño \textit{vs} seguridad para ser utilizado en el cifrado. Se optó por el mapa logístico que presenta algunas desventajas en su aplicación en la criptografía pero se hacen algunas consideraciones para evitarlas. Además, la existencia de caos fue verificada con la determinación del máximo exponente de Lyapunov.  \\
+
+Después, se diseñó un algoritmo criptográfico que tiene las siguientes propiedades: clave secreta simétrica, cifrado de flujo, una ronda de la arquitectura de confusión-difusión y secuencias caóticas del mapa logístico (cifrado no convencional) con distribución mejorada. Las características de seguridad y eficiencia que presenta son: clave secreta de 32 dígitos hexadecimales (128 bits) para determinar las secuencias caóticas de manera indirecta (resiste un ataque exhaustivo aún con el uso de un mapa caótico unidimensional), distribución mejorada de las secuencias caóticas con una simple operación (criptograma con mejores propiedades estadísticas), se consideran las características de la información clara para determinar las secuencias pseudoaleatorias de cifrado (incrementa la sensibilidad a texto claro y clave secreta), procesos de confusión y difusión optimizados (el 100\% de los elementos de texto claro son permutados y la difusión se realiza con datos optimizados del mapa logístico), selección de los últimos datos caóticos para el cifrado (incrementa la sensibilidad a la clave secreta) y eficiencia de cifrado (proceso de confusión y difusión en una operación).  \\   
+
+Finalmente, el algoritmo criptográfico propuesto en la tesis doctoral se aplicó en tres diferentes casos para probar su versatilidad:
+\begin{itemize}
+\item \textit{Imagen a color RGB}: como primera fase, se implementa en MatLab a nivel software con programación en lenguaje C para cifrar imágenes a color RGB (también cifra imágenes a escala de grises, sin embargo estas no se reportan en este trabajo doctoral por ser de menor interés).
+\item  \textit{Texto alfanumérico} y \textit{Plantilla de huella dactilar}: implementados en un microcontrolador de 32 bits con programación en lenguaje C para aplicaciones embebidas donde se cifra texto alfanumérico correspondiente a la tabla de código ASCII y para cifrar plantillad biométricas de huella dactilar.  \\  
+\end{itemize} 
+
+La seguridad del cifrado se verificó (a nivel lógico basada en simulaciones en MatLab) con distintos análisis de seguridad como error de desencriptado, espacio de claves, sensibilidad a la clave, sensibilidad al texto claro, histogramas, correlación, entropía de la información, frecuencia flotante, N-gramas, autocorrelación, pruebas estadísticas de aleatoriedad FIPS-140-2 del NIST. Por otra parte, la eficiencia de la implementación del cifrado en microcontrolador se validó con análisis de recursos \textit{vs} desempeño como memoria utilizada, frecuencia del sistema, dimensiones, costos y tiempo de cifrado.   \\ 
+
+Los resultados muestran que el algoritmo criptográfico propuesto en la tesis, puede ser implementado en sistemas embebidos en aplicaciones como la milicia, medicina, biometría, informática, financiera, sanidad, pagos electrónicos, información personal, telemedicina, entre otros, donde se requiera almacenamiento y/o transmisión de información de manera segura.
+
+\section{Principales contribuciones de este trabajo doctoral}
+La siguiente lista muestra a manera de resumen, las principales contribuciones de este trabajo de investigación doctoral al cifrado de información empleando caos: \\
+
+\begin{enumerate}
+\item  Se implementó el sistema de Lorenz 3D y el mapa logístico en microcontrolador de 32 bits con una precisión de $10^{-15}$.
+
+\item  Se analizó la eficiencia \textit{vs} seguridad del sistema caótico de Lorenz y logístico, en microcontrolador para su aplicación en criptografía.
+
+\item Se verificó la existencia de la dinámica caótica generada en microcontrolador para 10,000 iteraciones en ambos sistemas caóticos mediante el máximo exponente de Lyapunov. 
+
+\item Se diseñó un algoritmo criptográfico basado en caos, que utiliza una ronda de confusión y difusión y características de la información clara para generar información cifrada, con excelentes propiedades estadísticas de pseudoaleatoriedad.
+
+\item Se propuso un método para determinar la condición inicial y parámetro de control del mapa logístico, a partir de una clave de 128 bits y de las características totales del texto claro. 
+
+\item Se propuso un método sencillo para optimizar la distribución de datos del mapa logístico y con ello generar un mejor cifrado.
+
+\item Algoritmo criptográfico diseñado es resistente ante un ataque de sólo texto claro elegido y conocido, con el cual, muchos algoritmos recientes basados en caos han sido quebrantados.
+
+\item Se cifró imagen a color RGB, texto alfanumérico y plantillas dactilares. 
+
+\item Se presentaron dos esquemas de cifrado en sistema embebido: texto alfanumérico y plantillas de huella dactilar para sistemas de acceso seguro.
+
+\item En cada caso, se analizó la calidad del cifrado mediante un amplio análisis de seguridad a nivel teórico o lógico. 
+
+\end{enumerate}
+
+\section{Trabajo futuro}
+Como trabajo futuro que se deriva de esta investigación, se contempla encaminar las actividades en las siguientes direcciones:
+
+\begin{enumerate}
+\item Realizar análisis de seguridad a nivel físico de los sistemas embebidos presentados es este trabajo, como análisis de la información de tiempo de cálculos, el monitoreo de consumo de energía, fugas electromagnéticas, análisis de sonido o remanencia de datos, que puede proporcionar una fuente adicional de información que puede ser explotada para romper el sistema. 
+
+\item Implementar en microcontrolador y analizar otros mapas caóticos unidimensionales o bidimensionales principalmente en tiempo discreto, para su aplicación en criptografía: por ejemplo mapa círculo, mapa de Bernoulli, mapa Gaussiano, mapa de Duffing, mapa exponencial, mapa de Hénon, mapa de Ikeda, mapa de Lozi, mapa estándar, mapa de tent, ecuación Duffing y oscilador Van der Pol.
+
+\item Discretizar sistemas hipercaóticos e implementarlos en microcontrolador para determinar la combinación de eficiencia \textit{vs} seguridad para su aplicación en criptografía.
+
+\item Utilizar criptografía ADN y caótica para diseñar un algoritmo criptográfico e implementarlo en sistemas embebidos.
+
+\item Aplicación del cifrado propuesto en sistemas embebidos con transmisión de datos a través de internet: meteorología remota, control de acceso físico y lógico, monitoreo de sismos y maremotos, entre otros.
+
+\item Implementación de algoritmo de cifrado en FPGA para proteger imágenes digitales y video, para aplicación en videoconferencia y televisión de paga.
+
+\item Validar el algoritmo criptográfico propuesto con el estándar FIPS-140-2: requerimientos de seguridad para sistemas criptográficos con nivel de seguridad 3 donde se requiere seguridad física.
+   
+\end{enumerate}
+
+\section{Productos derivados de este trabajo doctoral}
+Los estudios doctorales consistieron de cuatro años, durante los cuales, se realizaron trabajos de investigación relacionados con la criptografía caótica y su implementación en sistemas embebidos. Estos trabajos están publicados o sometidos en revistas indexadas en SCI (del ingles, \textit{Science Citation Index}), congresos nacionales e internacionales y revistas de divulgación. Estos productos se listan a continuación: \\
+
+\textbf{I) Revistas indexadas (SCI)}
+\begin{enumerate}
+\item \textbf{Murillo-Escobar M.A.}, Cruz-Hernández C., Abundiz-Pérez F., López-Gutiérrez R.M., y Acosta Del Campo O.R. (2015) A RGB image encryption algorithm based on total plain image characteristics and chaos. \textit{Signal Processing}, \textbf{109}: 119–131. Factor de Impacto: 2.238
+
+\item \textbf{Murillo-Escobar M.A.}, Cruz-Hernández C., Abundiz-Pérez F. y López-Gutiérrez R.M. (2014) A robust embedded biometric authentication system based on fingerprint and chaotic encryption. \textit{Expert Systems with Applications}, sometido. Factor de Impacto: 1.965
+
+\item \textbf{Murillo-Escobar M.A.}, Cruz-Hernández C., Abundiz-Pérez F. y López-Gutiérrez R.M. (2015) Implementation of an improved chaotic encryption algorithm for real-time embedded systems by using a 32-bit microcontroller. \textit{Microprocessors and Microsystems}, sometido. Factor de Impacto: 0.598 \\
+\end{enumerate}
+
+\textbf{II) Artículos en extenso en congresos nacionales e internacionales}
+\begin{enumerate}
+\item \textbf{Murillo-Escobar M.A.}, Cruz-Hernández C., Abundiz-Pérez F. y López-Gutiérrez R.M. (2014) Cifrado caótico de plantilla de huella dactilar en sistemas biométricos. \textit{XVI Congreso Latinoamericano de Control Automático CLCA 2014, Cancún, Quintana Roo}, pp. 18-23.
+
+\item \textbf{Murillo-Escobar M.A.}, Abundiz-Pérez F., Cruz-Hernández C. y López-Gutiérrez R.M. (2014) A novel symmetric text encryption algorithm based on logistic map. \textit{2014 Proceedings of the International Conference on Communications, Signal Processing and Computers, Interlaken, Suiza}, pp. 49-53. ISBN: 978-1-61804-215-6 \\
+\end{enumerate}
+
+\textbf{III) Artículos de divulgación}
+\begin{enumerate}
+\item \textbf{Murillo-Escobar M.A.}, López-Gutiérrez R.M., Cruz-Hernández C. y Abundiz-Pérez F. (2013). Encriptado caotico de audio utilizando el sistema de Lorenz. \textit{XX Jornadas de Ingeniería Arquitectura y Diseño, FIAD-UABC}, pp. 97-100. ISBN: 978-0-615-93971-1
+
+\item \textbf{Murillo-Escobar M.A.}, López-Gutiérrez R.M., Cruz-Hernández C. y Abundiz-Pérez F. (2013). Implementación del sistema caótico de Lorenz en tecnología digital FPGA. \textit{XX Jornadas de Ingeniería Arquitectura y Diseño, FIAD-UABC}, pp.101-104. ISBN: 978-0-615-93971-1
+
+\item \textbf{Murillo-Escobar M.A.}, López-Gutiérrez R.M., Cruz-Hernández C. y Abundiz-Pérez F. (2013). Sincronización de nueve luciérnagas electrónicas. \textit{XX Jornadas de Ingeniería Arquitectura y Diseño, FIAD-UABC}, pp. 105-108. ISBN: 978-0-615-93971-1 \\
+\end{enumerate}
+
+\textbf{IV) Seminarios}
+
+\begin{enumerate}
+\item \textbf{Murillo-Escobar M.A.}, Cruz-Hernández C., Abundiz-Pérez F. y López-Gutiérrez R.M. Cifrado caótico de plantilla de huella dactilar en sistemas biométricos. Seminarios del cuerpo académico \textit{Sistemas complejos y sus aplicaciones}, Platica impartida en FIAD-UABC en octubre de 2014. 
+
+\item \textbf{Murillo-Escobar M.A.} Encriptado simétrico para imágenes a color basado en la arquitectura de permutación–difusión y el mapa logístico caótico. Platica impartida en Física Aplicada, CICESE, noviembre de 2013.
+
+\item \textbf{Murillo-Escobar M.A.} Encriptado de imagen a color usando caos. Seminarios del cuerpo académico \textit{Sistemas complejos y sus aplicaciones}, Platica impartida en FIAD-UABC en mayo de 2012. 
+\end{enumerate}
+
+\subsection{Trabajos en colaboración}
+
+\textbf{I) Revistas indexadas (SCI)}
+\begin{enumerate}
+\item Acosta-Del Campo O.R., Cruz-Hernandez C., López-Gutiérrez R.M., Arellano-Delgado A. y \textbf{Murillo-Escobar M.A.} (2015) Complex Networks Synchronization of Rosslers Oscillators. \textit{Mathematical Problems in Engineering}, Sometido. 
+
+\item Acosta-Del Campo O.R., Cardoza-Avendano L., López-Gutiérrez R.M., Cruz-Hernandez C., Abundiz-Perez F., \textbf{Murillo-Escobar M.A.} (2015) Network synchronization of chaotic Nd:YAG lasers. \textit{Chaos, Solitons and Fractals}, Sometido. 
+
+\item  Abundiz-Pérez F., Cruz-Hernández C., \textbf{Murillo-Escobar M.A.} y López-Gutiérrez R.M. (2015) Hyperchaotic encryption of fingerprint image in biometric system. \textit{ETRI Journal}, sometido.  \\
+\end{enumerate}
+
+\textbf{II) Artículos en extenso en congresos nacionales e internacionales}
+
+\begin{enumerate}
+\item Abundiz-Pérez F., Cruz-Hernández C., \textbf{Murillo-Escobar M.A.} y López-Gutiérrez R.M. (2014) Fingerprint image encryption based on Rössler map. \textit{2014 Proceedings of the International Conference on Communications, Signal Processing and Computers, Interlaken, Suiza}, pp. 193-197.
+
+\item Abundiz-Pérez F., Cruz-Hernández C., \textbf{Murillo-Escobar M.A.}, López-Gutiérrez R.M. Michel-Macarty J.A. y Cervantes-De Avila H. (2014) Encriptado de imágenes utilizando caos y secuencia de ADN. \textit{XVI Congreso Latinoamericano de Control Automático CLCA 2014, Cancún, Quintana Roo}, pp. 12-17.  \\
+\end{enumerate}
+
+\textbf{III) Artículos de divulgación}
+\begin{enumerate}
+\item Cruz-Hernández C., López-Gutiérrez R.M., Abundiz-Pérez F. y \textbf{Murillo-Escobar M.A.} (2013). Sistema de acceso seguro basado en huella dactilar y encriptado caótico con mapa logístico. \textit{XX Jornadas de Ingeniería Arquitectura y Diseño, FIAD-UABC}, pp. 109-112.  \\
+\end{enumerate}
+
+Actualmente, se cuenta con material para someter en congresos o revista de divulgación, los cuales se mencionan a continuación: \\
+
+\textbf{IV) Trabajos en proceso de sometimiento}
+\begin{enumerate}
+\item A novel dynamic model to synchronize fireflies based on coupling matrix. \textit{Para congreso}.
+\item Estudio de redes complejas: Una Teoría en su infancia. \textit{Para artículo de divulgación}. \\
+\end{enumerate}
+
+Parte de las actividades de formación en los estudios doctorales, fue participar en la revisión de trabajos que fueron sometidos en revistas indexadas y congresos, estos se listan a continuación: \\
+
+\textbf{V) Arbitraje de artículos para revistas indexadas y congresos}
+\begin{enumerate}
+\item \textit{Optics \& Laser Technology}. Original Research (SCI). Trabajo revisado en 2012.
+
+\item \textit{Mathematical Problem in Engineering}. Original Research (SCI). Trajo revisado en 2013.
+
+\item \textit{Nonlinear Dynamics}. Original Research (SCI). Trabajo revisado en 2014. 
+
+\item \textit{Nonlinear Dynamics}. Original Research (SCI). Trabajo revisado en 2014.
+
+\item \textit{XVI Congreso Latinoamericano de Control Automático CLCA 2014}. Manuscrito para congreso revisado en 2014.
+
+\item \textit{XVI Congreso Latinoamericano de Control Automático CLCA 2014}. Manuscrito para congreso revisado en 2014.
+
+\item \textit{XVI Congreso Latinoamericano de Control Automático CLCA 2014}. Manuscrito para congreso revisado en 2014.  \\
+
+\end{enumerate}

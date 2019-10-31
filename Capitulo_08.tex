@@ -1,0 +1,267 @@
+% CAPITULO VIII
+
+\chapter{Cifrado caótico de texto alfanumérico en microcontrolador}
+Actualmente, muchos sistemas embebidos están conectados a internet para transmitir información privada o simplemente para almacenamiento de datos. Por ejemplo, desde un sistema embebido que esta instalado en una casa habitación para controlar de forma remota aparatos electrodomésticos o la temperatura del aire acondicionado mediante una pagina web, hasta aplicaciones industriales donde se miden y controlan variables físicas y procesos de manufactura o estaciones meteorológicas que se ubican de forma aislada y remota para trasmitir via internet los detalles del clima. Toda esta información sensible requiere ser cifrada antes de su transmisión y almacenamiento para aportar seguridad a la comunicación y en la base de datos, respectivamente. \\
+
+En este capítulo, se describe una implementación en microcontrolador de 32 bits del algoritmo de cifrado simétrico propuesto, para proteger texto en sistemas embebidos, se verifica la seguridad y eficiencia mediante un amplio análisis de seguridad como espacio de claves, sensibilidad a la clave y texto claro, frecuencia flotante, histogramas, N-gramas, autocorrelación, entropía y ataques clásicos. También, se realiza un análisis de implementación y desempeño como detalles de programación, memoria requerida, frecuencia de operación, costos de implemetación y tiempo de cifrado. Todos los análisis, muestran y verifican que el algoritmo propuesto en este trabajo doctoral, puede implementase en sistemas embebidos para cifrado de texto con alta seguridad lógica en aplicaciones de tiempo real. 
+
+\section{Introducción}
+El problema de seguridad en sistemas de comunicaciones inseguros, se discutió ampliamente en los capítulos anteriores, se mostró que se requiere de un cifrado para mantener la integridad de la información en su almacenamiento y transmisión. Actualmente, \textit{Triple Data Encryption Algorithm} (\textit{TDEA}) y \textit{Advanced Encryption Standard} (\textit{AES}) son estándares de cifrado simétrico adoptados por los EUA, de los cuales, los datos son cifrados en bloques y la misma clave secreta se utiliza para cifrar y descifrar.  \\ 
+
+Están basados en una red de feistel y en la arquitectura de confusión y difusión, respectivamente \cite{FIPS46_1999, FIPS197_2001}. Sin embargo, \textit{TDEA} es más lento que \textit{AES} para cifrar datos, pero \textit{AES} tiene desventajas en el número de rondas de confusión y difusión, es un algoritmo altamente estructurado que podría ser quebrantado en los siguientes años \cite{FEtAl_2001}. \textit{Rivest, Shamir and Adleman} (\textit{RSA}) es un algoritmo de cifrado asimétrico con ventajas de seguridad pero requiere de mayor tiempo y memoria que cualquier otro algoritmo simétrico. \\
+
+Recientemente, criptografía ADN (ácido desoxirribonucleico) ha sido propuesta para cifrado de texto, donde las cuatro bases de ADN son caracterizados por datos binarios, operaciones de complemento ADN se utiliza en proceso de cifrado y secuencias ADN son usadas como claves secretas \cite{A_1994, GEtAl_2006a, ByT_2010, XEtAl_2010, AEtAl_2011, LEtAl_2013a}. Sin embargo, los algoritmos basados en ADN no son efectivos debido a la influencia de factores biológicos \cite{ZEtAl_2012}. Por otra parte, las características de caos estan relacionadas con propiedades criptográficas, por lo que se han presentado algoritmos criptográficos basados en caos para texto \cite{MyM_2012} y principalmente para imágenes (Sec.~7.1). \\       
+
+Existen muchas áreas como la milicia, industria, comercio electrónico, sistemas biométricos, telemedicina, datos personales, etc., en las cuales, se requiere mantener la integridad de la información mediante cifrado para evitar problemas de seguridad cuando la información se transmite a través de canales inseguros o en su almacenamiento en sistemas embebidos \cite{FyS_2014}. En los últimos años, se realizaron algunos avances de implementaciones en microcontrolador de sistemas caóticos y pocas implementaciones de algoritmos de cifrado caótico (Sec.~4.6). Sin embargo, estas implementaciones recientes no presentan un análisis detallado sobre la seguridad del cifrado ni muestran la existencia de caos, por lo que la seguridad y desempeño no se verifica en su totalidad. \\
+
+En este capítulo, se presenta una implementación digital en un microcontrolador de 32 bits del algoritmo de cifrado propuesto en este trabajo de tesis, con el propósito de proteger datos en forma de texto alfanumérico. Un análisis de seguridad  completo muestra la efectividad de la implementación y la seguridad que brinda, por lo que puede utilizarse para proteger la integridad de datos en sistemas embebidos en tiempo real. En las siguientes secciones, se muestran detalles del cifrado, después la implementación digital y el análisis de seguridad para resistir ataques de tipo lógicos (teóricos).
+
+\section{Cifrado}
+Se considera un texto claro $P$ con longitud $\ell$ basado en código imprimible ASCII: minúsculas, mayúsculas, espacio, números y signos de puntuación, con un total de 95 caracteres. Cada código tiene un valor decimal entre 32-126 de acuerdo a la tabla ASCII. La figura~8.1 muestra el diagrama a bloques del proceso de cifrado de texto, donde se utiliza como clave secreta \textit{11223344556677889900AABBCCDDEEFF}. \\
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.6]{FIG_CAP_08/ESQUEMA_CIFRADO_TXT.pdf}     
+	\caption{Diagrama a bloques del proceso de cifrado caótico de texto.}
+\end{figure}
+
+\textbf{Primero}, el valor de $Z$ se determina de la siguiente manera:  \\
+
+Todos los caracteres del texto claro se suman con datos caóticos del mapa logístico para incrementar la seguridad ante ataques diferenciales. El mapa logístico 2 es iterado $I_{2}=\ell +100$ veces con valores de $a_{2}$ y $x_{2_{0}}$ tomados de la tabla~6.1 para generar la secuencia de datos caóticos $x^{L2}$ con $x^{L2}\in (0,1)$ y una precisión decimal $10^{-15}$.  Los valores del texto claro se suman de acuerdo a la siguiente expresión
+\begin{equation}
+S=\left[ S+ \left( P_{i}\ast x_{I_{2}+1-i}^{L2}\right) \right] \pmod 1, ~~ para ~i=1,2,3,\ldots ,\ell
+\end{equation}
+donde $P_{i}$ representa el texto claro en valor decimal, $S$ es una variable inicializada en cero y \textit{mód} es la operación de módulo. $Z$ debe ser un valor proporcional a 32-126 para evitar su cancelación ante un ataque diferencial, donde se utiliza un texto claro fijo en 32 (espacio); esto se resuelve de la siguiente forma
+\begin{equation}
+V=~round(S\ast 94)+32,
+\end{equation}
+donde \textit{round} es la operación de redondeo al valor más cercano. Finalmente, $Z$ con una precisión de $10^{-15}$ se determina por
+\begin{equation}
+Z=V/127.
+\end{equation}
+
+\textbf{Segundo}, el proceso de cifrado consiste de las siguientes operaciones:   \\
+
+El mapa logístico 1 se itera $I_{1}=5,000$ con valores de $a_{1}$ y $x_{1_{0}}$ tomados de la tabla~6.1 para generar la secuencia caótica de datos $x^{L1}$ con $x^{L1}\in(0,1)$ y con una precisión de $10^{-15}$. De esta secuencia caótica se determinan dos subsecuencias, una para el proceso de confusión y otra para difusión como sigue 
+\begin{equation}
+PERM_{i}=~round\left[ x_{I_{1}-\ell +i}^{L1}\ast (\ell-1)\right]+1, ~~ para ~i=1,2,3,\ldots ,\ell
+\end{equation}
+donde $PERM_{i}\in \left[1,\ell \right]$ es un vector con longitud $\ell$. Se considera que el vector $PERM_{i}$ esta optimizado y contiene todas las posiciones de forma pseudoaleatoria (Sec.~6.5). \\
+
+La segunda subsecuencia para el proceso de difusión es
+\begin{equation}
+M_{i}=\left[ \left(x_{I_{1}-\ell +i}^{L1}\ast 100\right)+Z\right] \pmod 1 ~~ para ~i=1,2,3,\ldots ,\ell
+\end{equation}
+donde $M_{i}\in \left(0,1\right)$ es un vector de longitud $\ell$. Después, $M_{i}$ se transforma como
+\begin{equation}
+Y_{i}=~round \left(M_{i}\ast 94 \right), ~~ para ~i=1,2,3,\ldots ,\ell
+\end{equation}
+donde $Y_{i}\in \left[1,95\right]$ es un vector de longitud $\ell$. Finalmente, el proceso de cifrado se calcula con
+\begin{equation}
+E_{i}= \left\lbrace \left[P(PERM_{i})-32\right]+Y_{i} ~mod~95 \right\rbrace +32, ~~ para ~i=1,2,3,\ldots ,\ell
+\end{equation}
+donde $E_{i}\in \left[32,126\right]$ es el texto cifrado y $P_{i}\in \left[32,126\right]$ es el texto claro. \\
+
+\textbf{Tercer paso}\\
+
+El valor de $Z$ se agrega al criptograma de la siguiente forma
+\begin{equation}
+E_{\ell +1}=V,
+\end{equation} 
+donde $V_{i}\in \left[32,126\right]$. \\
+
+El \textbf{proceso de descifrado} consiste básicamente de invertir los pasos del cifrado. Primero, $Z$ se recupera del criptograma como sigue
+\begin{equation}
+Z=E_{\ell +1}/127.
+\end{equation}
+El valor de $Z$ puede ser conocido por intrusos, pero \textbf{recuperar el mensaje original sin la clave correcta es casi imposible}. Después, con la clave secreta de 128 bits y $Z$, 5000 datos caóticos del mapa logístico 1 para determinar $PERM_{i}$, $M_{i}$ y $Y_{i}$ como en proceso de cifrado. En la figura~8.2 se muestra el esquema a bloques del proceso de descifrado (notar que no se requiere el mapa logístico 2, por lo que se ahorra tiempo de cálculo). Se utiliza como clave secreta \textit{11223344556677889900AABBCCDDEEFF}. El proceso de descifrado se calcula con la siguiente expresión  
+\begin{equation}
+D(PERM_{i})= \left\lbrace \left[ \left(E(i)-32\right)-Y(i) \right] ~mod~95 \right\rbrace +32, ~~ para ~i=1,2,3,\ldots ,\ell
+\end{equation} 
+donde $D\in \left[32,126\right]$ es el texto claro recuperado.
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.5]{FIG_CAP_08/ESQUEMA_DESCIFRADO_TXT.pdf}     
+	\caption{Diagrama a bloques del proceso de descifrado de texto.}
+\end{figure}
+
+\section{Análisis de seguridad}
+El algoritmo de cifrado se implementa en un microcontrolador de 32 bits con procesador COLDFIRE de Freescale (M52259DEMOKIT) que tiene una frecuencia de operación hasta 80 MHz \cite{M52259_2009}. Se utiliza el software CodeWarrior para Colfire V7.1 para realizar la programación en lenguaje C y también, se usan librerías de MQX 3.5 para almacenar datos en memoria USB. El programa del algoritmo de cifrado es almacenado en memoria FLASH del microcontrolador. Para los análisis de seguridad se utiliza la plataforma de MatLab
+V7.6 (R2008a) en una computadora laptop con procesador AMD Turion 2.0 GHz, 3.18 GB de RAM y sistemas operativo Windows XP 32 bits; se utiliza representación punto flotante con precisión doble (64 bits) y una precisión de $10^{-15}$. La clave secreta de 32 dígitos hexadecimales y el texto claro son introducidos en el microcontrolador por programación (de manera práctica); sin embargo, la clave y el texto claro pueden ser introducidos con un teclado o una memoria USB, comunicación RS-232, conexión inalámbrica, etc. \\
+
+Los primeros 945 caracteres de este capítulo se utiliza como texto claro (no se consideran los acentos) y \textit{11223344556677889900AABBCCDDEEFF} como clave secreta. Una vez que el texto es cifrado por el microcontrolador, éste se extrae en formato *.txt con memoria USB para realizar los distintos análisis de seguridad lógicos en MatLab. La figura~8.3 muestra la clave secreta, el texto claro y el correspondiente texto cifrado extraído del microcontrolador.
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.5]{FIG_CAP_08/DATOS_EXTRAIDOS_MCRO.pdf}     
+	\caption{Texto claro y texto cifrado extraído del microcontrolador con memoria USB.}
+\end{figure}
+
+\subsection{Espacio de clave secreta}
+De acuerdo con la Sec.~7.3.2, el espacio de claves es de $2^{128}$ posibilidades, por lo que puede resistir un ataque exhaustivo o de fuerza bruta.
+
+\subsection{Sensibilidad a clave secreta}
+Alvarez y Li \cite{AyL_2006}, mencionan que un algoritmo de cifrado debe ser altamente sensible a la clave secreta, incluso a nivel de bit. Esta propiedad aplica para el proceso de cifrado y descifrado; en el proceso de cifrado, si el mismo texto claro es cifrado dos veces con dos claves secretas similares (un bit de diferencia), el texto cifrado debe ser muy diferente entre ellos y sin correlación; mientras que, en el proceso de descifrado, únicamente la clave secreta correcta puede recuperar el mensaje original. En esta sección, la sensibilidad de la clave secreta en el proceso de cifrado y descifrado, se prueba y verifica con tres claves secretas similares (ver tabla~8.1). \\
+
+Para la prueba, se utilizan los primeros 50 caracteres de este capítulo: la sensibilidad de la clave secreta en el proceso de cifrado se muestra en la figura~8.4, en el cual, cada clave secreta utilizada, es decir CLAVE 1, CLAVE 2 Y CLAVE 3 generan diferentes criptogramas; mientras que en la figura~8.5 muestra que sólo la clave secreta correcta (CLAVE 1) recupera el mensaje original. Por tanto, el algoritmo de cifrado caótico de esta tesis, para cifrado de texto es altamente sensible a la clave secreta. 
+\begin{table}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\begin{tabular}{c c} 
+	\hline
+	No. clave & Clave secreta \\
+	\hline
+	CLAVE 1	& 	11223344556677889900AABBCCDDEEFF	\\
+	CLAVE 2	& 	1122334\textbf{{\large 5}}556677889900AABBCCDDEEFF	\\ 	
+	CLAVE 3	& 	11223344556677889900AAB\textbf{{\large C}}CCDDEEFF	\\
+	\hline
+\end{tabular}
+	\caption{Claves secretas utilizadas para análisis de sensibilidad a la clave en cifrado de texto alfanumérico.}
+\end{table}
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.45]{FIG_CAP_08/SENSIBILIDAD_LLAVE_ENC.pdf}     
+	\caption{Sensibilidad a la clave secreta en proceso de cifrado de texto.}
+\end{figure}
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.45]{FIG_CAP_08/SENSIBILIDAD_LLAVE_DESENC.pdf}     
+	\caption{Sensibilidad a la clave secreta en proceso de descifrado de texto}
+\end{figure}
+
+\newpage
+\subsection{Sensibilidad a texto claro}
+De acuerdo con la Sec.~7.3.4, para resistir un ataque diferencial, se requiere que el algoritmo criptográfico presente sensibilidad a pequeños cambios en el texto claro y se utilizan dos conceptos para determinarlo: NPCR y UACI. NPCR se calcula con la siguiente expresión
+\begin{equation}
+NPCR=\frac{\sum_{i=1}^{\ell}W(i)}{\ell} \times 100
+\end{equation}
+con
+\begin{equation}
+W(i) = \left\{ \begin{array}{rl}
+ 0 &\mbox{ if $E_{1}(i)=E_{2}(i)$} \\
+ 1 &\mbox{ if $E_{1}(i)\neq E_{2}(i)$}
+       \end{array} \right.
+\end{equation} 
+y el valor de UACI se determina con
+\begin{equation}
+UACI=\frac{100}{\ell \times 95}\sum_{i=1}^{\ell}|E_{1}(i)-E_{2}(i)|
+\end{equation}
+donde $\ell$ es la longitud del texto, $E_{1}$ and $E_{2}$ son los dos criptogramas. El proceso para determinar los valores es como sigue: primero, el texto claro se cifra con la CLAVE 1 para generar $E_{1}$; después, el primer símbolo del texto claro se cambia de \textbf{A} a \textbf{B}, y el proceso de cifrado se repite con la misma CLAVE 1 para generar $E_{2}$. La tabla~8.2 muestra los resultados de NPCR y UACI con $E_{1}$ and $E_{2}$ en tres distintas pruebas. Por tanto, el esquema propuesto es robusto ante ataques diferenciales, ya que el 99\% de los símbolos son diferentes con una diferencia de magnitud en promedio del 33\%.    
+
+\begin{table}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\begin{tabular}{c c c c} 
+	\hline
+	Prueba			& 	Prueba 1	&	Prueba 2	&	Prueba 3 \\
+	\hline
+	NPCR(\%)	& 	99.15	&	98.94	&	99.36		\\
+	UACI(\%)	& 	31.53	&	34.15	&	33.56		\\ 	
+	\hline
+\end{tabular}
+	\caption{Resultados de análisis diferencial NPCR y UACI para cifrado de texto.}
+\end{table}
+
+\subsection{Frecuencia flotante}
+La \textit{frecuencia flotante} determina el número de símbolos diferentes en una sección (ventana) del mensaje. Esta información puede utilizase para determinar si el texto cifrado es cifrado con propiedades de \textit{uniformidad}, es decir, si el texto cifrado se divide en varias secciones, cada sección debe tener todos los posibles símbolos de forma uniforme. Para este análisis, se utiliza una ventana de 95 elementos que son el total de elementos que acepta el sistema criptográfico: inicialmente, se seleccionan los primeros 95 elementos del texto y después, la ventana se recorre una posición a la derecha y la prueba se repite a estos otros 95 elementos; así sucesivamente hasta terminar todo el mensaje. La figura~8.6(a) y (b) muestra la frecuencia flotante del texto claro y del texto cifrado, respectivamente; la frecuencia flotante del texto cifrado es uniforme, por tanto, el cifrado propuesto no tiene secciones débiles. Además, el texto cifrado tiene hasta 60\% de todos los posibles elementos contra 23.5\% del texto claro. 
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.45]{FIG_CAP_08/FREQUENCIA_FLOT.pdf}  
+	\caption{Análisis de frecuencia flotante de cifrado de texto: a) texto claro y b) texto cifrado.}
+\end{figure}
+
+\subsection{Histogramas}
+De acuerdo con la Sec.~7.3.5, el histograma del texto cifrado debe ser uniforme para resistir un ataque estadístico en el lenguaje que fue cifrado originalmente. El histograma del texto claro se muestra en la figura~8.7(a) y se puede apreciar la característica estadística de la fuente; sin embargo, el histograma del texto cifrado es uniforme, como se aprecia en la figura~8.7(b). Por tanto, el algoritmo criptográfico propuesto es robusto ante un ataque de histograma y ataque de frecuencia de letras.  
+  
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.45]{FIG_CAP_08/HISTOGRAMA.pdf}     
+	\caption{Histogramas de texto: a) texto claro y b) texto cifrado.}
+\end{figure}
+
+\subsection{N-gramas}
+El N-grama es una subsecuencia continua de N símbolos de un mensaje y es utilizado para predecir el siguiente símbolo después de observar el símbolo N-1 mediante métodos de probabilidad. Para este análisis, se utilizan bigramas (N=2) y trigramas (N=3) para determinar la frecuencia de 2 y de 3 símbolos continuos en el texto claro y texto cifrado. La tabla~8.3 muestra los primeros diez bigramas y trigramas, del texto claro y del texto cifrado. Como resultado, el texto cifrado tiene frecuencias muy bajas de bigramas y trigramas comparado con el texto claro que tiene altas frecuencias de bigramas y trigramas. Por tanto, el proceso de cifrado se considera robusto porque no genera altas frecuencias de bigramas y trigramas. Esta prueba fue desarrollada mediante el software CrypTool (notar que se incluye el espacio).
+
+\begin{table}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\begin{tabular}{c c c c c c c c c}
+	\hline
+			& \multicolumn{4}{c}{Texto claro} & \multicolumn{4}{c}{Texto cifrado} \\
+	\hline
+	No.	&	Bigrama	&	Freq.	&	Trigrama	&	Freq.	&	Bigrama	&	Freq.	&	Trigram	a&	Freq. 	\\
+	\hline
+	1	&	a		&	32		&	 de		&	13		&	 9		&	2		&	 \}|8		&	2	\\
+	2	&	e		&	24	 	&	de		&	11		&	![		&	2		&	   <		&	1	\\
+	3	&	s 		&	20		&	ion		&	9		&	\%a		&	2		&	 \%A 		&	1	\\	
+	4	&	de		&	17		&	 se		&	8		&	\&-		&	2		&	 *W			&	1	\\
+	5	&	 d		&	16		&	cio		&	8		&	\&E		&	2		&	  ,2		&	1	\\
+	6	&	es		&	16		&	os		&	8		&	)\%		&	2		&	 3\{			&	1	\\
+	7	&	on 		&	16		&	s d		&	8		&	.2		&	2		&	 93			&	1	\\
+	8	&	te		&	15		&	aci 	&	7		&	/3		&	2		&	 95			&	1	\\
+	9	&	 a		&	14		&	est 	&	7		&	/H		&	2		&	;k			&	1	\\
+	10	&	 e		&	14		&	nte 	&	7		&	2A		&	2		&	<V			&	1	\\	
+	\hline
+	\end{tabular}
+	\caption{Análisis de bigramas y trigramas de texto claro y cifrado.}
+\end{table}
+
+\subsection{Autocorrelación}
+En procesamiento de señales, la autocorrelación se define como la correlación de una señal consigo misma desplazada \textit{k} posiciones y determina si la señal posee patrones repetitivos, periodicidad o alguna dependencia. Se utiliza este contexto para verificar si el proceso de cifrado genera patrones repetitivos o periodicidad. La autocorrelación se determina con
+\begin{equation}
+AC(k) = \frac {A-D}{T},
+\end{equation}
+donde \textit{AC}$\in [1 -1]$ es la autocorrelación del mensaje desplazado \textit{k} posiciones, \textit{A} es el número de elementos que concuerdan entre el mensaje original y el mensaje desplazado, \textit{D} es el número de elementos que no concuerdan y \textit{T} es la longitud del mensaje. Altos valores positivos de $AC$ significa que muchos bits son idénticos y altos valores negativos de $AC$ significa que muchos bits son opuestos; mientras que un valor de $AC$ nulo significa que se tiene los mismos números de 1's y 0's (deseable).   \\
+
+En este análisis, se calcula la autocorrelación a nivel bit y se utilizan 7 bits para representar cada símbolo de acuerdo con la tabla ASCII. Primero, la autocorrelación del texto claro se calcula como sigue: los 945 caracteres se transforma a un renglón de 6615 bits: \textit{1001001110}\ldots; después, se determina la autocorrelación del mensaje con un valor de hasta $k=500$ hacia la derecha. La figura~8.8(a) y (b), muestran la autocorrelación del texto claro y del texto cifrado, respectivamente. La autocorrelación del texto claro tiene patrones repetitivos con con altos valores positivos y altos valores negativos de $AC$, mientras que el texto cifrado tiene una autocorrelación cercana a 0, es decir, el proceso de cifrado genera números pseudoaleatorios uniformemente.
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.45]{FIG_CAP_08/AUTOCORRELACION.pdf}    
+	\caption{Autocorrelación de texto alfanumérico: a) texto claro y b) texto cifrado.}
+\end{figure}
+
+\subsection{Ataque de sólo texto claro elegido y conocido}
+Las consideraciones que se tomaron para diseñar el algoritmo de cifrado caótico propuesto y presentadas en la Sec.~7.3.7, como procesos de confusión y difusión en una sola operación, secuencias caóticas determinadas tanto de la clave secreta como del texto claro y una mejor distribución del mapa logístico, todas ellas reducen el éxito de los siguientes ataques:   
+\begin{enumerate}
+\item \textbf{Ataque de sólo texto claro elegido} \\
+
+El adversario (o intruso) elige un trozo de texto claro; en este caso, el adversario puede elegir un texto que consiste de caracteres específicos para estudiar el comportamiento del algoritmo de cifrado y encontrar la clave secreta. \\
+
+\item \textbf{Ataque de sólo texto claro conocido} \\
+
+El adversario conoce al menos un trozo de texto claro y su correspondiente texto cifrado, si el algoritmo de cifrado utiliza operaciones de XOR, el texto claro XOR con el texto cifrado podría revelar la clave secreta utilizada.
+\end{enumerate}
+
+Debido a que las secuencias caóticas para los procesos de confusión y de difusión, se determinan de la clave secreta y de las características totales del texto claro, cada vez que un texto claro es cifrado, diferentes secuencias caóticas son generadas, incluso si se utiliza la misma clave secreta. De tal forma que, el cifrado es robusto ante estos poderosos ataques que han quebrantado múltiples sistemas criptográficos basados en caos para imágenes.
+
+\subsection{Entropía de la información}
+De acuerdo con la Sec.~7.3.8, la entropía determina que tan impredecible es cierto mensaje. A mayor entropía, más impredecible es un mensaje. El cifrado de texto utiliza 95 símbolos diferentes con una entropía máxima de $H=6.56$. La entropía del texto claro es de $H(P)=4.35$, mientras que el texto cifrado tiene $H(E)=6.52$. Por tanto, el cifrado propuesto genera todos los símbolos con aproximadamente la misma probabilidad para generar alto desorden en el texto cifrado.    
+
+\subsection{Recursos de implementación y desempeño}
+En cualquier implementación digital es importante determinar los recursos de implementación empleados, como memoria requerida del programa, arquitectura del microcontrolador, módulos de comunicación, etc., que estan relacionados con el costo de la aplicación. La tabla~8.4 muestra los recursos utilizados en la implementación en microcontrolador del algoritmo de cifrado propuesto en la tesis y se muestra que el software del cifrado requiere de poco espacio de memoria, requiere de bajo voltaje, es portátil, de bajo costo y de dimensiones pequeñas. \\
+\begin{table}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\begin{tabular}{c c} 
+	\hline
+							&	Usada/Total					\\
+	\hline
+	Memoria Flash (KB)		&	115/512	 (22.5\%) 			\\
+	Puertos comunicación				&   USB 2.0 		\\	
+	Complemento 1			&   Freescale MQX 3.5 (MQX + USB host)	\\	
+	Frecuencia (MHz)		&	80/80  (100\%)		\\
+	Voltaje (Vdc)			&   5		\\	
+	Corriente (mA)			&   118		\\	
+	Costo M52259DEMOKIT (USD)&   115		\\			
+	Dimensiones M52259DEMOKIT (in)	&   2$\times$2		\\		
+	\hline
+\end{tabular}
+	\caption{Recursos de la implementación de cifrado de texto en microcontrolador.}
+\end{table}
+
+El desempeño basado en programación en lenguaje C y una frecuencia de 80 MHz del microcontrolador de 32 bits, el \textit{cifrado} de 945 elementos requiere de 0.04 segundos; por tanto, la implementación puede utilizarse en sistemas embebidos en tiempo real para proteger datos sensibles. El tiempo de \textit{descifrado} es similar al tiempo de \textit{cifrado}, incluso un poco menos ya que no se requiere de 1,000 iteraciones del mapa logístico 2.
+
+\section{Conclusiones}
+En este capítulo, se presentó la implementación en microcontrolador de 32 bits de un algoritmo de cifrado de texto alfanumérico. El algoritmo requiere de sólo una ronda de confusión y difusión, una clave secreta de 128 bits y dos mapas logísticos con secuencias caóticas optimizadas. Una alta seguridad (lógica) del algoritmo de cifrado fue probada mediante simulaciones en MatLab con datos extraídos directamente del microcontrolador  (texto claro y texto cifrado). Los recursos de implementación son bajos con un buen tiempo de cifrado, por lo que el esquema propuesto puede ser aplicado en sistemas embebidos en áreas como la militar, biométrica, industrial, climáticas, comercio electrónico, telemedicina, datos personales, entre otros.   
+

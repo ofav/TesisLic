@@ -1,0 +1,223 @@
+% CAPITULO V
+
+\chapter{Análisis de implementación de sistemas caóticos en microcontrolador}
+En este capítulo, se presenta el análisis de la implementación en microcontrolador (programación C) de dos sistemas caóticos: sistema de Lorenz (tiempo continuo) y mapa logístico (tiempo discreto). El principal objetivo de este capítulo, es determinar cuál de los dos sistemas caóticos utilizar en el algoritmo criptográfico propuesto en esta tesis, con base a su eficiencia, seguridad y recursos de implementación. Además, en cada caso se verifica la existencia de caos con exponentes de Lyapunov.   
+
+\section{Introducción}
+Un aspecto importante en las implementaciones de sistemas caóticos en microcontroladores, es verificar la existencia de caos. Además, analizar su eficiencia y determinar los recursos necesarios para llevar a cabo su implementación es muy importante para mostrar su potencial uso en criptografía. Estos últimos aspectos, son considerados en este capítulo para validar la implementación en microcontrolador del algoritmo criptográfico propuesto basado en caos. \\
+
+Cabe notar, que en las implementaciones de caos en microcontroladores reportadas en la literatura, por ejemplo en \cite{A-SEtAl_2011, SyJ_2011, V_2013, CEtAl_2013}, no presentan ningún análisis de los que se presentan en las siguientes secciones como verificación de caos y análisis de implementación.
+
+\section{Sistema 3D de Lorenz}
+El sistema de Lorenz representado por un conjunto de ecuaciones diferenciales (tiempo continuo) no lineales de tres estados, tiene que ser resuelto por un método numérico de ecuaciones diferenciales (``discretización'') para  implementarse en tecnología digital. Para ello, se tienen varios métodos, siendo los más populares \textit{Euler} y \textit{Runge-Kutta de cuarto orden} (RK4). El método de discretización de \textit{Euler}, es fácil de entender y programar. Aunque \textit{Euler} tiene mejor tiempo de respuesta que RK4, su precisión es baja y puede llevar al sistema caótico a un punto fijo, debido a la degradación del caos en la implementación digital \cite{ZEtAl_2011a}. Por otra parte, RK4 es uno de los métodos más utilizado para resolver ecuaciones diferenciales ya que es más preciso que \textit{Euler}, al tener un error de truncación de $O(H^{4})$ (utiliza cuatro funciones para estimar el valor futuro, mientras que \textit{Euler} utiliza una) \cite{YEtAl_2005}. Una desventaja de RK4 es el sacrificio de tiempo de computo por precisión. En esta tesis doctoral se utiliza el método de discretización RK4, que se basa en un problema de valor inicial de la siguiente forma
+\begin{equation}
+y'(x)=f(x,y),~~y(x_{0})=y_{0}
+\end{equation}
+donde $y'$ es la primera derivada de la variable $y$, es decir, corresponde a una ecuación diferencial de primer orden con la condición inicial $y(x_{0})=y_{0}$ (por ejemplo, el sistema tridimensional de Lorenz). Entonces el método RK4 de discretización para este problema está dado por la siguiente expresión
+\begin{equation}
+y_{i+1}=y_{i}+(h/6)(k_{1}+2k_{2}+2k_{3}+k_{4}),
+\end{equation}
+con
+\begin{subequations}
+\begin{align}
+k_{1}&=f(x_{i},y_{i}), \\
+k_{2}&=f(x_{i}+h/2,y_{i}+(h/2)k_{1}), \\
+k_{3}&=f(x_{i}+h/2,y_{i}+(h/2)k_{2}), \\
+k_{4}&=f(x_{i}+h,y_{i}+hk_{4}), 
+\end{align}
+\end{subequations}
+donde $y_{i+1}$ es el valor estimado a partir de $y_{i}$ más el producto de un intervalo $h$ por una pendiente estimada. Por tanto, el sistema de Lorenz (2.1), aproximado por RK4 queda de la siguiente manera
+
+\begin{equation}
+  \left\lbrace
+  \begin{array}{l}
+   	x_{i+1}=x_{i}+(h/6)(k^{x}_{1}+2k^{x}_{2}+2k^{x}_{3}+k^{x}_{4}), \\
+   	y_{i+1}=y_{i}+(h/6)(k^{y}_{1}+2k^{y}_{2}+2k^{y}_{3}+k^{y}_{4}), \\
+   	z_{i+1}=z_{i}+(h/6)(k^{z}_{1}+2k^{z}_{2}+2k^{z}_{3}+k^{z}_{4}) \\
+  \end{array}
+  \right.
+\end{equation}
+
+%\begin{subequations}
+%\begin{equation}
+%x_{i+1}=x_{i}+(h/6)(k^{x}_{1}+2k^{x}_{2}+2k^{x}_{3}+k^{x}_{4}), 
+%\end{equation}
+%\begin{equation}
+%y_{i+1}=y_{i}+(h/6)(k^{y}_{1}+2k^{y}_{2}+2k^{y}_{3}+k^{y}_{4}), 
+%\end{equation}
+%\begin{equation}
+%z_{i+1}=z_{i}+(h/6)(k^{z}_{1}+2k^{z}_{2}+2k^{z}_{3}+k^{z}_{4}) 
+%\end{equation}
+%\end{subequations}
+
+con
+\begin{subequations}
+\begin{align}
+k^{x}_{1}&=\sigma(y(n)-x(n)), \\
+k^{y}_{1}&=\rho x(n)-y(n)-x(n)z(n), \\
+k^{z}_{1}&=x(n)y(n)-\beta z(n)  
+\end{align}
+\end{subequations}
+y
+\begin{subequations}
+\begin{align}
+k^{x}_{2}&=\sigma(y(n)-x(n)) + (h/2)k^{x}_{1}, \\
+k^{y}_{2}&=(\rho x(n)-y(n)-x(n)z(n)) + (h/2)k^{y}_{1},  \\
+k^{z}_{2}&=(x(n)y(n)-\beta z(n)) + (h/2)k^{z}_{1}
+\end{align}
+\end{subequations}
+y
+\begin{subequations}
+\begin{align}
+k^{x}_{3}&=\sigma(y(n)-x(n)) + (h/2)k^{x}_{2}, \\
+k^{y}_{3}&=(\rho x(n)-y(n)-x(n)z(n)) + (h/2)k^{y}_{2},  \\
+k^{z}_{3}&=(x(n)y(n)-\beta z(n)) + (h/2)k^{z}_{2} 
+\end{align}
+\end{subequations}
+y
+\begin{subequations}
+\begin{align}
+k^{x}_{4} &= \sigma(y(n)-x(n)) + (h)k^{x}_{3},  \\
+k^{y}_{4} &= (\rho x(n)-y(n)-x(n)z(n)) + (h)k^{y}_{3},  \\
+k^{z}_{4} &= (x(n)y(n)-\beta z(n)) + (h)k^{z}_{3} 
+\end{align}
+\end{subequations}
+donde $x$, $y$ y $z$ son los tres estados del sistema de Lorenz (2.1), $h$ es el tamaño de los pasos y $\sigma$, $\rho$, $\beta$ son los parámetros de control. \\
+
+Las ecuaciones~(5.4) representan la aproximación discreta del sistema tridimensional de Lorenz (2.1) por el método RK-4, es decir, la representación del sistema de Lorenz en ecuaciones no lineales en diferencias, las cuales, pueden implementarse en sistemas digitales. Estas ecuaciones son implementadas en microcontrolador mediante programación optimizada en lenguaje C, utiliza arquitectura de precisión finita tipo punto flotante para las operaciones aritméticas con una precisión tipo doble (64 bits), lo que permite tener una precisión de $10^{-15}$ decimales (estándar IEEE 754 para operaciones aritméticas de punto flotante) para las condiciones iniciales $x_{0}$, $y_{0}$, $z_{0}$ y para los parámetros $\sigma$, $\rho$, $\beta$; esta precisión ayuda para generar dinámicas caóticas sensibles a cambios sumamente pequeños en sus condiciones iniciales y aportar un espacio de claves mucho mayor para aplicaciones criptográficas. \\
+
+En la figura~5.1 se muestra la lectura de los primeros 20 datos generados en el microcontrolador, a partir de las condiciones iniciales $x_{0}= -8.12345678987654$, $y_{0}=-8.56789876543212$ y $z_{0}=24.4321234567899$, con los parámetros de control $\sigma=10$, $\rho=28$, $\beta=2.666666667$ y con el tamaño de pasos $h=0.007$. 
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.6]{FIG_CAP_05/LORENZ_MICRO.pdf}    
+	\caption{Datos generados del sistema de Lorenz discreto (5.4) implementado en microcontrolador con una precisión de $10^{-15}$.}
+\end{figure}
+
+\subsection{Existencia de caos}
+Las secuencias caoticas ($x,y,z$) generadas por el sistema de Lorenz ec.~(5.4) implementado en microcontrolador se analizan con base en los exponentes de Lyapunov para verificar la existencia de caos y así, garantizar que las secuencias que se utilizaran como referencia para encriptar información, correspondan a secuencias caóticas, ya que esto es de vital importancia para generar un criptograma (información cifrada) con excelentes características criptográficas. \\ 
+
+Para realizar el análisis respectivo con base en la sección~2.2.1, se extraen 10,000 datos discretos del microcontrolador con memoria USB, generados por la aproximación discreta del sistema de Lorenz (5.4) y se consideran dos casos:
+
+\begin{enumerate}
+\item \textit{Secuencia estable:} con base en las condiciones iniciales y parámetros de control de la tabla~5.1, se generan 10,000 datos y se extraen del microcontrolador (ver figura~5.2(a)); en la figura~5.3 se muestran las gráficas temporales de cada estado y sus gráficas de fase, donde se observa que el sistema es estable con respecto al tiempo. En la tabla~5.2, se muestra el máximo exponente de Lyapunov, el cual resulta ser negativo.    
+
+\item \textit{Secuencia caótica:} con base en las condiciones iniciales y parámetros de control de la tabla 5.1, se generan 10,000 datos y se extrae del microcontrolador (figura.~5.2(b)); en la figura~5.4 se muestran las gráficas temporales de cada estado y sus gráficas de fase, donde se observa que el sistema es caótico con respecto al tiempo. En la tabla~5.2, se muestra el máximo exponente de Lyapunov, el cual resulta ser positivo, garantizando la existencia de caos. 
+\end{enumerate}
+
+\begin{table}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\begin{tabular}{c c c} 
+	\hline
+				&	Estable			&	Caos	\\
+	\hline	
+	$x_{0}$		&	-8.34567898765432	&	-8.34567898765432	\\
+	$y_{0}$		&	-8.56789876543212		&	-8.56789876543212	\\
+	$z_{0}$		&	24.23456789876543		&	24.23456789876543	\\
+	$\sigma$			&	10						&	10	\\
+	$\rho$			&	24.23456789876543		&	2.666666667	\\
+	\textbf{$\beta$} &	\textbf{10}				&	\textbf{28}	\\
+	$h$			&	0.005					&	0.005	\\
+	$T$			&	10000					&	10000	\\
+	$\epsilon$	& 	$10^{-9}$				&	$10^{-9}$	\\
+	$D_{k}$		&	\multicolumn{2}{c}{$\sqrt{ (C_{x_{k}})^{2} + (C_{y{_k}})^{2} + (C_{z_{k}})^{2}}$}	\\   
+	$C_{k}$		&	\multicolumn{2}{c}{$C_{x_{k}}=x_{k} -x^{*}_{k}, C_{y_{k}}=y_{k}-y^{*}_{k}, C_{z_{k}}=z_{k}-z^{*}_{k}$}	\\ 
+	\hline
+\end{tabular}
+	\caption{Valores para el análisis del máximo exponente de Lyapunov del sistema de Lorenz (5.4) implementado en microcontrolador.}
+\end{table}
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.5]{FIG_CAP_05/LORENZ_LYAPUNOV.pdf}    
+	\caption{Extracción de 10,000 datos de la implementación en microcontrolador del sistema de Lorenz (5.4): a) secuencia estable y b) secuencia caótica.}
+\end{figure}
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.5]{FIG_CAP_05/PUNTO_FIJO_LYAP.pdf}    
+	\caption{Gráficas temporales y atractores de punto fijo, de la aproximación discreta de Lorenz (5.4) generada en microcontrolador.}
+\end{figure}
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.5]{FIG_CAP_05/CAOS_LYAP.pdf}     
+	\caption{Gráficas temporales y atractores caóticos de la aproximación discreta de Lorenz (5.4) generada en microcontrolador.}
+\end{figure}
+
+\begin{table}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\begin{tabular}{c c} 
+	\hline
+				&	Máximo exponente de Lyapunov	\\
+	\hline
+	Estable		&	-0.4940							\\
+	Caos		&	0.9328							\\
+	\hline
+\end{tabular}
+	\caption{Máximo exponente de Lyapunov para las secuencias de la aproximación discreta de Lorenz (5.4) generadas en microcontrolador.}
+\end{table}
+
+La determinación del máximo exponente de Lyapunov muestra que las secuencias generadas ($x,y,z$) del sistema discretizado de Lorenz implementado en microcontrolador son caóticas, una de las aportaciones importantes de este trabajo doctoral. Además, con base en este trabajo se pueden implementar otros sistemas caóticos o hipercaóticos de tiempo continuo como Chen, Lu, Chua, Rössler, Genesio–Tesi, CNN, entre otros.
+
+\subsection{Eficiencia y recursos de implementación}
+Un buen sistema criptográfico embebido no solo debe ser seguro, sino también debe tener buena combinación de desempeño y costo. En esta sección, se determina la velocidad para generar secuencias caóticas y los recursos de hardware que se requieren para su implementación. En cuanto a la velocidad, se calcula el tiempo que se requiere para generar 1,000 datos caóticos (por cada estado) con la frecuencia máxima de 80 MHz y se determinan los ciclos de reloj necesarios (con registro \textit{programm counter} del microcontrolador). En la tabla~5.3 se muestra la eficiencia y recursos de la implementación del sistema de Lorenz (5.4) en microcontrolador. Básicamente, se requiere programación optimizada en lenguaje C para generar 1,000 datos caóticos en 1.2 segundos, 110 KB de memoria y bajo consumo de energía con 118 mA, por lo que el sistema de Lorenz discretizado (5.4) es una buena opción para ser utilizado en sistemas embebidos con aplicaciones criptográficas.  
+
+\begin{table}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\begin{tabular}{c c c}
+	\hline
+								&	      Lorenz			&		logístico  \\
+	\hline
+		Memoria Flash (KBs)		&	    110/512	 (21.6\%)	&	103/512	 (20\%) 	\\
+		Periféricos I/O			&	\multicolumn{2}{c}{Comunicación USB 2.0}	\\
+		Complemento				&	\multicolumn{2}{c}{Freescale MQX 3.5}		\\
+								&		\multicolumn{2}{c}{(MQX + USB host)}	 \\
+		Frecuencia Máxima (MHz)	&		\multicolumn{2}{c}{80/80  (100\%)}		 \\
+		Calculo de 1000 datos (seg)	&		1.2				&		0.5			\\		
+		Voltaje (Vdc)			&		\multicolumn{2}{c}{5}	\\
+		Corriente (mA)			&		\multicolumn{2}{c}{118}	\\
+		Costo  (USD)			&		\multicolumn{2}{c}{115}	\\
+		Dimensiones (in)		&		\multicolumn{2}{c}{2$\times$2}	\\
+	\hline
+\end{tabular}
+	\caption{Eficiencia y recursos de implementación de Lorenz discreto (5.4) y logístico en microcontrolador.}
+\end{table}
+
+
+\section{Mapa 1D logístico}
+El mapa logístico es representado por una ecuación en diferencias (ver ec.~(2.5)) y posee un estado, por lo que su implementación digital es directa y sencilla, es decir, en este caso no se requiere discretizar el sistema con algún método numérico como Euler o RK4, ya que el mapa logístico es discreto por naturaleza. Tomando en cuenta las mismas características de programación que en el caso del sistema de Lorenz discreto (5.4), se calculan 10,000 iteraciones con la condición inicial $x_{0}=0.567898765432123$ y parámetro de control $a=3.999999999999999$. En la figura~5.5(a)-(b) se muestran los primeros y últimos 20 datos caóticos calculados en microcontrolador.   
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.6]{FIG_CAP_05/LOGISTICO_MICRO.pdf}   
+	\caption{Datos generados por el mapa logístico en microcontrolador: a) primeros 20 de 10,000 y b) últimos 20 de 10,000.}
+\end{figure}
+
+\subsection{Existencia de caos}
+La secuencia caótica del mapa logístico en microcontrolador es verificada mediante el cálculo de exponentes de Lyapunov, con base a la sección~2.3.1. El proceso consta en utilizar dos mapas logísticos independientes para generar dos trayectorias caóticas con condiciones iniciales muy cercanas y el parámetro de control se mantiene fijo; estos vectores son extraídos del microcontrolador con memoria USB para ser analizados en el entorno de MatLab. \\
+
+En el análisis se utiliza la condición inicial $x_{0}=0.456789876543212$, una condición inicial muy cercana de $x_{0}+\delta_{0}=0.456789876543212$ con $\delta_{0}=0.000005$, el parámetro de control $a=3.999999999999999$ y con un número de iteraciones de $T=10,000$. En la figura~5.6 se muestran los primeros y últimos 20 datos extraídos del microcontrolador visualizados en archivo *.tex., mientra que en la figura~5.7 se muestra la trayectoria de ambas secuencias caóticas (para las primeras 100 iteraciones) y se observa que estas divergen con el tiempo, mostrando sensibilidad a condiciones iniciales. \\
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.5]{FIG_CAP_05/LOGISTICO_LYAP.pdf}    
+	\caption{Datos del mapa logístico extraídos del microcontrolador para determinar el máximo exponente de Lyapunov.}
+\end{figure}
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.5]{FIG_CAP_05/COMPAR_SEC_LYAP_MICRO.pdf}    
+	\caption{Trayectorias de dos secuencias caóticas del mapa logístico generadas en microcontrolador para determinar el máximo exponente de Lyapunov.}
+\end{figure}
+
+Con la ecuación~(2.6), se determina el máximo exponente de Lyapunov para las dos trayectorias de la figura~5.7 y como resultado se tiene que $\lambda=0.692738\approx ln2$, de manera que la secuencia generada es caótica, incluso para cualquier condición inicial. Una de las aportaciones de este trabajo doctoral fue verificar que las secuencias generadas por el mapa logístico implementado en microcontrolador, genere secuencias caóticas para que puedan utilizase en el cifrado de información. 
+
+\subsection{Eficiencia y recursos de implementación}
+Naturalmente, el mapa logístico tiene ventajas en eficiencia y recursos sobre el sistema de Lorenz, por ser un sistema unidimensional y con mínimas operaciones aritméticas. La velocidad de cálculo del mapa logístico se basa en iterar 1,000 veces a la máxima frecuencia del microcontrolador 80 Megahertz y determinar cuantos ciclos de reloj se requieren (mediante registro \textit{programm counter}). En la tabla~5.3 se presentan los recursos necesarios para la implementación del mapa logístico y la velocidad de cálculo; se muestran los resultados esperados en comparación con el sistema discreto de Lorenz (5.4), ya que se requiere de 7 kilobytes menos de memoria y se tiene menor tiempo de cálculo con 0.5 segundos para la generación de 1,000 datos. 
+
+\section{Conclusiones}
+Los sistemas caóticos de tiempo continuo requieren discretizarse por algún método numérico para que puedan implementarse en tecnología digital, en este caso en microcontroladores. Este tipo de sistemas requieren de mayor tiempo de cálculo y de mayor espacio en memoria en sus implementaciones, ya que son caracterizados en forma discreta por un conjunto de ecuaciones en diferencias con múltiples operaciones aritméticas, ya que generalmente son sistemas de tres estados. \\
+
+Por otra parte, los mapas caóticos pueden ser implementados directamente en tecnología digital, ya que son de tiempo discreto naturalmente y de dimensión menor. En este capítulo, el sistema discretizado de Lorenz y el mapa logístico fueron implementados en microcontrolador, se verificó la existencia de caos mediante el cálculo del máximo exponente de Lyapunov y también, se analizó la eficiencia y los recursos de implementación. La velocidad de procesamiento de datos caóticos está directamente relacionada con el tiempo de cifrado y los recursos de implementación lo están con los costos de producción, es por ello que se utiliza el mapa logístico en el algoritmo criptográfico propuesto en esta tesis doctoral por ofrecer mejor combinación de velocidad \textit{vs} recursos de hardware.   
+

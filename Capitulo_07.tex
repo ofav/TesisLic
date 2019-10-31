@@ -1,0 +1,459 @@
+% CAPITULO IX
+
+\chapter{Cifrado caótico de imagen a color RGB en MatLab}
+En este capítulo, se presenta una aplicación del algoritmo de cifrado caótico propuesto, para proteger imágenes a color RGB (también aplica para imágenes a escala de grises). El algoritmo es adaptado para generar dos vectores pseudoaleatorios para el proceso de confusión (confusión en filas y columnas) y un vector para el proceso de difusión. El algoritmo se implementa a nivel de software y programado en MatLab, donde se utilizan diferentes imágenes de distintos tamaños para realizar un análisis de seguridad a nivel estadístico. Los resultados muestras que el cifrado propuesto es robusto ante los ataques más comunes reportados en la literatura y tiene un tiempo de cifrado rápido, por lo que puede implementase en aplicaciones en tiempo real.     
+
+\section{Introducción}
+En las últimas décadas, los sistemas de comunicaciones han cambiado, debido al crecimiento tecnológico y nuevas redes de comunicación. Actualmente, miles de KB de información confidencial se transmiten por canales de comunicación inseguros como internet. Sin embargo, esta información confidencial puede ser interceptada por personas no autorizadas. La imagen digital se utiliza a gran escala en internet; si la imagen tiene información clasificada, necesita ser cifrada antes de ser transmitida o almacenada. Un esquema de comunicaciones seguras consiste en que el emisor cifra la imagen clara para generar una imagen cifrada mediante un algoritmo y sólo el receptor autorizado podrá descifrar con la clave secreta correcta. \\
+
+Los principales métodos para cifrado de imagen son confusión (confusión de pixeles), difusión (cambiar el valor del pixel) o ambos confusión y difusión. Algunas aplicaciones donde se requiere cifrado seguro de imágenes son en telemedicina, en la milicia, en video conferencias, en sistemas biométricos, imagen personal, entre otros. \\ 
+
+Por otra parte, muchas técnicas de cifrado de imágenes se reportan en la literatura tanto para imágenes a escala de grises como a color. Algunas técnicas son metodologías de compresión, criptografía ADN, dominio transformado y conceptos matemáticos pero en su mayoría tienen problemas de seguridad, ver por ejemplo \cite{ZEtAl_2012}. Los algoritmos criptográficos convencionales como \textit{3DES}, \textit{AES}, \textit{IDEA}, etc., son excelentes algoritmos para cifrado de texto, pero no son útiles para cifrado de imágenes porque poseen alta correlación y capacidad de datos, lo que hace un cifrado lento e inseguro, ver por ejemplo \cite{DyC_2000, CEtAl_2004, MEtAl_2007, MEtAl_2009}. \\
+
+Cifrado de imagen basado en caos ha probado ser superior debido a propiedades del caos como ergodicidad, alta sensibilidad a condiciones iniciales y parámetros de control, pseudoaleatoriedad, mezcla de datos, etc., todas útiles para diseñar algoritmos de cifrado seguros y rápidos \cite{HyX_2010, IyC_2013, WEtAl_2008, UEtAl_2010}. Desde 1998, la arquitectura de confusión y difusión ha sido implementada de acuerdo al esquema de Fridrich \cite{F_1998} y hasta estos días, muchos algoritmos de cifrado de imagen (gris y color) han sido reportados en la literatura \cite{PEtAl_2009, HyX_2010, WEtAl_2012, IyC_2013, F_1998, CEtAl_2004, WEtAl_2008, UEtAl_2010, WEtAl_2010, TyC_2008, FEtAl_2006, GEtAl_2006, XEtAl_2006, GEtAl_2005}; sin embargo, tods tienen problemas de seguridad, ver por ejemplo \cite{WEtAl_2005, WEtAl_2007, ByN_2008, CyS_2009, AyL_2009, LEtAl_2009, REtAl_2010, SEtAl_2010, LEtAl_2011, LEtAl_2012, ZEtAl_2012}. \\
+
+En 2012, en \cite{WEtAl_2012} se propuso un algoritmo de cifrado de imagen a color basado en el mapa logístico caótico, donde la innovación es cifrar los componentes RGB en una operación, por lo que la correlación entre los componentes se reduce; sin embargo, presenta las siguientes desventajas: el espacio de claves esta definido sobre órbitas periódicas del mapa caótico por lo que el espacio de claves se ve reducido y genera un cifrado débil, los datos del mapa logístico son utilizados directamente por lo que las propiedades estadísticas del cifrado se ven afectadas, los autores no presentan análisis de seguridad importantes como tiempo de cifrado y entropía. Además, en \cite{LEtAl_2012} se criptoanalizó el algoritmo de Wang y encontró que los procesos de confusión y difusión pueden ser quebrantados en secciones separadas con la estrategia de divide y vencerás, al utilizar dos imágenes en un ataque de texto claro elegido. \\
+
+En 2010, en \cite{PEtAl_2010} se propuso un algoritmo de cifrado de imagen a color, basado en el mapa estándar y mapa logístico con tiempos de cifrado rápido y excelentes resultados de correlación basado en su trabajo previo en \cite{PEtAl_2009}; pero ambos algoritmos fueron quebrantados con ataques de sólo texto claro conocido/elegido en \cite{REtAl_2010} y  \cite{LEtAl_2011}, respectivamente. Además, el algoritmo de Patidar no presenta sensibilidad a imagen clara y las órbitas caóticas son muy débiles. \\
+
+En \cite{TyC_2008}, los autores presentaron un esquema de cifrado de imagen a color donde se utiliza una nueva composición de dos sistemas caóticos unidimensionales con buenas características estadísticas; algunas ventajas es que el espacio de claves se puede expandir y el tiempo de cifrado es rápido, pero el algoritmo fue quebrantado con un ataque de imagen clara elegida, el espacio de claves genera secuencias no caóticas, no tiene sensibilidad a la imagen clara y la secuencia caótica tiene malas propiedades estadísticas según \cite{LEtAl_2009}. \\
+
+En este contexto, otros algoritmos de cifrado de imagen a escala de grises se reportaron en \cite{F_1998, CEtAl_2004, WEtAl_2010, FEtAl_2006, GEtAl_2006, XEtAl_2006, GEtAl_2005} fueron criptoanalizados y quebrantados en \cite{WEtAl_2005, WEtAl_2007, ByN_2008, CyS_2009, AyL_2009, SEtAl_2010, ZEtAl_2012}, respectivamente. Básicamente, todos fueron quebrantado con ataques de sólo texto claro conocido/elegido. El principal problema de estos algoritmos de cifrado, es que utilizan la misma secuencia caótica cuando diferentes imágenes claras con cifradas; por tanto, la secuencia pseudoaleatoria requiere ser calculada de la clave secreta y de características de imagen clara para reducir el riesgo de ataque de imagen clara conocida/elegida. \\
+
+Avances recientes se reportan en la literatura para superar este tipo de ataques, donde la secuencia pseudoaleatoria para el cifrado de imagen es determinada de la clave secreta, de la imagen clara o de ambos, mediante distintas técnicas \cite{ZEtAl_2013, ByE_2013, FEtAl_2013a, Z_2012, WyY_2009, ZEtAl_2014}. \\           
+
+En \cite{ZEtAl_2014}, los autores propusieron un algoritmo de cifrado novedoso, con base en la inserción de pixeles aleatorio a la primera columna de la imagen original antes del proceso de cifrado, de manera que los detalles de la imagen clara cambian, por lo que esta técnica puede tener problemas en aplicaciones como imagen de satélite, telemedicina, militar, biométrica, etc., donde un pixel tiene información importante; además, la velocidad de cifrado es lento para imágenes a color y los autores no presentan análisis de sensibilidad a la imagen clara, la cual, es muy importante para probar el potencial del algoritmo ante ataques de texto claro elegido y conocido. \\
+
+Recientemente, otra técnica denominada difusión dependiente es utilizada en algoritmos de cifrado de imágenes a escala de grises \cite{ByE_2013, FEtAl_2013a, Z_2012, WyY_2009, ZEtAl_2013}, donde los valores del pixel cifrado influencia en la siguiente operación de confusión y difusión o la secuencia pseudoaleatoria para el proceso de cifrado se determina con la clave secreta y la imagen clara para evitar un ataque de texto claro conocido/elegido; sin embargo, algunos algoritmos presentan un espacio de claves reducido, alto tiempo de cifrado y cifran únicamente imágenes cuadradas. \\
+  
+El algoritmo de cifrado propuesto en este trabajo doctoral, esta basado en las características totales de la imagen clara y secuencias pseudoaleatorias optimizadas generadas por el mapa logístico. El esquema es robusto ante ataques de imagen clara conocida y elegida con una ronda de confusión y difusión. Una clave secreta de 128 bits se utiliza para calcular la condición inicial y parámetro de control del mapa logístico de una manera indirecta para evitar el bajo espacio de claves que presenta un mapa unidimensional. Además, se presenta un análisis de seguridad para verificar la robustez del proceso de cifrado contra los ataques más conocidos reportados en la literatura, ver por ejemplo \cite{WEtAl_2005, WEtAl_2007, ByN_2008, CyS_2009, AyL_2009, LEtAl_2009, REtAl_2010, SEtAl_2010, LEtAl_2011, ZEtAl_2011, LEtAl_2012}.
+ 
+\subsection{Características de imagen a color RGB}
+Una imagen difiere de texto en capacidad de información (tiene muchos más KB de datos de texto) y está representada por pixeles que están altamente correlacionados entre ellos (los colores entre pixeles adyacentes son similares), por lo que algoritmos criptográficos convencionales como \textit{3DES}, \textit{IDEA}, \textit{RSA}, etc. no pueden utilizarse en este caso. \\
+
+Una imagen a escala de grises esta compuesta por una matriz de $M$ columnas por $N$ filas, donde cada elemento (pixel) esta definido por 8 bits para representar una escala de grises de $0-255$, donde 0 es el nivel más claro. La representación matemática se muestra en la figura~7.1, donde cada elemento de la matriz representa el valor de un pixel. \\
+
+Por otra parte, una imagen a color RGB por sus tres componentes rojo, verde y azul (del inglés, \textbf{R}ed, \textbf{G}reen, \textbf{B}lue), es similarmente definida como una imagen a grises, pero en este caso la imagen RGB esta representada por 3 matrices, una por cada componente que es representado en una escala de $0-255$, donde 0 es el nivel más claro de rojo, verde y azul. El color de un pixel en una imagen a color es la combinación de los tres colores RGB, por tanto, existen $256\times 256\times 256$ posibles combinaciones. La representación matemática es $I_{R}(M,N,1)$, $I_{G}(M,N,2)$ y $I_{B}(M,N,3)$ por lo que el componente rojo esta representado por la matriz 1, el componente verde por la matriz 2 y el componente azul por el componente 3 como se observa en la figura~7.2 (el color en las matrices RGB se muestra gris pero es la intensidad del rojo, verde y azul). 
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.5]{FIG_CAP_07/IM_GRIS_MAT.pdf}    
+	\caption{Representación matricial de una imagen a escala de grises.}
+\end{figure}
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.5]{FIG_CAP_07/IM_COL_MAT.pdf}   
+	\caption{Representación matricial de una imagen a color RGB.}
+\end{figure}
+
+\section{Cifrado}
+Considerar una imagen clara $P$ de $M\times N\times 3$ pixeles, donde $M$ son los renglones, $N$ son las columnas y 3 representa cada uno de los componentes; cada componente RGB tiene una dimensión de $M\times N$ con valores entre $0-255$ (8 bits). La figura~7.3 muestra el diagrama a bloques del proceso de cifrado.   
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.45]{FIG_CAP_07/ESQUEMA_CIFRADO_IM.pdf}  
+	\caption{Diagrama a bloques del proceso de cifrado de imagen a color RGB.}
+\end{figure}
+
+\textbf{Primero}, el valor de $Z$ se determina de la siguiente manera: \\
+
+La imagen clara se transforma de $P\in[0,255]$ a $P\in(0,1)$ con una precisión de $10^{-15}$ y se realiza la siguiente operación
+\begin{equation}
+S=S+P(i,j,k),
+\end{equation}
+para $i=1,2,3,\ldots,M$; $j=1,2,3,\ldots ,N$; $k=1,2,3$ y $S$ es una constante inicializada en cero. $S$ se amplifica 1,000 veces para incrementar la sensibilidad a la imagen clara. Se genera $x^{L2}$ de $I_{2}=1000$ iteraciones; después, los últimos 50 valores caóticos de la secuencia $x^{L2}$ son sumados como sigue  
+\begin{equation}
+F=F+x_{(I_{2}-t)}^{L2}, ~~ para ~t=0,1,2,3,\ldots,49
+\end{equation}
+donde  $F$ es una constante inicializada en cero. El siguiente cálculo es
+\begin{equation}
+V_{1}=[(S\times 1000)+F]~\pmod 1,
+\end{equation}
+donde $V_{1}\in(0,1)$ con precisión decimal de $10^{-15}$ y \textit{mód} es la operación de módulo. Es muy importante usar un valor de $V_{1}$ que sea proporcional a $1-254$, por tanto se calcula lo siguiente
+\begin{equation}
+V_{2}=1+round~(V_{1}\times 253),
+\end{equation}
+donde $V_{2}\in[1,254]$ y \textit{round} es la operación de redondeo al valor más cercano. Finalmente, el valor de $Z$ con precisión de $10^{-15}$ está determinado por
+\begin{equation}
+Z=V_{2}/255.
+\end{equation}
+
+\textbf{Segundo}, el proceso de cifrado consiste de las siguientes operaciones: \\
+
+Se genera la secuencia caótica $x^{L1}$ de $I_{2}=5,000$ iteraciones y se procede a calcular las siguientes dos subsecuencias, la primera de longitud $M$ se determina como sigue
+\begin{equation}
+RE_{m}=round~\left[(x_{(I_{2}-M+m)}^{L1})\ast (M-1)\right]+1, ~~ para ~m=1,2,3,\ldots,M
+\end{equation}
+donde $RE\in[1,M]$ es un vector con longitud $M$. La segunda subsecuencia de longitud $N$ es  
+\begin{equation}
+CO_{n}=round~\left[(x_{(I_{2}-N+n)}^{L1})\ast (N-1)\right]+1, ~~para ~n=1,2,\ldots,N
+\end{equation}
+donde $CO\in[1,N]$ es un vector con longitud $N$. Se considera que $RE_{m}$ y $CO_{n}$ son dos vectores optimizados, que contienen todas las posiciones de forma pseudoaleatoria (Sec.~6.5).  \\
+
+Una tercera subsecuencia de 5,000 valores se calcula para el proceso de difusión optimizado como sigue
+\begin{equation}
+M_{g}=\left\lbrace \left[x_{g}^{L1}\ast 1000\right]+Z\right\rbrace~ \pmod 1, ~~para ~g=1,2,3,\ldots,5000 
+\end{equation}
+donde $M\in(0,1)$ con precisión de $10^{-15}$. Finalmente, la imagen clara se transforma de $P\in[0,255]$ a $P\in(0,1)$ con una precisión de $10^{-15}$ y los procesos de confusión y difusión (cifrado) se calcula con la siguiente expresión
+\begin{equation}
+E(i,j,k)=\left[P(RE_{i},CO_{j},k)+(M_{g})\right]\pmod 1,
+\end{equation}
+para $i=1,2,3,\ldots,M$; $j=1,2,3,\ldots,N$; $k=1,2,3$, $g=1,2,3,\ldots,M\times N\pmod{5,000}$, $E$ es la imagen cifrada y $P$ es la imagen clara. La imagen cifrada se transforma de $E\in(0,1)$ a $E\in[0,255]$ con tamaño $M\times N\times3$. \\
+
+\textbf{Tercer paso}, se agrega el valor de $Z$ al criptograma: \\
+
+$Z$ se esconde en un pixel de manera pseudoaleatoria como sigue:
+\begin{equation}
+I=round~\left\lbrace\left[x_{(R-10)}^{L2}\times(M-1)\right]+1\right\rbrace,
+\end{equation}
+\begin{equation}
+J=round~\left\lbrace\left[x_{(R-100)}^{L2}\times(N-1)\right]+1\right\rbrace,
+\end{equation}
+\begin{equation}
+K=round~\left\lbrace\left[x_{(R-200)}^{L2}\times2\right]+1\right\rbrace,
+\end{equation}
+donde $I\in[1,M]$, $J\in[1,N]$ y $K\in[1,3]$. De aquí, $Z$ es incluida en la imagen cifrada como 
+\begin{equation}
+E(I,J,K)=V_{2}.
+\end{equation}
+
+El \textbf{proceso de descifrado} consiste en invertir los pasos realizados anteriormente en el cifrado, con la misma clave secreta, se recupera el valor de $Z$ y se calcula lo siguiente para recuperar la imagen clara
+\begin{equation}
+D(RE_{i},CO_{j},k)= [E(i,j,k)-(M_{g})]\pmod 1,
+\end{equation}
+donde $i=1,2,3,\ldots,M$; $j=1,2,3,\ldots,N$; $k=1,2,3$, $g=1,2,3,\ldots,M\times N\pmod{5000}$, $D\in(0,1)$ es la imagen clara recuperada y $E\in(0,1)$ es la imagen cifrada. La imagen descifrada se transforma de $D\in(0,1)$ a $D\in[0,255]$. 
+
+\section{Análisis de seguridad}
+La implementación del algoritmo de cifrado se realiza en la plataforma de MatLab V7.6 (R2008a) en una computadora laptop con procesador AMD Turion 2.0 GHz, 3.18 GB de RAM y sistema operativo Windows XP 32 bits. Se utiliza representación aritmética de punto flotante (estándar IEEE 754) tipo \textit{double} (64) bits para los datos caóticos y proceso de cifrado, por lo que se tiene una precisión de $10^{-15}$ decimales. \\
+
+Una imagen digital tiene un amplio espectro y un algoritmo de cifrado debe ser capaz de cifrar cualquier imagen RGB con resultados similares en seguridad y desempeño. El algoritmo de cifrado de imagen RGB propuesto en este trabajo doctoral (ver Apéndice A) es aplicado a distintas imágenes para verificar la universalidad del cifrado. La figura~7.4(a)-(d) muestra cuatro imágenes claras RGB con tamaño de $512\times 512$ con sus histogramas y las correspondientes imágenes cifradas; otras dos imágenes claras RGB se muestran en la figura~7.5(a)-(d) con sus tres RGB componentes y sus correspondientes criptogramas. En el cifrado, se utilizó como clave secreta ``1234567890ABCDEF1234567890ABCDEF''. Como resultado, los histogramas uniformes y componentes RGB irreconocibles de las imágenes cifradas confirmas las capacidades del algoritmo para cifrar cualquier imagen a color RGB. Además, el algoritmo puede cifrar imágenes a escala de grises. \\
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.45]{FIG_CAP_07/ENCRYPTION_1.pdf}   	 
+	\caption{Cifrado de imagen a color: (a) Lena clara y sus histogramas RGB, (b) Lena cifrada y sus histogramas RGB, (c) vegetales claro y sus tres histogramas RGB y (d) vegetales cifrado y sus tres histogramas RGB.}
+\end{figure}
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.5]{FIG_CAP_07/ENCRYPTION_2.pdf}  	 
+	\caption{Cifrado de imagen a color: (a) estatua de la libertad clara y sus tres componentes RGB, (b) estatua de la libertad cifrada y sus tres componentes RGB, (c) paisaje claro y sus tres componentes RGB y (d) paisaje cifrado y sus tres componentes RGB.}
+\end{figure}
+
+Ahora, la robustez del algoritmo de cifrado de imagen se verifica con el siguiente análisis de seguridad: error de descifrado, espacio de claves secretas, sensibilidad a la clave secreta, sensibilidad a la imagen clara, histogramas, correlación, ataques clásicos, entropía de la información y tiempo de cifrado.
+
+\subsection{Error de descifrado}
+En aplicaciones de comunicaciones seguras como en telemedicina, milicia, biometría, etc., la imagen descifrada debe ser igual a la imagen original. En \cite{ZEtAl_2014}, los autores presentan un algoritmo con inserción de pixeles aleatorios en imagen original antes de ser cifrada; por tanto, la imagen descifrada tiene un error entre la imagen original y la descifrada hasta un 0.2\% del total de los pixeles (tabla~7.1). \\
+
+Por otra parte, el algoritmo de cifrado caótico propuesto puede recuperar la imagen original con un error muy bajo (ver tabla~7.1); por tanto, la imagen descifrada puede considerarse similar a la imagen original. El error de descifrado se determina mediante la expresión
+\begin{equation}
+DErr(\%)=\frac{\sum_{i=1,j=1}^{i=M,j=N}Q(i,j)}{M\times N} \times 100
+\end{equation}
+donde $DErr$ es el error de descifrado, $M$ son los renglones, $N$ son las columnas y 
+\begin{equation}
+Q(i,j) = \left\{ \begin{array}{rl}
+ 0 &\mbox{ if $PI(i,j)=DI(i,j)$} \\
+ 1 &\mbox{ if $PI(i,j)\neq DI(i,j)$}
+       \end{array} \right.
+\end{equation}
+donde $PI$ es la imagen clara y $DI$ es la imagen descifrada.
+
+\begin{table}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\scalebox{1}{
+	\begin{tabular}{c c c c} 
+	\hline
+	$512\times 512$	& Componente &	Algoritmo propuesto 	&	Ref. \cite{ZEtAl_2014}  \\
+	imagen RGB		&			&  DErr (\%)    &        DErr (\%)			\\	
+	\hline 
+	  				&	R	 	& 	   0 		& 			0.1945		  \\
+	  Lena			& 	G	 	& 	   0 		& 			0.1941		  \\
+	 				&	B	 	& 	   0.0003	& 			0.1953		  \\
+	\hline	  
+	  				&	R	 	& 	   0 		& 			0.1953		  \\
+	  Estatua de	& 	G	 	& 	   0.0019 	& 			0.1934		  \\
+	  la libertad	&	B	 	& 	   0.0007	& 			0.1941		  \\	 		
+	\hline
+\end{tabular}}
+	\caption{Error de descifrado de imagen RGB para dos imágenes.}
+\end{table} 
+
+\subsection{Espacio de clave secreta}
+Todo sistema criptográfico es susceptible a un ataque exhaustivo (ataque de \textit{fuerza bruta}), donde cada posible clave secreta se utiliza para descifrar un criptograma. Si el espacio de claves es pequeño, es decir, menor a $2^{56}$ posibilidades, el sistema criptogáfico no es seguro ante un ataque exhaustivo o de fuerza bruta. ``Para proporcionar seguridad suficiente contra un ataque exhaustivo, el espacio de claves debe ser mayor a $2^{100}$'' sugerencia 15 reportada en la referencia \cite{AyL_2006}. Además, cada clave secreta se debe considerar fuerte, es decir, que genere secuencias caóticas y no periódicas. La clave secreta propuesta consiste de 32 dígitos hexadecimales (128 bits) y todas se consideran fuertes (Sec.~6.2), por tanto, el algoritmo propuesto en esta tesis utiliza un espacio de claves de $2^{128}$ y puede resistir un ataque exhaustivo.
+
+\subsection{Sensibilidad a clave secreta}
+En este análisis, la sensibilidad a la clave secreta se prueba y verifica. Un buen sistema criptográfico debe ser sensible a pequeños cambios en la clave secreta tanto para cifrado y descifrado. En el proceso de descifrado, si la misma imagen clara se cifra dos veces con dos claves parecidas, las imágenes cifradas deben ser completamente diferentes entre ellas (verificada con análisis de correlación Sec.~7.3.6). \\
+
+Para verificar la sensibilidad a la clave secreta, la imagen clara \textit{``vegetales''} se cifra con 3 claves similares y los criptogramas son comparados entre ellos mediante análisis de correlación; los resultados se muestran en la tabla~7.2, donde una correlación de 0 indica que ambas imágenes son totalmente diferentes. \\
+
+Por otra parte, en el proceso de descifrado sólo la clave correcta puede recuperar la imagen original, es decir, no se podrá recuperar la imagen original si se utiliza una clave similar, incluso mantiene las mismas características de seguridad. La figura~7.6(a) muestra la imagen descifrada con la clave correcta; las figuras~7.6(b) y (c) muestran dos imagenes descifradas con claves muy similares (1 bit diferente). \\
+
+Esta prueba fue determinada con:
+\begin{itemize}
+\item Clave secreta 1 como \emph{1234567890ABCDEF1234567890ABCDEF}
+\item Clave secreta 2 como \emph{1234567\textbf{9}90ABCDEF1234567890ABCDEF}
+\item Clave secreta 3 como \emph{1234567890ABCDEF1234567\textbf{9}90ABCDEF} \\
+\end{itemize}
+
+\begin{table}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\scalebox{1}{
+	\begin{tabular}{c c c c} 
+	\hline
+		Clave secreta	& Componente &	Correlación   \\	
+	\hline 
+	  					&	R	 	& 	  -0.1281 		  \\
+	  clave 1 \textit{vs} clave 2& 	G	 	& 	   0.0683 		  \\
+	 					&	B	 	& 	   0.0529		  \\
+	  					&	R	 	& 	  -0.0361 		  \\
+	  clave 2 \textit{vs} clave 3& 	G	 	& 	   0.0856 		  \\
+	   					&	B	 	& 	  -0.0155		  \\	  		
+	\hline
+\end{tabular}}
+	\caption{Sensibilidad a clave secreta en proceso de cifrado de imagen RGB.}
+\end{table}  
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.5]{FIG_CAP_07/SENSI_CLAVE_DESCIFRADO.pdf}   	 
+	\caption{Sensibilidad a clave secreta en proceso de descifrado: (a) imagen descifrada con la clave secreta correcta 1 y sus histogramas RGB, (b) imagen descifrada con incorrecta clave secreta 2 y sus histogramas RGB y (c) imagen descifrada con incorrecta clave secreta 3 y sus histogramas RGB.}
+\end{figure}
+
+\subsection{Sensibilidad a imagen clara}
+Un buen sistema criptográfico debe ser sensible con respecto a la imagen clara, es decir, pequeños cambios (un  bit) en la imagen clara genera un gran cambio en la imagen cifrada; si el algoritmo tiene esta propiedad, el cifrado puede resistir un ataque diferencial, el cual, básicamente es un ataque de texto claro conocido. Dos medidas son utilizadas para determinar la sensibilidad a imagen clara: $NPCR$ (del inglés, \textit{Net Pixel Change Rate}), tasa de cambio de pixel neto y $UACI$ (del inglés, \textit{Unified Avarage Changing Intensity}), promedio unificado de cambio de intensidad.  \\
+
+$NPCR$ mide cuantos pixeles son diferentes entre dos imágenes cifradas $E_{1}$ y $E_{2}$ con la misma clave secreta; es representado en porcentajes, donde $100\%$ indica que ambas imágenes son totalmente diferentes (cada pixel comparado a la par tienen valor diferente). $NPCR$ a nivel de componente se calcula como sigue
+\begin{equation}
+NPCR=\frac{\sum_{i=1,j=1}^{i=M,j=N}W(i,j)}{M\times N} \times 100
+\end{equation}
+donde $M$ son los renglones, $N$ son las columnas y
+\begin{equation}
+W(i,j) = \left\{ \begin{array}{rl}
+ 0 &\mbox{ if $E_{1}(i,j)=E_{2}(i,j)$} \\
+ 1 &\mbox{ if $E_{1}(i,j)\neq E_{2}(i,j)$}
+       \end{array} \right.
+\end{equation}
+
+$UACI$ es el promedio de intensidad diferente entre dos imágenes cifradas $E_{1}$ y $E_{2}$ con la misma clave secreta, es decir, que tan diferentes son diferentes en magnitud. $UACI$ a nivel componente se calcula
+\begin{equation}
+UACI=\frac{100}{M\times N\times 255}\sum_{i=1,j=1}^{i=M,j=N}|E_{1}(i,j)-E_{2}(i,j)|,
+\end{equation}
+donde $M$ son los renglones, $N$ son las columnas,  $E_{1}(i,j)$ y $E_{2}(i,j)$ son los valores de cada imagen cifrada.  \\ 
+
+$NPCR$ y $UACI$ son calculados con los siguientes pasos: primero, la imagen clara de \textit{``Lena''} es cifrada $E_{1}$ con la clave secreta 1 (figura.~7.7(a)-(b)); después, el valor de un pixel en $P(1,20,1)=222$ se cambia a $P(1,20,1)=223$ (un bit diferente en componente R) y \textit{``Lena''} con un pequeño cambio es cifrada $E_{2}$ con la misma clave secreta 1 (figura.~7.7(c)-(d)). La tabla~7.3 muestra los resultados para ambas medidas; el valor de $NPCR$ es cercano a 100\%, es decir, ambas imágenes cifradas $E_{1}$ y $E_{2}$ son muy diferentes. El valor de $UACI$ es del 33\% entre $E_{1}$ and $E_{2}$, es decir, un 33\% diferentes en magnitud. Por tanto, el algoritmo propuesto es altamente sensible a la imagen clara por lo que es robusto ante ataques diferenciales como ataque de sólo imagen clara conocida. En la tabla~7.4 se muestra una comparación con otros algoritmos criptográficos recientes presentados en la literatura, los cuales, tienen valores similares a los reportados en esta tesis doctoral.   
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.45]{FIG_CAP_07/SENSI_IM_CLARA.pdf}      	 
+	\caption{Análisis diferencial de dos imágenes similares: (a) imagen clara Lena, (b) imagen cifrada Lena, (c) imagen clara Lena con un pequeño cambio y (d) Lena con un pequeño cambio es cifrada con la misma clave secreta.}
+\end{figure}
+
+\begin{table}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\scalebox{1}{
+	\begin{tabular}{c c c c} 
+	\hline
+	Prueba	&	R	&	G	&	B \\
+	\hline
+	$NPCR(\%)$	& 99.63 & 99.60 & 99.61 \\
+	$UACI(\%)$	& 33.31 & 33.34 & 33.43 \\
+	\hline
+\end{tabular}}
+	\caption{Resultados de $NPCR$ y $UACI$ con el algoritmo propuesto.}
+\end{table}
+
+\begin{table}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center 
+	\scalebox{1}{
+	\begin{tabular}{c c c c} 
+	\hline
+	Prueba		&	Propuesto	& Ref. \cite{ZEtAl_2014} 	&	Ref. \cite{ZEtAl_2013}	\\
+	\hline
+	$NPCR(\%)$	& 	99.61 		& 		No presenta 				& 		99.60 			\\
+	$UACI(\%)$	&	33.36 		& 		No presenta 				& 		33.40			\\
+	\hline
+\end{tabular}}
+	\caption{Comparación de análisis diferencial con otros algoritmos reportados en la literatura.}
+\end{table}
+
+\subsection{Histogramas}
+El histograma muestra la intensidad de los colores de la imagen, mediante una gráfica y representa información estadística. Un sistema criptográfico es susceptible a un ataque de histogramas y puede resistir, si la imagen cifrada tiene un histograma uniforme (información impredecible). El algoritmo propuesto genera un histograma uniforme a nivel componente (excelente proceso de difusión) que se puede observar en la figura~7.4(b) y (d). Otros ejemplos se muestran en la figura~7.6(b) y (c) en sensibilidad a clave secreta. Por tanto, el algoritmo criptográfico propuesto en esta tesis se considera robusto contra ataques de histogramas. 
+
+\subsection{Análisis de correlación}
+En esta sección, el desempeño del proceso de confusión y difusión propuesto es probado y verificado. Se sabe que los pixeles adyacentes de una imagen están altamente correlacionados, esto significa que el valor de un pixel y el valor de su pixel vecino (horizontal, vertical o diagonal) son muy parecidos. La correlación de una imagen se puede graficar y también se puede medir entre -1 y 1, donde 0 significa correlación nula. Un criptoanalista puede utilizar esta información en un ataque estadístico para encontrar la clave secreta y recuperar la imagen clara. Por tanto, la imagen cifrada debe tener correlación nula.  \\
+
+La figura~7.8(a)-(c) muestra la distribución de la correlación RGB horizontal de 5,000 pixels de la imagen de \textit{Lena} seleccionados aleatoriamente, donde cada valor de un pixel y el valor de su pixel adyacente horizontal es similar (alta correlación). Por otra parte, las figuras~7.8(d)-(f) muestran la correlación de la imagen cifrada, donde se muestra que el valor entre el pixel y su adyacente son muy distintos (baja correlación).  \\  
+
+De manera teórica, la correlación se determina como sigue
+\begin{equation}
+Cr=\frac{N\times\sum_{i=0}^{N}(x_{i}\times y_{i})-\sum_{i=0}^{N}x_{i}\times \sum_{i=0}^{N}y_{i}}%
+{\sqrt{\left(N\times \sum_{i=0}^{N}(x_{i})^{2}-\left(\sum_{i=0}^{n}x_{i}\right)^{2}\right)\times %
+\left(N\times \sum_{i=0}^{N}(y_{i})^{2}-\left(\sum_{i=0}^{n}y_{i}\right)^{2}\right)}}
+\end{equation}
+donde $x$ y $y$ son valores de dos pixeles adyacentes a nivel componente y $N$ es el número de pares de pixeles. El valor de correlación es $Cr\in (-1,1)$ donde 0 significa nula correlación y 1 significa alta correlación. La tabla~7.5 se muestra el coeficiente de correlación horizontal de 5,000 pares de pixeles seleccionados aleatoriamente; la correlación de la imagen clara es cercano a 1 (alta correlación), mientras que la correlación de la imagen cifrada es cercano a 0 (baja correlación). Por tanto, el algoritmo propuesto puede resistir un ataque estadístico de correlación. 
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.5]{FIG_CAP_07/CORRELACION.pdf}   	 
+	\caption{Distribución de correlación horizontal de imagen clara y de imagen cifrada de Lena: (a) componente R de imagen clara, (b) componente G de imagen clara, (c) componente B de imagen clara, (d) componente R de imagen cifrada, (e) componente G de imagen cifrada y (f) componente B de imagen cifrada.}
+\end{figure}
+
+\begin{table}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\scalebox{1}{
+	\begin{tabular}{c c c c} 
+	\hline
+	$512\times 512$	& Componente &	Imagen clara &	Imagen cifrada   	\\
+	Imagen RGB		&			&      			&        				\\	
+	\hline 
+	  				&	R	 	& 	   0.9777 	& 		0.0135		  \\
+	  Lena			& 	G	 	& 	   0.9604 	& 	   -0.0835		  \\
+	 				&	B	 	& 	   0.9101	&  	   -0.0170		  \\
+	\hline	 
+	  				&	R	 	& 	   0.9256 	& 		0.0306		  \\
+	  Vegetales		& 	G	 	& 	   0.9113 	& 		0.0326		  \\
+	 				&	B	 	& 	   0.9142	& 		0.0287		  \\
+	\hline	
+	  				&	R	 	& 	   0.9823 	& 	   -0.0652		  \\
+	  Estatua de la libertad& 	G	 	& 	   0.9778 	& 		0.0641		  \\
+	 				&	B	 	& 	   0.9822	& 		0.0551		  \\	 				
+	\hline	
+	  				&	R	 	& 	   0.9715 	& 		0.0508		  \\
+	  Paisaje		& 	G	 	& 	   0.9253 	& 		0.0517		  \\
+	 				&	B	 	& 	   0.9647	& 		0.0251		  \\	 					 		
+	\hline
+\end{tabular}}
+	\caption{Coeficiente de correlación horizontal.}
+\end{table} 
+
+\subsection{Ataque de sólo texto claro elegido y conocido}
+Muchos algoritmos de cifrado basado en caos con excelentes características estadísticas fueron quebrantados con un ataque de sólo texto claro conocido/elegido. En el algoritmo propuesto se consideran los siguientes puntos para prevenir este tipo de ataque poderoso:
+\begin{enumerate}
+   \item Los procesos de confusión y difusión son realizados en una sóla etapa de acuerdo con la ecuación~(7.9). Por tanto, el algoritmo propuesto en esta tesis puede resistir un ataque divide y vencerás \cite{LEtAl_2011}. 
+   \item La secuencia caótica para cifrado es determinada de la clave secreta y de las características totales de la imagen clara de acuerdo con la tabla~6.1.
+   \item Se utiliza una mejor distribución del mapa logístico en el proceso de cifrado de acuerdo con la ecuación~(7.8); la figura~6.4(b) muestra esta distribución.
+   \item El proceso de cifrado es realizado bajo $mod~1$ con una precisión decimal de $10^{-15}$ y la imagen cifrada es transformada y redondeada a $E\in[0,255]$ en el último paso de cifrado. \\
+\end{enumerate}   
+
+En un ataque de imagen clara elegida, el criptoanalista tiene acceso al sistema criptografico y puede elegir una imagen especial para cifrar y buscar una relación entre la entrada y salida, para determinar la clave secreta: primero, el criptoanalista elige una imagen negra con todos los pixeles fijos en cero (figura~7.9(a)); después, el criptoanalista cifra la imagen negra (figura~7.9(b)) y el resultado es la posible secuencia caótica utilizada en el cifrado (clave secreta). Posteriormente, el criptoanalista puede implementar un ataque de imagen clara conocida (figura~7.9(c)) con la posible clave secreta pero no tiene éxito (figura~7.9(d)). De la tabla~6.1 el valor de $S$ de la figura~7.9(a) es 0, mientras que \textit{Lena} fue cifrada con un valor de $S\neq 0$. Por tanto, se tienen diferentes valores de $Z$ y diferentes secuencias caóticas para cada imagen cifrada.    
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.5]{FIG_CAP_07/ATAQUE_IM_ELEGIDA.pdf}     	 
+	\caption{Ataque de sólo imagen clara conocida y elegida: (a) imagen clara elegida, (b) imagen negra cifrada, (c) imagen de \textit{Lena} cifrada y (d) imagen de \textit{Lena} descifrada con la posible clave secreta.}
+\end{figure}
+
+\subsection{Entropía de la información}
+La \textit{entropía} determina que tan impredecible es un mensaje, es decir, mide cuanto desorden genera el algoritmo de cifrado. Si el proceso de cifrado es bueno, este genera alto desorden en la imagen cifrada; por tanto, mayor será la entropía. Caso contrario, si el proceso de cifrado no es suficientemente aleatorio, el algoritmo criptográfico puede estar sujeto a un exitoso ataque de entropía, porque el criptograma es predecible. \\
+
+En esta sección, el desempeño del cifrado propuesto en la etapa de difusión es probado y verificado. La entropía $H(m)$ de un mensaje $m$ puede calcularse como sigue
+\begin{equation}
+H(m)=\sum_{i=0}^{2^{N}-1}p(m_{i})~log_{2}(1/p(m_{i})),
+\end{equation}
+donde $N$ es el número de bits que representan la unidad básica del mensaje $m$, $2^{N}$ son todas las combinaciones de la unidad básica, $p(m_{i})$ representa una probabilidad de $m_{i}$, $\log_{2}$ es el logaritmo base 2 y la entropía esta expresada en bits, donde la máxima entropía es $N$. Si un mensaje $m$ es cifrado con $2^{N}$ posibles valores, la entropía debería ser idealmente $H(m)=N$, si $m$ es puramente aleatorio. \\   
+
+Una imagen RGB esta representado con 8 bits como unidad básica, es decir $N=8$ a nivel componente. De manera que, la máxima entropía por componente es de 8. La tabla~7.6 muestra los resultados de la entropía y una comparación con otros algoritmos recientes reportados en la literatura. La entropía de la imagen cifrada es cercana a 8, por tanto el proceso de difusión genera alto desorden para resistir un ataque de entropía.
+
+\begin{table}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\scalebox{1}{
+	\begin{tabular}{c c c c c} 
+	\hline
+	Imagen RGB			& Componente &	Algoritmo &	 Ref. \cite{ZEtAl_2014} 	&	Ref. \cite{ZEtAl_2013}  	\\
+	                    &            &  propuesto &                             & \\ 
+	\hline 
+	  					&	R	 	& 	 7.9949   	 & 		7.9976	 &		NP			\\
+	$256\times 256$		& 	G	 	& 	 7.9953   	 & 		NP		 &		NP			\\
+	 					&	B	 	& 	 7.9942  	 & 		NP		 &		NP			\\ 	
+	\hline 
+	  					&	R	 	& 	 7.9974  	 & 		7.9993	 &		7.9993		\\
+	$512\times 512$		& 	G	 	& 	 7.9975   	 & 	   	NP	  	 &		NP			\\
+	 					&	B	 	& 	 7.9969 	 &	  	NP   	 &		NP			\\
+	\hline	 
+	  					&	R	 	& 	 7.9978   	 & 		7.9998	 &		NP			\\
+	$1024\times 1024$	& 	G	 	& 	 7.9976   	 & 		NP	  	 &		NP			\\
+	 					&	B	 	& 	 7.9976  	 & 		NP		 &		NP			\\ 				 
+	\hline
+\end{tabular}}
+	\caption{Resultados de entropía y su comparación con otros algoritmos reportados en la literatura, donde NP significa que no presento.}
+\end{table} 
+
+\subsection{Tiempo de cifrado}
+Un buen algoritmo de cifrado debe ser robusto ante ataques pero además requiere ser rápido para aplicaciones de tiempo real en telemedicina, milicia, imagen personal, sistemas biométricos, industria, etc. El tiempo de cifrado se determina mediante los comandos \textit{tic} y \textit{toc} de MatLab. La tabla~7.7 y tabla~7.8 muestran los resultados de tiempo de cifrado del algoritmo propuesto con imágenes RGB y grises de distinto tamaño y los resultados se comparan con otros algoritmos criptográficos recientes reportados en la literatura. El tiempo de descifrado es similar al cifrado. La velocidad de cifrado para una imagen RGB de $256\times 256$ (1.572 MB) con el algoritmo propuesto alcanza los 24 MB/seg. Por tanto, es ámpliamente superior a los otros algoritmos. 
+
+\begin{table}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center 
+	\scalebox{1}{
+	\begin{tabular}{c c c c c} 
+	\hline
+	Imagen (pixel) &	Algoritmo propuesto &	Ref. \cite{ZEtAl_2014} &  Ref. \cite{PEtAl_2010}  \\
+	\hline
+	$256\times 256$	  & 0.0657 & 0.1789 & 0.1933  \\
+	$512\times 512$	  & 0.2432 & 0.6639 & 0.7579  \\
+	$1024\times 1024$ & 1.1205 & 3.1416 & 2.9293  \\ 	
+	\hline
+\end{tabular}}
+	\caption{Tiempo de cifrado en segundos para imágenes a color RGB.}
+\end{table}
+
+\begin{table}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\scalebox{1}{ 
+	\begin{tabular}{c c c c c} 
+	\hline
+	Imagen (pixel) &	Algoritmo &	Ref. \cite{ByE_2013} &  Ref. \cite{Z_2012} &  Ref.\cite{WEtAl_2008}  \\
+				   &	propuesto &						 &			  	        &  \\				
+	\hline
+	$125\times 125$	  & 0.0128  & 0.0980 &  NP		&	NP   		 \\
+	$256\times 256$	  & 0.0373  &  NP 	 &  0.0320	&	NP	   		\\
+	$512\times 512$	  & 0.1198  &  NP 	 &  NP	  	& 	0.1244 		\\
+	$1024\times 1024$ & 0.4735  &  NP 	 &  NP  	& 	NP 			\\ 	
+	\hline
+\end{tabular}}
+	\caption{Tiempo de cifrado en segundos para imágenes a escala de grises, donde NP significa que no presento.}
+\end{table}
+
+\section{Comparación con otro algoritmo de la literatura}
+En esta sección, el algoritmo propuesto se compara en términos de seguridad, desempeño y eficiencia con un algoritmo criptográfico basado en codificación ADN y mapa logístico. Recientemente, en \cite{LEtAl_2012a} se propuso un algoritmo de cifrado basado en codificación ADN combinado con mapa logístico; los autores utilizan operaciones algebraicas ADN, codificación binaria ADN y datos caóticos del mapa logístico en el proceso de confusión y difusión. A pesar que el algoritmo criptográfico utiliza conceptos de criptografía ADN y teoría de caos para incrementar la seguridad, el algoritmo  fue quebrantado con un ataque de sólo imagen clara conocida porque la codificación ADN y secuencias caóticas son dependientes únicamente de la clave secreta. Además, el cifrado presenta baja sensibilidad a la imagen clara y a la clave secreta \cite{L_2014}. \\
+
+La tabla~7.9 muestra la comparación entre el algoritmo criptográfico propuesto y el algoritmo de la referencia \cite{LEtAl_2012a}. Con base en la comparación de los resultados, el algoritmo criptográfico propuesto en esta tesis es altamente seguro, presenta gran desempeño y puede resistir un ataque de imagen clara conocida y elegida. Algunos puntos concuerdan, como histogramas, correlación y entropía que están relacionados con un buen proceso de confusión-difusión. Sin embargo, un sistema criptográfico para imágenes debe incluir los siguientes puntos para considerarse eficiente y seguro \cite{AyL_2006}:
+\begin{enumerate}
+\item El espacio de la clave secreta debe ser claramente definida sobre $2^{100}$ todas las combinaciones consideradas fuertes.
+\item Ser altamente sensible a la clave secreta.
+\item Ser altamente sensible a la imagen clara.
+\item Las secuencias caóticas utilizadas en el proceso de cifrado, deben ser dependientes de la clave secreta y de la imagen clara, para resistir un ataque de imagen clara conocida y elegida.
+\item Un buen proceso de confusión y difusión: histograma uniforme, correlación cercana a 0 y entropía cercana a 8.
+\item Alta velocidad de cifrado para aplicaciones en tiempo real. \\
+\end{enumerate}
+ 
+\begin{table}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center 
+	\scalebox{1}{
+	\begin{tabular}{c c c} 
+	\hline
+			 						&	Algoritmo Propuesto	   &	Ref. \cite{LEtAl_2012a}			\\
+	\hline
+	\textit{Seguridad}				&							&								\\
+	\hline		
+	Espacio de clave  				&	$2^{128}$ todas fuertes  &  	$2^{166}$ con claves equivalentes	\\		
+	Sensibilidad a la clave			&	Si 						&	No   	      			 	\\
+	Sensibilidad a la imagen clara 	&	Si						& 	No							\\
+	Características de imagen clara &	Si						& 	No							\\
+	para cifrado		 			&							&								\\
+	Datos caóticos optimizados		&	Si						&	No							\\	
+	Histograma uniforme  			&	Si   					&	Si  	   	  	 			\\
+	Coeficiente de correlación		&	0.0135   				&   0.0059	     				 \\
+	Entropía de componente R		&	7.997					&	7.989						\\
+	\hline
+	\textit{Desempeño}				&							&								\\
+	\hline	
+	Velocidad de cifrado			&	24 MB/seg				&	21 MB/seg					\\
+	\hline
+\end{tabular}}
+	\caption{Comparación del algoritmo de cifrado de imagen RGB propuesto en la tesis \textit{vs} algoritmo reciente reportado en literatura.}
+\end{table}  
+
+\section{Conclusiones}
+El algoritmo criptográfico propuesto en esta tesis doctoral cumplió con los requerimientos de seguridad que se requieren para ser implementado en la protección de imágenes a color RGB. Además, se mostró que el algoritmo de cifrado propuesto genera un criptograma con excelente propiedades estadísticas y puede resistir los ataques más poderosos reportados en la literatura.
+

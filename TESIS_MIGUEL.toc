@@ -1,0 +1,104 @@
+\babel@toc {spanish}{}
+\contentsline {chapter}{Resumen}{\es@scroman {i}}
+\contentsline {chapter}{Abstract}{\es@scroman {ii}}
+\contentsline {chapter}{Agradecimientos}{\es@scroman {iv}}
+\contentsline {chapter}{Lista de Figuras}{\es@scroman {viii}}
+\contentsline {chapter}{Lista de Tablas}{\es@scroman {xi}}
+\contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{1}
+\contentsline {section}{\numberline {1.1}Motivaci\IeC {\'o}n}{5}
+\contentsline {section}{\numberline {1.2}Objetivos y alcances de la tesis}{7}
+\contentsline {section}{\numberline {1.3}Organizaci\IeC {\'o}n del manuscrito}{8}
+\contentsline {chapter}{\numberline {2}Caos}{10}
+\contentsline {section}{\numberline {2.1}Introducci\IeC {\'o}n}{10}
+\contentsline {section}{\numberline {2.2}Sistema ca\IeC {\'o}tico y sus propiedades}{12}
+\contentsline {section}{\numberline {2.3}Sistema ca\IeC {\'o}tico 3D de Lorenz}{14}
+\contentsline {subsection}{\numberline {2.3.1}M\IeC {\'a}ximo exponente de Lyapunov}{14}
+\contentsline {section}{\numberline {2.4}Mapa ca\IeC {\'o}tico 1D log\IeC {\'\i }stico}{16}
+\contentsline {subsection}{\numberline {2.4.1}M\IeC {\'a}ximo exponente de Lyapunov}{16}
+\contentsline {section}{\numberline {2.5}Conclusiones}{17}
+\contentsline {chapter}{\numberline {3}Criptograf\IeC {\'\i }a}{19}
+\contentsline {section}{\numberline {3.1}Introducci\IeC {\'o}n}{19}
+\contentsline {section}{\numberline {3.2}Sistema criptogr\IeC {\'a}fico y su clasificaci\IeC {\'o}n}{22}
+\contentsline {section}{\numberline {3.3}Seguridad de un sistema criptogr\IeC {\'a}fico}{24}
+\contentsline {section}{\numberline {3.4}Pruebas estad\IeC {\'\i }sticas de aleatoriedad}{25}
+\contentsline {section}{\numberline {3.5}Cifrado ca\IeC {\'o}tico}{27}
+\contentsline {section}{\numberline {3.6}Requerimientos b\IeC {\'a}sicos de un cifrado ca\IeC {\'o}tico digital}{30}
+\contentsline {section}{\numberline {3.7}Conclusiones}{31}
+\contentsline {chapter}{\numberline {4}Sistemas embebidos}{32}
+\contentsline {section}{\numberline {4.1}Introducci\IeC {\'o}n}{32}
+\contentsline {section}{\numberline {4.2}Microcontrolador}{33}
+\contentsline {section}{\numberline {4.3}Seguridad}{35}
+\contentsline {section}{\numberline {4.4}Implementaci\IeC {\'o}n de caos en microcontrolador}{36}
+\contentsline {section}{\numberline {4.5}Conclusiones}{36}
+\contentsline {chapter}{\numberline {5}An\IeC {\'a}lisis de implementaci\IeC {\'o}n de sistemas ca\IeC {\'o}ticos en microcontrolador}{38}
+\contentsline {section}{\numberline {5.1}Introducci\IeC {\'o}n}{38}
+\contentsline {section}{\numberline {5.2}Sistema 3D de Lorenz}{38}
+\contentsline {subsection}{\numberline {5.2.1}Existencia de caos}{40}
+\contentsline {subsection}{\numberline {5.2.2}Eficiencia y recursos de implementaci\IeC {\'o}n}{41}
+\contentsline {section}{\numberline {5.3}Mapa 1D log\IeC {\'\i }stico}{44}
+\contentsline {subsection}{\numberline {5.3.1}Existencia de caos}{44}
+\contentsline {subsection}{\numberline {5.3.2}Eficiencia y recursos de implementaci\IeC {\'o}n}{45}
+\contentsline {section}{\numberline {5.4}Conclusiones}{47}
+\contentsline {chapter}{\numberline {6}Algoritmo de cifrado ca\IeC {\'o}tico propuesto}{48}
+\contentsline {section}{\numberline {6.1}Introducci\IeC {\'o}n}{48}
+\contentsline {section}{\numberline {6.2}Definici\IeC {\'o}n de la clave secreta}{51}
+\contentsline {section}{\numberline {6.3}Optimizaci\IeC {\'o}n de secuencia ca\IeC {\'o}tica}{51}
+\contentsline {section}{\numberline {6.4}C\IeC {\'a}lculo de Z}{53}
+\contentsline {section}{\numberline {6.5}Cifrado}{53}
+\contentsline {section}{\numberline {6.6}Descifrado}{54}
+\contentsline {section}{\numberline {6.7}Caracter\IeC {\'\i }sticas de seguridad y eficiencia}{55}
+\contentsline {section}{\numberline {6.8}Conclusiones}{56}
+\contentsline {chapter}{\numberline {7}Cifrado ca\IeC {\'o}tico de imagen a color RGB en MatLab}{57}
+\contentsline {section}{\numberline {7.1}Introducci\IeC {\'o}n}{57}
+\contentsline {subsection}{\numberline {7.1.1}Caracter\IeC {\'\i }sticas de imagen a color RGB}{59}
+\contentsline {section}{\numberline {7.2}Cifrado}{61}
+\contentsline {section}{\numberline {7.3}An\IeC {\'a}lisis de seguridad}{63}
+\contentsline {subsection}{\numberline {7.3.1}Error de descifrado}{63}
+\contentsline {subsection}{\numberline {7.3.2}Espacio de clave secreta}{65}
+\contentsline {subsection}{\numberline {7.3.3}Sensibilidad a clave secreta}{65}
+\contentsline {subsection}{\numberline {7.3.4}Sensibilidad a imagen clara}{66}
+\contentsline {subsection}{\numberline {7.3.5}Histogramas}{68}
+\contentsline {subsection}{\numberline {7.3.6}An\IeC {\'a}lisis de correlaci\IeC {\'o}n}{69}
+\contentsline {subsection}{\numberline {7.3.7}Ataque de s\IeC {\'o}lo texto claro elegido y conocido}{69}
+\contentsline {subsection}{\numberline {7.3.8}Entrop\IeC {\'\i }a de la informaci\IeC {\'o}n}{72}
+\contentsline {subsection}{\numberline {7.3.9}Tiempo de cifrado}{72}
+\contentsline {section}{\numberline {7.4}Comparaci\IeC {\'o}n con otro algoritmo de la literatura}{73}
+\contentsline {section}{\numberline {7.5}Conclusiones}{74}
+\contentsline {chapter}{\numberline {8}Cifrado ca\IeC {\'o}tico de texto alfanum\IeC {\'e}rico en microcontrolador}{75}
+\contentsline {section}{\numberline {8.1}Introducci\IeC {\'o}n}{75}
+\contentsline {section}{\numberline {8.2}Cifrado}{76}
+\contentsline {section}{\numberline {8.3}An\IeC {\'a}lisis de seguridad}{79}
+\contentsline {subsection}{\numberline {8.3.1}Espacio de clave secreta}{79}
+\contentsline {subsection}{\numberline {8.3.2}Sensibilidad a clave secreta}{80}
+\contentsline {subsection}{\numberline {8.3.3}Sensibilidad a texto claro}{82}
+\contentsline {subsection}{\numberline {8.3.4}Frecuencia flotante}{82}
+\contentsline {subsection}{\numberline {8.3.5}Histogramas}{83}
+\contentsline {subsection}{\numberline {8.3.6}N-gramas}{84}
+\contentsline {subsection}{\numberline {8.3.7}Autocorrelaci\IeC {\'o}n}{84}
+\contentsline {subsection}{\numberline {8.3.8}Ataque de s\IeC {\'o}lo texto claro elegido y conocido}{85}
+\contentsline {subsection}{\numberline {8.3.9}Entrop\IeC {\'\i }a de la informaci\IeC {\'o}n}{86}
+\contentsline {subsection}{\numberline {8.3.10}Recursos de implementaci\IeC {\'o}n y desempe\IeC {\~n}o}{86}
+\contentsline {section}{\numberline {8.4}Conclusiones}{87}
+\contentsline {chapter}{\numberline {9}Cifrado ca\IeC {\'o}tico de plantilla de huella dactilar en microcontrolador}{88}
+\contentsline {section}{\numberline {9.1}Introducci\IeC {\'o}n}{88}
+\contentsline {section}{\numberline {9.2}Sistema de autentificaci\IeC {\'o}n propuesto}{91}
+\contentsline {section}{\numberline {9.3}Cifrado}{94}
+\contentsline {section}{\numberline {9.4}An\IeC {\'a}lisis de seguridad}{96}
+\contentsline {subsection}{\numberline {9.4.1}Espacio de clave secreta}{96}
+\contentsline {subsection}{\numberline {9.4.2}Sensibilidad a clave secreta}{97}
+\contentsline {subsection}{\numberline {9.4.3}Sensibilidad a texto claro}{97}
+\contentsline {subsection}{\numberline {9.4.4}Frecuencia flotante}{99}
+\contentsline {subsection}{\numberline {9.4.5}Histogramas}{99}
+\contentsline {subsection}{\numberline {9.4.6}Autocorrelaci\IeC {\'o}n}{101}
+\contentsline {subsection}{\numberline {9.4.7}Ataque de s\IeC {\'o}lo texto claro elegido y conocido}{102}
+\contentsline {subsection}{\numberline {9.4.8}Entrop\IeC {\'\i }a de la informaci\IeC {\'o}n}{102}
+\contentsline {subsection}{\numberline {9.4.9}An\IeC {\'a}lisis de aleatoriedad FIPS-140-2}{102}
+\contentsline {subsection}{\numberline {9.4.10}Recursos de implementaci\IeC {\'o}n y desempe\IeC {\~n}o}{105}
+\contentsline {section}{\numberline {9.5}Conclusiones}{106}
+\contentsline {chapter}{\numberline {10}Conclusiones generales}{107}
+\contentsline {section}{\numberline {10.1}Principales contribuciones de este trabajo doctoral}{108}
+\contentsline {section}{\numberline {10.2}Trabajo futuro}{109}
+\contentsline {section}{\numberline {10.3}Productos derivados de este trabajo doctoral}{110}
+\contentsline {subsection}{\numberline {10.3.1}Trabajos en colaboraci\IeC {\'o}n}{111}
+\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{113}
+\contentsline {chapter}{\numberline {A}Programa MatLab: cifrado de imagen a color RGB}{125}

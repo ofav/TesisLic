@@ -1,0 +1,65 @@
+% CAPITULO IV
+
+\chapter{Sistemas embebidos}
+En este capítulo, se describe brevemente a los \textit{sistemas embebidos} y se mencionan sus principales aplicaciones en gran parte de los sistemas electrónicos que nos rodean. Generalmente se basan en una unidad central llamada microcontrolador, la cual, se encarga de la gestión de las distintas tareas del sistema embebido mediante su programación en software y comunicaciones entre sus periféricos de entrada/salida. Aplicaciones recientes de estos sistemas son implementados en ambientes inseguros con almacenamiento y transmisión de datos a través de internet. Debido a lo cual, la información confidencial debe ser asegurada mediante métodos criptográficos para evitar robo de datos privados, alteración de umbrales, robo de identidad biométrica, entre otros. Finalmente, se mencionan algunas implementaciones en microcontroladores de algoritmos criptográficos que utilizan caos reportados recientemente en la literatura. 
+
+\section{Introducción}
+Un \textit{sistema embebido} (o \textit{empotrado}) es un sistema de computación software-hardware, que realiza tareas específicas generalmente en tiempo real, con aplicaciones en sistemas de control de accesos, cajeros automáticos, máquinas expendedoras, lavadoras, microondas, televisiones, máquinas de fax, teléfonos, robótica, medición y control de variables físicas como temperatura, presión, humedad, etc., frenado de un automóvil, señales de tránsito, control de tráfico aéreo, equipos médicos (medicina), medición y control de procesos vía internet, sistemas industriales, entre muchas otras aplicaciones (ver figura~4.1). Los sistemas embebidos utilizan un procesador relativamente pequeño, memoria limitada y consume poca energía.  \\
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.6]{FIG_CAP_04/APL_SIST_EMBEBIDO.pdf}   
+	\caption{Algunas aplicaciones de sistemas embebidos.}
+\end{figure} 
+
+IBM (por sus siglas en ingles, \textit{International Business Machines}) fue la primera compañía en elaborar los primeros equipos embebidos en 1980. Los sistemas embebidos se pueden programar con distintos lenguajes como ensamblador, C/C++, JAVA, entre otros. El factor costo \textit{vs} efectividad \textit{vs} potencia es la principal ventaja de los sistemas embebidos comparados con sistemas de computación completos como una computadora personal. \\
+
+Los componentes de un sistema embebido son básicamente una unidad central de procesamiento (como microcontrolador, procesador digital de señales (DSP), arreglos de compuertas lógicas programables (FPGA), circuitos integrados de aplicación específica (ASIC), entre otros), memoria (como Flash, memoria de acceso aleatorio (RAM), memoria de sólo lectura (ROM), etc.) y módulos de entrada y salida de datos (como teclado, pantalla , LED's, motor, relevadores, sensores, internet, etc.).  \\  
+
+Es importante resaltar que el uso de sistemas embebidos en aplicaciones complejas, implica el desafío de brindar seguridad para proteger la información contenida en el sistema embebido y también la información que se va a transmitir mediante internet. De manera que se requiere incluir funciones criptográficas en los sistemas embebidos. 
+
+\section{Microcontrolador}
+Un \textit{microcontrolador} es un circuito integrado que incluye en su interior las tres unidades funcionales de una computadora: procesador, memoria y periféricos de entrada/salida (ver figura~4.2). Se trata de un computador completo en un sólo circuito integrado, el cual, es programable mediante \textit{software} con un conjunto de instrucciones que se ejecuta de manera secuencial para realizar tareas específicas, desde las más sencillas hasta las más complejas. \\
+
+En 1971, se presentó el primer microcontrolador de 4 bits por la compañía \textit{Intel}. Desde entonces, se han desarrollado en distintas arquitecturas de 4, 8, 16 ó 32 bits diseñados para reducir el costo económico y el consumo de energía de un sistema en particular. Actualmente, en el mercado existe una gran gama de microcontroladores para cada aplicación específica como en la aeronáutica, automotriz, industrial, etc. donde empresas como \textit{Atmel}, \textit{Freescale}, \textit{Intel}, \textit{Microship} y \textit{Texas Instruments} son fabricantes de los principales microcontroladores en el mercado.  \\
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=1]{FIG_CAP_04/ESTRUCTURA_MICRO.pdf}   
+	\caption{Estructura de un microcontrolador.}
+\end{figure}  
+
+En las aplicaciones experimentales realizadas en este trabajo doctoral, se utiliza el microcontrolador de 32 bits MCF52259 de \textit{Frescale} integrado un una tarjeta M52259DEMOKIT (ver figura~4.3). La familia de microcontroladores MCF5225X consiste de dispositivos altamente integrados con comunicación en chip de USB, Ethernet, CAN y funciones de cifrado. Están basados en un procesador de 32 bits ColdFire con una velocidad hasta de 80 MHz, memoria flash de 512 MB y 64 KB de SRAM. \\
+
+Además, posee interfaz externa que proporciona flexibilidad para agregar memoria adicional. Éstas y otras características hacen del microcontrolador MCF5225X ideal para aplicaciones en control industrial, redes de internet industriales, sector salud, seguridad, que requieren una amplio rango de conectividad y alto desempeño. Se utiliza programación en lenguaje C en el software CodeWarrior 7.1 de Freescale con soluciones de software MQX 3.5 para alta integración en comunicación USB y Ethernet en tiempo real \cite{F_2008}.
+
+\begin{figure}[!htbp] % Por todos lo medios (!) aqui (h), superior (t), o inferior (b) o flotante (p)
+	\center
+	\includegraphics[scale=0.7]{FIG_CAP_04/M52259DEMOKIT.pdf}   
+	\caption{Microcontrolador de 32 bits M52259DEMOKIT utilizado en las aplicaciones experimentales en este trabajo de tesis.}
+\end{figure}  
+
+\section{Seguridad}
+Actualmente, muchos sistemas embebidos se pueden conectar a la red internet para mejorar sus características y desempeño, lo que permite que desde electrodomésticos hasta grandes equipos industriales puedan ser monitoriados y controlados de manera remota a través de conexiones a internet, como ejemplo cambiar los niveles de aire acondicionado de una casa, controlar luces y electrodomésticos al acceder a un sitio web, monitoreo remoto del clima, medición y control de variables físicas, control remoto de motores eléctricos, etc. \\
+
+Sin embargo, estas ventajas digitales de los sistemas embebidos representan una nueva escala de riesgos, ya que no sólo la integridad de la información se ve comprometida, sino también los diferentes actores se pueden ver afectados, como ejemplo, cambiar la temperatura dramáticamente de un recinto puede ser peligroso para niños o personas mayores, un intruso podría monitorear el estado de encendido y apagado de electrodomésticos y determinar cuando no este nadie en casa para robarla; por lo que los aspectos de seguridad de estos sistemas embebidos quedan en segundo plano. Se tienen diferentes técnicas para enfrentar este problema de seguridad, como el uso de claves, contraseñas, NIP's, etc. como barrera de primer nivel. Sin embargo, estas técnicas presenta algunos problemas, como fáciles de adivinar, difíciles de recordar, transferencia de claves a terceros, etc. \\
+
+Otra técnica de protección de datos son los protocolos de seguridad de internet como SSL, SSH, Kerberos, entre otros. Sin embargo, muchos sistemas embebidos no tienen suficiente capacidad para el procesamiento requerido por estos protocolos, ni suficiente recursos de memoria para implementarlos. Existen ataques de tipo lógico y físico por lo que se tienen que diseñar sistemas embebidos que resistan estos tipos de ataques, algunos de ellos se describieron en la sección~3.3. \\
+
+Es notorio que el cifrado de datos no es suficiente, sin embargo es un paso más en la integridad de los datos en su almacenamiento y transmisión en sistemas embebidos. El estándar del NIST FIPS 140-2, presenta los requerimientos de seguridad que un sistema criptográfico debe tener tanto física como lógicamente en cuatro distintos niveles. Cabe notar que en este trabajo de tesis doctoral, la seguridad del sistema es a nivel lógico (software).  
+
+\section{Implementación de caos en microcontrolador}
+En los últimos años, el mapa logístico y el sistema de Lorenz se implementaron en microcontroladores, ver por ejemplo \cite{A-SEtAl_2011} y \cite{SyJ_2011}, los autores reportan la simple implementación del mapa logístico en microcontrolador; mientras que en \cite{V_2013} se reporta la implementación en microcontrolador de dos mapas logísticos combinados para obtener un \textit{generador de bits caótico} y la pseudoaleatoriedad de las secuencias son verificadas con las pruebas estadísticas FIPS-140-2 del \textit{NIST} (del inglés, \textit{National Institute of Standards and Technology}); en el mismo año 2013, \cite{CEtAl_2013} se propuso la implementación experimental del sistema caótico de Lorenz aproximado por Euler para demostrar que este tipo de osciladores (tiempo continuo) pueden ser utilizados en microcontroladores. \\    
+
+Sin embargo, la implementación en microcontroladores de algoritmos criptográficos basados en caos es relativamente escasa. En \cite{SyD_2012} se realizó una implementación en un microcontrolador Atmel AVR de un algoritmo de cifrado basado en caos, donde se utiliza el mapa generalizado de Hénon y la arquitectura de confusión y difusión para cifrar texto alfanumérico e imágenes, sin embargo, los autores no presentan analisis de seguridad básicos como precisión de clave secreta, espacio de clave secreta, y entre otros, sólo se presenta un histograma, por lo que el desempeño y seguridad de esquema propuesto no es verificado. \\
+
+Recientemente, en \cite{AyV_2014} se presentó un algoritmo de cifrado basado en el sistema caótico de Chua, la aleatoriedad de la secuencia caótica se verifica con FIPS-140-2, es decir, con análisis de poker, monobit, runs y long run; además, el algoritmo de cifrado de texto se implementa en un microcontrolador Atmel AVR, aunque el sistema puede encriptar texto ASCII en tiempo real y a bajo costo, los autores omiten el análisis de seguridad del sistema criptográfico para probar la efectividad y la seguridad del esquema que se presenta.
+
+\section{Conclusiones}
+En la actualidad, la humanidad utiliza sistemas embebidos aun sin saberlo, están en todas partes para hacer más fácil la vida de las personas. Son sistemas de computo que realizan básicamente una tarea específica como la de controlar el lavado de ropa en una lavadora moderna, controlar las señales de tránsito como semáforos, hasta tareas más complejas como controlar la temperatura de una habitación a través de internet, apagar y encender electrodomésticos mediante una página web o aplicaciones donde se requiere almacenar o transmitir información confidencial por medios inseguros como medir y controlar variables físicas en la industria y en la telemedicina. \\
+
+El crecimiento tecnológico ha traído consigo múltiples ventajas para el hombre en el tema de las comunicaciones, como la transmisión de información de forma instantánea y almacenamiento de datos en la nube; sin embargo, esto conlleva a que nuestros datos sean vulnerables y puedan ser robados para fines fraudalentos, maliciosos, bélicos, personales, entre otros, por lo que es de vital importancia que se mantenga la integridad de dichos datos para evitar este tipo de actos ilegales, por lo que se requiere considerar algún tipo de seguridad en el diseño integral de sistemas embebidos que utilicen almacenamiento de datos privados y transmisión de información confidencial. \\
+
+En particular, para hacer frente a estos problemas de seguridad, frecuentemente se recurre a la criptografía. En este trabajo de tesis doctoral, se aplica la criptografía caótica en sistemas embebidos, lo cual será mostrado en capítulos posteriores.   
+   
+

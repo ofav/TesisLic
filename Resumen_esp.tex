@@ -1,0 +1,37 @@
+% RESUMEN ESPAÑOL
+% PAGINA 3 DE TESIS
+% ENUMERADA ROMANO
+
+\newpage % Que inicie en pagina nueva
+
+\newgeometry{left=3cm, right=3cm, top=2.5cm, bottom=2.5cm} % De Resumen a Agradecimientos
+
+\addcontentsline{toc}{chapter}{Resumen} % Para agregar a Tabla de Contenido
+
+\textbf{RESUMEN} de la tesis de \textbf{Miguel Ángel Murillo Escobar}, presentada como requerimiento parcial para obtener el grado de DOCTOR EN CIENCIAS en ELÉCTRICA con orientación en CONTROL, del programa de Maestría y Doctorado en Ciencias e Ingeniería de la Universidad Autónoma de Baja California. Ensenada, Baja California, México. Mayo de 2015. \\
+
+\begin{center}
+  \textbf{DISEÑO DE UN ALGORITMO DE CIFRADO CAÓTICO \\Y SU IMPLEMENTACIÓN EN MICROCONTROLADOR \\PARA APLICACIONES EMBEBIDAS}
+\end{center}  
+ 
+Resumen aprobado por: 
+\begin{flushright}
+	\begin{tabular}{c}
+	\includegraphics[scale=0.25]{VOTOS/FIRMA_CESAR.pdf} \\
+	\hline
+	\textbf{Dr. César Cruz Hernández} \\
+	\textit{Director de tesis}
+	\end{tabular}
+\end{flushright}
+
+En este trabajo de tesis doctoral, se diseñó un algoritmo criptográfico basado en caos y se implementa en un microcontrolador de 32 bits para la transmisión y almacenamiento de datos de forma segura en aplicaciones embebidas. \\
+
+Primeramente, se analiza la implementación de dos sistemas caóticos: Lorenz y logístico. Se opta por utilizar el mapa logístico en el algoritmo criptográfico ya que es un sistema discreto por naturaleza, tiene mejor desempeño y requiere menos recursos de implementación comparado con el sistema tridimencional de Lorenz; además, se verifica la existencia de caos mediante el estudio de exponentes de Lyapunov. Después, se diseña el algoritmo criptográfico basado en una ronda de la arquitectura de confusión y difusión. Finalmente, el algoritmo criptográfico propuesto se aplica en tres diferentes casos para probar su versatilidad: \textit{1)~Imagen a color RGB} (a nivel software), \textit{2)~Texto alfanumérico} y \textit{3)~Plantilla de huella dactilar}. \\  
+
+Se presentan varios análisis estadísticos de seguridad para validar el algoritmo criptográfico propuesto como error de desencriptado, espacio de claves, sensibilidad a la clave, sensibilidad a la entrada, histogramas, correlación, entropía de la información, frecuencia flotante, N-gramas, autocorrelación, pruebas estadísticas de aleatoriedad con FIPS-140-2 del NIST. Por otra parte, se presenta un análisis a nivel hardware como memoria utilizada, puertos de comunicación, frecuencia del sistema y tiempo de cifrado, para validar el uso del algoritmo propuesto en sistemas embebidos en base a microcontroladores para aplicaciones en tiempo real. Algunas aplicaciones que pueden ser de interés son la milicia, medicina, telecomunicaciones, biometría, informática, financiera, sismología, comercio electrónico, información personal, entre otros.\\     
+\\
+
+\textbf{Palabras clave:} cifrado caótico, análisis de seguridad, microcontrolador, aplicaciones embebidas.  
+
+
+
